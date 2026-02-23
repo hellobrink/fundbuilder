@@ -28,6 +28,7 @@ body {
     align-items: center;
     padding: 0 24px;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .toolbar-left {
@@ -103,9 +104,55 @@ body {
     padding: 0 20px 60px;
 }
 
+/* index.html: screens fill the full viewport */
+#screens-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
 /* Screen system */
+.screen {
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+}
+
 .screen.hidden {
     display: none;
+}
+
+/* Content screens: internal padding and centred children */
+#screen-howto,
+#screen-why,
+#screen-who,
+#screen-feel,
+#screen-canvas,
+#screen-reflection {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#screen-howto > *,
+#screen-why > *,
+#screen-who > *,
+#screen-feel > *,
+#screen-canvas > *,
+#screen-reflection > * {
+    max-width: 900px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Screen 8: outer shell, inner splash fills it */
+#screen-part2 {
+    display: flex;
+    padding: 0;
+}
+
+#screen-part2 > .screen-splash {
+    flex: 1;
 }
 
 /* Splash screens (Screen 1 & 8) */
@@ -113,10 +160,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 64px - 50px);
     padding: 40px 20px;
     background: #06333d;
-    border-radius: 12px;
 }
 
 .splash-content {
@@ -1009,19 +1054,22 @@ h2 {
 }
 
 /* Canvas Tool Specific Styles */
+
+/* Progress bar lives inside the fixed toolbar */
 .progress-bar {
-    background: #e5e5e5;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 3px;
-    border-radius: 2px;
-    margin-bottom: 40px;
+    background: rgba(240, 241, 239, 0.15);
     overflow: hidden;
 }
 
 .progress-fill {
-    background: #ff6b9d;
+    background: #ff405f;
     height: 100%;
     transition: width 0.3s ease;
-    border-radius: 2px;
 }
 
 .question-section {
