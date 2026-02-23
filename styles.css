@@ -77,8 +77,8 @@ body {
     height: 36px;
     padding: 0 12px;
     gap: 6px;
-    border: 1px solid rgba(240, 241, 239, 0.25);
-    border-radius: 8px;
+    border: 1px solid rgba(240, 241, 239, 0.6);
+    border-radius: 6px;
     background: transparent;
     cursor: pointer;
     display: flex;
@@ -96,7 +96,7 @@ body {
 
 .toolbar-btn:hover:not(:disabled) {
     background: rgba(240, 241, 239, 0.12);
-    border-color: rgba(240, 241, 239, 0.5);
+    border-color: #f0f1ef;
 }
 
 .toolbar-btn:disabled {
