@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Build the foundations of your open inovation funds</title>
-      <link rel="stylesheet" href="./styles.css" />
+    <title>Build the foundations of your open innovation fund</title>
+    <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="toolbar">
         <div class="toolbar-left">
-            <button class="toolbar-btn" title="Back" disabled>
+            <button class="toolbar-btn" id="btn-back" onclick="toolbarBack()" title="Back" disabled>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
             <button class="toolbar-btn" onclick="resetCanvas()" title="Reset">
@@ -23,288 +23,282 @@
             <span class="part-badge">Part 1</span>
         </div>
         <div class="toolbar-right">
-            <button class="toolbar-btn" onclick="proceedToCards()" title="Next page">
+            <button class="toolbar-btn" id="btn-next" onclick="toolbarNext()" title="Next">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
         </div>
     </div>
 
     <div class="container">
-        <div class="header">
-            <p>PART 1: Let’s start by building a strong strategic foundation for your fund by answering some key questions.</p>
-        </div>
-        
-        <!-- How This Works for Canvas -->
-        <div class="canvas-explanation">
-            <h2>How This Works</h2>
-            <p>This canvas helps you think through the fundamentals of your fund by exploring three key questions:</p>
-            
-            <div class="canvas-flow">
-                <div class="canvas-step">
-                    <span class="step-icon">🎯</span>
-                    <h3>WHY?</h3>
-                    <p>Define the fundamental purpose and urgency driving your fund</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="canvas-step">
-                    <span class="step-icon">👥</span>
-                    <h3>WHO</h3>
-                    <p>Identify your stakeholders, target portfolio, and key influencers</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="canvas-step">
-                    <span class="step-icon">❤️</span>
-                    <h3>FEEL</h3>
-                    <p>Understand the emotional drivers and practical needs you're addressing</p>
-                </div>
-            </div>
-            
-            <p class="canvas-outcome">Once you've answered these questions you should have a clearer view of your fund's strategic foundation, plus you'll have the chance to reflect and refine that foundation before moving to the next stage.</p>
-        </div>
 
         <div class="progress-bar">
             <div class="progress-fill" id="progress"></div>
         </div>
 
-        <!-- WHY Section -->
-        <div class="question-section" id="section-why">
-            <div class="section-title">WHY?</div>
-            <div class="section-description">What's the fundamental purpose of your fund</div>
-            
-            <div class="question">
-                <label class="question-label">Why this problem?</label>
-                <textarea class="question-input" id="why-problem" placeholder="What specific problem does your fund address? Why is it critical to solve now?"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">Why now?</label>
-                <textarea class="question-input" id="why-now" placeholder="What makes this the right moment for this intervention? What has changed?"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">Why you?</label>
-                <textarea class="question-input" id="why-you" placeholder="What unique position, expertise, or capability do you bring to this challenge?"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">Why does it matter?</label>
-                <textarea class="question-input" id="why-matter" placeholder="What impact will solving this problem have? Who benefits and how?"></textarea>
-            </div>
-            
-            <div class="navigation">
-                <div></div>
-                <button class="nav-btn primary" onclick="nextSection()">Next: WHO</button>
+        <!-- Screen 1: Intro -->
+        <div id="screen-intro" class="screen screen-splash">
+            <div class="splash-content">
+                <p class="splash-part-label">PART 1</p>
+                <h2 class="splash-heading">Let's start by building a strong strategic foundation for your fund by answering some key questions.</h2>
+                <button class="splash-btn" onclick="goToScreen(1)">Get Started</button>
             </div>
         </div>
 
-        <!-- WHO Section -->
-        <div class="question-section hidden" id="section-who">
-            <div class="section-title">WHO</div>
-            <div class="section-description">Who are your key stakeholders and target portfolio</div>
-            
-            <div class="question">
-                <label class="question-label">Who are you raising money from?</label>
-                <textarea class="question-input" id="who-funders" placeholder="Which foundations, governments, or individuals will fund this work?"></textarea>
+        <!-- Screen 2: How This Works -->
+        <div id="screen-howto" class="screen hidden">
+            <div class="canvas-explanation">
+                <h2>How This Works</h2>
+                <p>This canvas helps you think through the fundamentals of your fund by exploring three key questions:</p>
+                <div class="canvas-flow">
+                    <div class="canvas-step">
+                        <span class="step-icon">🎯</span>
+                        <h3>WHY?</h3>
+                        <p>Define the fundamental purpose and urgency driving your fund</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="canvas-step">
+                        <span class="step-icon">👥</span>
+                        <h3>WHO</h3>
+                        <p>Identify your stakeholders, target portfolio, and key influencers</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="canvas-step">
+                        <span class="step-icon">❤️</span>
+                        <h3>FEEL</h3>
+                        <p>Understand the emotional drivers and practical needs you're addressing</p>
+                    </div>
+                </div>
+                <p class="canvas-outcome">Once you've answered these questions you should have a clearer view of your fund's strategic foundation, plus you'll have the chance to reflect and refine that foundation before moving to the next stage.</p>
             </div>
-            
-            <div class="question">
-                <label class="question-label">Who is it going to?</label>
-                <textarea class="question-input" id="who-recipients" placeholder="What types of organizations or individuals will receive grants?"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">Where are they?</label>
-                <textarea class="question-input" id="who-location" placeholder="Geographic focus, sectors, or communities you're targeting"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">What's your target portfolio of grantees?</label>
-                <textarea class="question-input" id="who-portfolio" placeholder="Describe the mix of organizations, stages, or approaches you want to support"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">Who do you need to influence to make this work?</label>
-                <textarea class="question-input" id="who-influence" placeholder="Key decision makers, policy makers, or thought leaders who need to support this work"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">Who needs to be at the table?</label>
-                <textarea class="question-input" id="who-table" placeholder="Essential voices, perspectives, or expertise needed for success"></textarea>
-            </div>
-            
-            <div class="navigation">
-                <button class="nav-btn" onclick="prevSection()">Previous</button>
-                <button class="nav-btn primary" onclick="nextSection()">Next: FEEL</button>
+            <div class="screen-nav">
+                <button class="nav-btn primary" onclick="goToScreen(2)">Let's go</button>
             </div>
         </div>
 
+        <!-- Screen 3: WHY -->
+        <div id="screen-why" class="screen hidden">
+            <div class="question-section">
+                <div class="section-title">WHY?</div>
+                <div class="section-description">What's the fundamental purpose of your fund</div>
 
-        <!-- FEEL Section -->
-        <div class="question-section hidden" id="section-feel">
-            <div class="section-title">FEEL</div>
-            <div class="section-description">Understand the emotional and practical drivers</div>
-            
-            <div class="question">
-                <label class="question-label">What pain points in grantees' world are you solving?</label>
-                <textarea class="question-input" id="feel-pain" placeholder="What specific challenges, frustrations, or barriers do your target grantees face?"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">What do they struggle with currently?</label>
-                <textarea class="question-input" id="feel-struggle" placeholder="Current obstacles, resource gaps, or systemic issues they encounter"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">What gap is your fund filling a gap?</label>
-                <textarea class="question-input" id="feel-gap" placeholder="What's missing in the current funding landscape that you uniquely provide?"></textarea>
-            </div>
-            
-            <div class="question">
-                <label class="question-label">What are the emotional drivers for your stakeholders?</label>
-                <textarea class="question-input" id="feel-care" placeholder="What motivates your stakeholders? What outcomes do they deeply value?"></textarea>
-            </div>
-            
-            <div class="navigation">
-                <button class="nav-btn" onclick="prevSection()">Previous</button>
-                <button class="nav-btn primary" onclick="generateCanvas()">Generate your fund's foundations</button>
+                <div class="question">
+                    <label class="question-label">Why this problem?</label>
+                    <textarea class="question-input" id="why-problem" placeholder="What specific problem does your fund address? Why is it critical to solve now?"></textarea>
+                </div>
+                <div class="question">
+                    <label class="question-label">Why now?</label>
+                    <textarea class="question-input" id="why-now" placeholder="What makes this the right moment for this intervention? What has changed?"></textarea>
+                </div>
+                <div class="question">
+                    <label class="question-label">Why you?</label>
+                    <textarea class="question-input" id="why-you" placeholder="What unique position, expertise, or capability do you bring to this challenge?"></textarea>
+                </div>
+                <div class="question">
+                    <label class="question-label">Why does it matter?</label>
+                    <textarea class="question-input" id="why-matter" placeholder="What impact will solving this problem have? Who benefits and how?"></textarea>
+                </div>
+
+                <div class="navigation">
+                    <button class="nav-btn" onclick="goToScreen(1)">Previous</button>
+                    <button class="nav-btn primary" onclick="goToScreen(3)">Next: WHO</button>
+                </div>
             </div>
         </div>
 
-        <!-- Canvas Display -->
-        <div class="canvas-section" id="canvas-display">
-            <h2>Your Fund Canvas</h2>
-            
-            <div class="canvas-grid three-section">
-                <div class="canvas-quadrant">
-                    <div class="quadrant-title">WHY?</div>
-                    <div class="quadrant-content" id="canvas-why"></div>
+        <!-- Screen 4: WHO -->
+        <div id="screen-who" class="screen hidden">
+            <div class="question-section">
+                <div class="section-title">WHO</div>
+                <div class="section-description">Who are your key stakeholders and target portfolio</div>
+
+                <div class="question">
+                    <label class="question-label">Who are you raising money from?</label>
+                    <textarea class="question-input" id="who-funders" placeholder="Which foundations, governments, or individuals will fund this work?"></textarea>
                 </div>
-                
-                <div class="canvas-quadrant">
-                    <div class="quadrant-title">WHO</div>
-                    <div class="quadrant-content" id="canvas-who"></div>
+                <div class="question">
+                    <label class="question-label">Who is it going to?</label>
+                    <textarea class="question-input" id="who-recipients" placeholder="What types of organizations or individuals will receive grants?"></textarea>
                 </div>
-                
-                <div class="canvas-quadrant">
-                    <div class="quadrant-title">FEEL</div>
-                    <div class="quadrant-content" id="canvas-feel"></div>
+                <div class="question">
+                    <label class="question-label">Where are they?</label>
+                    <textarea class="question-input" id="who-location" placeholder="Geographic focus, sectors, or communities you're targeting"></textarea>
                 </div>
-            </div>
-            
-            <div class="export-section">
-                <button class="export-btn" onclick="exportCanvasPDF()">Export Canvas as PDF</button>
-                <button class="export-btn secondary" onclick="exportCanvas()">Export as Text</button>
-                <button class="export-btn secondary" onclick="restartProcess()">Start Over</button>
-                <button class="export-btn" onclick="proceedToCards()">Continue to Method Cards</button>
+                <div class="question">
+                    <label class="question-label">What's your target portfolio of grantees?</label>
+                    <textarea class="question-input" id="who-portfolio" placeholder="Describe the mix of organizations, stages, or approaches you want to support"></textarea>
+                </div>
+                <div class="question">
+                    <label class="question-label">Who do you need to influence to make this work?</label>
+                    <textarea class="question-input" id="who-influence" placeholder="Key decision makers, policy makers, or thought leaders who need to support this work"></textarea>
+                </div>
+                <div class="question">
+                    <label class="question-label">Who needs to be at the table?</label>
+                    <textarea class="question-input" id="who-table" placeholder="Essential voices, perspectives, or expertise needed for success"></textarea>
+                </div>
+
+                <div class="navigation">
+                    <button class="nav-btn" onclick="goToScreen(2)">Previous</button>
+                    <button class="nav-btn primary" onclick="goToScreen(4)">Next: FEEL</button>
+                </div>
             </div>
         </div>
-        
-        <!-- Reflection Prompt -->
-        <div class="reflection-section" id="reflection-section">
-            <h2>Take a Step Back</h2>
-            <p class="reflection-intro">Before moving forward, let's reflect on what you've created. Sometimes stepping back reveals important gaps or new insights.</p>
-            
-            <div class="reflection-prompts">
-                <div class="reflection-prompt">
-                    <h3>🤔 Does this feel complete?</h3>
-                    <p>Looking at your canvas, are there any obvious gaps or areas that feel underdeveloped?</p>
+
+        <!-- Screen 5: FEEL -->
+        <div id="screen-feel" class="screen hidden">
+            <div class="question-section">
+                <div class="section-title">FEEL</div>
+                <div class="section-description">Understand the emotional and practical drivers</div>
+
+                <div class="question">
+                    <label class="question-label">What pain points in grantees' world are you solving?</label>
+                    <textarea class="question-input" id="feel-pain" placeholder="What specific challenges, frustrations, or barriers do your target grantees face?"></textarea>
                 </div>
-                
-                <div class="reflection-prompt">
-                    <h3>🎯 Is this really who you're designing for?</h3>
-                    <p>Think about who will actually benefit from this fund. Are they represented in your WHO answers?</p>
+                <div class="question">
+                    <label class="question-label">What do they struggle with currently?</label>
+                    <textarea class="question-input" id="feel-struggle" placeholder="Current obstacles, resource gaps, or systemic issues they encounter"></textarea>
                 </div>
-                
-                <div class="reflection-prompt">
-                    <h3>💡 What would make this more impactful?</h3>
-                    <p>If you could add one more element to make this fund more effective, what would it be?</p>
+                <div class="question">
+                    <label class="question-label">What gap is your fund filling?</label>
+                    <textarea class="question-input" id="feel-gap" placeholder="What's missing in the current funding landscape that you uniquely provide?"></textarea>
                 </div>
-                
-                <div class="reflection-prompt">
-                    <h3>🔄 What needs revisiting?</h3>
-                    <p>Based on everything you've written, which section would benefit from another look?</p>
+                <div class="question">
+                    <label class="question-label">What are the emotional drivers for your stakeholders?</label>
+                    <textarea class="question-input" id="feel-care" placeholder="What motivates your stakeholders? What outcomes do they deeply value?"></textarea>
                 </div>
-            </div>
-            
-            <div class="reflection-actions">
-                <button class="reflection-btn" onclick="goBackToEdit()">← Revise My Answers</button>
-                <button class="reflection-btn primary" onclick="proceedToCards()">Continue to Method Cards</button>
+
+                <div class="navigation">
+                    <button class="nav-btn" onclick="goToScreen(3)">Previous</button>
+                    <button class="nav-btn primary" onclick="buildCanvas()">Generate your fund's foundations</button>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- Screen 6: Canvas Display -->
+        <div id="screen-canvas" class="screen hidden">
+            <div class="canvas-section">
+                <h2>Your Fund Canvas</h2>
+                <div class="canvas-grid three-section">
+                    <div class="canvas-quadrant">
+                        <div class="quadrant-title">WHY?</div>
+                        <div class="quadrant-content" id="canvas-why"></div>
+                    </div>
+                    <div class="canvas-quadrant">
+                        <div class="quadrant-title">WHO</div>
+                        <div class="quadrant-content" id="canvas-who"></div>
+                    </div>
+                    <div class="canvas-quadrant">
+                        <div class="quadrant-title">FEEL</div>
+                        <div class="quadrant-content" id="canvas-feel"></div>
+                    </div>
+                </div>
+                <div class="export-section">
+                    <button class="export-btn" onclick="exportCanvasPDF()">Download as PDF</button>
+                    <button class="export-btn secondary" onclick="exportCanvas()">Export as Text</button>
+                    <button class="export-btn secondary" onclick="goToScreen(2)">Edit Answers</button>
+                </div>
+            </div>
+            <div class="screen-nav">
+                <button class="nav-btn primary" onclick="goToScreen(6)">Continue</button>
+            </div>
+        </div>
+
+        <!-- Screen 7: Reflection -->
+        <div id="screen-reflection" class="screen hidden">
+            <div class="reflection-section">
+                <h2>Take a Step Back</h2>
+                <p class="reflection-intro">Before moving forward, let's reflect on what you've created. Sometimes stepping back reveals important gaps or new insights.</p>
+
+                <div class="reflection-prompts">
+                    <div class="reflection-prompt">
+                        <h3>🤔 Does this feel complete?</h3>
+                        <p>Looking at your canvas, are there any obvious gaps or areas that feel underdeveloped?</p>
+                    </div>
+                    <div class="reflection-prompt">
+                        <h3>🎯 Is this really who you're designing for?</h3>
+                        <p>Think about who will actually benefit from this fund. Are they represented in your WHO answers?</p>
+                    </div>
+                    <div class="reflection-prompt">
+                        <h3>💡 What would make this more impactful?</h3>
+                        <p>If you could add one more element to make this fund more effective, what would it be?</p>
+                    </div>
+                    <div class="reflection-prompt">
+                        <h3>🔄 What needs revisiting?</h3>
+                        <p>Based on everything you've written, which section would benefit from another look?</p>
+                    </div>
+                </div>
+
+                <div class="reflection-actions">
+                    <button class="reflection-btn" onclick="goToScreen(2)">← Revise My Answers</button>
+                    <button class="reflection-btn primary" onclick="goToScreen(7)">Continue to Part 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 8: Part 2 Intro -->
+        <div id="screen-part2" class="screen hidden">
+            <div class="screen-splash screen-part2-splash">
+                <div class="splash-content">
+                    <p class="splash-part-label">PART 2</p>
+                    <h2 class="splash-heading">Now we'll add more strategic layer on top of your foundation.</h2>
+                    <button class="splash-btn" onclick="proceedToCards()">Let's go</button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /container -->
 
     <script>
-        let currentSection = 0;
-        const sections = ['why', 'who', 'feel'];
-        
-        function updateProgress() {
-            const progress = (currentSection / sections.length) * 100;
+        const screens = ['intro', 'howto', 'why', 'who', 'feel', 'canvas', 'reflection', 'part2'];
+        let currentScreen = 0;
+
+        function goToScreen(index) {
+            if (index === 5) populateCanvas();
+
+            screens.forEach((name, i) => {
+                document.getElementById(`screen-${name}`).classList.toggle('hidden', i !== index);
+            });
+
+            currentScreen = index;
+
+            document.getElementById('btn-back').disabled = index === 0;
+            document.getElementById('btn-next').disabled = index === screens.length - 1;
+
+            const progress = (index / (screens.length - 1)) * 100;
             document.getElementById('progress').style.width = progress + '%';
+
+            window.scrollTo(0, 0);
         }
-        
-        function showSection(index) {
-            sections.forEach((section, i) => {
-                const element = document.getElementById(`section-${section}`);
-                if (i === index) {
-                    element.classList.remove('hidden');
+
+        function toolbarBack() {
+            if (currentScreen > 0) goToScreen(currentScreen - 1);
+        }
+
+        function toolbarNext() {
+            if (currentScreen === screens.length - 1) {
+                proceedToCards();
+            } else {
+                if (currentScreen === 4) {
+                    buildCanvas();
                 } else {
-                    element.classList.add('hidden');
+                    goToScreen(currentScreen + 1);
                 }
-            });
-            updateProgress();
-        }
-        
-        function nextSection() {
-            if (currentSection < sections.length - 1) {
-                currentSection++;
-                showSection(currentSection);
             }
         }
-        
-        function prevSection() {
-            if (currentSection > 0) {
-                currentSection--;
-                showSection(currentSection);
-            }
+
+        function buildCanvas() {
+            populateCanvas();
+            goToScreen(5);
         }
-        
-        function generateCanvas() {
-            sections.forEach(section => {
-                document.getElementById(`section-${section}`).classList.add('hidden');
-            });
-            
-            document.getElementById('canvas-display').style.display = 'block';
-            document.getElementById('reflection-section').style.display = 'block';
-            document.getElementById('progress').style.width = '100%';
-            
-            populateQuadrant('why', [
-                'why-problem',
-                'why-now', 
-                'why-you',
-                'why-matter'
-            ]);
-            
-            populateQuadrant('who', [
-                'who-funders',
-                'who-recipients',
-                'who-location',
-                'who-portfolio',
-                'who-influence',
-                'who-table'
-            ]);
-            
-            populateQuadrant('feel', [
-                'feel-pain',
-                'feel-struggle',
-                'feel-gap',
-                'feel-care'
-            ]);
+
+        function populateCanvas() {
+            populateQuadrant('why', ['why-problem', 'why-now', 'why-you', 'why-matter']);
+            populateQuadrant('who', ['who-funders', 'who-recipients', 'who-location', 'who-portfolio', 'who-influence', 'who-table']);
+            populateQuadrant('feel', ['feel-pain', 'feel-struggle', 'feel-gap', 'feel-care']);
         }
-        
+
         function populateQuadrant(quadrant, inputIds) {
             const container = document.getElementById(`canvas-${quadrant}`);
             container.innerHTML = '';
-            
             inputIds.forEach(id => {
                 const value = document.getElementById(id).value.trim();
                 if (value) {
@@ -315,164 +309,113 @@
                 }
             });
         }
-        
+
+        function resetCanvas() {
+            document.querySelectorAll('.question-input').forEach(el => el.value = '');
+            goToScreen(0);
+        }
+
+        function proceedToCards() {
+            window.location.href = 'method-cards.html';
+        }
+
         function exportCanvasPDF() {
             const { jsPDF } = window.jspdf;
-            
-            // Create a temporary element for better PDF formatting
+
             const exportElement = document.createElement('div');
             exportElement.style.cssText = `
-                background: white;
-                padding: 40px;
-                width: 800px;
-                margin: 0 auto;
-                font-family: 'Inter', sans-serif;
+                background: white; padding: 40px; width: 800px;
+                margin: 0 auto; font-family: 'Inter', sans-serif;
             `;
-            
-            // Add title
+
             const title = document.createElement('h1');
             title.textContent = 'Fund Thesis Canvas';
             title.style.cssText = `
-                text-align: center;
-                margin-bottom: 30px;
-                color: #1a1a1a;
-                font-size: 2rem;
-                font-weight: 500;
+                text-align: center; margin-bottom: 30px; color: #1a1a1a;
+                font-size: 2rem; font-weight: 500;
             `;
             exportElement.appendChild(title);
-            
-            // Create enhanced quadrants with questions and answers
+
             const canvasGrid = document.createElement('div');
-            canvasGrid.style.cssText = `
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                margin-top: 20px;
-            `;
-            
+            canvasGrid.style.cssText = `display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;`;
+
             const quadrantData = [
-                {
-                    title: 'WHY?',
-                    questions: [
-                        { label: 'Why this problem?', id: 'why-problem' },
-                        { label: 'Why now?', id: 'why-now' },
-                        { label: 'Why you?', id: 'why-you' },
-                        { label: 'Why does it matter?', id: 'why-matter' }
-                    ]
-                },
-                {
-                    title: 'WHO',
-                    questions: [
-                        { label: 'Who are you raising money from?', id: 'who-funders' },
-                        { label: 'Who is it going to?', id: 'who-recipients' },
-                        { label: 'Where are they?', id: 'who-location' },
-                        { label: 'What\'s your target portfolio of grantees?', id: 'who-portfolio' },
-                        { label: 'Who do you need to influence to make this work?', id: 'who-influence' },
-                        { label: 'Who needs to be at the table?', id: 'who-table' }
-                    ]
-                },
-                {
-                    title: 'FEEL',
-                    questions: [
-                        { label: 'What pain points in grantees\' world are you solving?', id: 'feel-pain' },
-                        { label: 'What do they struggle with currently?', id: 'feel-struggle' },
-                        { label: 'Why is your fund filling a gap?', id: 'feel-gap' },
-                        { label: 'What does WHO really care about to achieve WHY?', id: 'feel-care' }
-                    ]
-                }
+                { title: 'WHY?', questions: [
+                    { label: 'Why this problem?', id: 'why-problem' },
+                    { label: 'Why now?', id: 'why-now' },
+                    { label: 'Why you?', id: 'why-you' },
+                    { label: 'Why does it matter?', id: 'why-matter' }
+                ]},
+                { title: 'WHO', questions: [
+                    { label: 'Who are you raising money from?', id: 'who-funders' },
+                    { label: 'Who is it going to?', id: 'who-recipients' },
+                    { label: 'Where are they?', id: 'who-location' },
+                    { label: "What's your target portfolio of grantees?", id: 'who-portfolio' },
+                    { label: 'Who do you need to influence to make this work?', id: 'who-influence' },
+                    { label: 'Who needs to be at the table?', id: 'who-table' }
+                ]},
+                { title: 'FEEL', questions: [
+                    { label: "What pain points in grantees' world are you solving?", id: 'feel-pain' },
+                    { label: 'What do they struggle with currently?', id: 'feel-struggle' },
+                    { label: 'What gap is your fund filling?', id: 'feel-gap' },
+                    { label: 'What are the emotional drivers for your stakeholders?', id: 'feel-care' }
+                ]}
             ];
-            
+
             quadrantData.forEach(quadrant => {
                 const quadDiv = document.createElement('div');
-                quadDiv.style.cssText = `
-                    background: #f8f9fa;
-                    border: 1px solid #e5e5e5;
-                    border-radius: 8px;
-                    padding: 20px;
-                    min-height: 300px;
-                `;
-                
+                quadDiv.style.cssText = `background: #f8f9fa; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; min-height: 300px;`;
+
                 const quadTitle = document.createElement('div');
                 quadTitle.textContent = quadrant.title;
-                quadTitle.style.cssText = `
-                    font-size: 1.1rem;
-                    font-weight: 600;
-                    margin-bottom: 16px;
-                    color: #1a1a1a;
-                    text-align: center;
-                    border-bottom: 2px solid #ff6b9d;
-                    padding-bottom: 8px;
-                `;
+                quadTitle.style.cssText = `font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: #1a1a1a; text-align: center; border-bottom: 2px solid #ff405f; padding-bottom: 8px;`;
                 quadDiv.appendChild(quadTitle);
-                
+
                 quadrant.questions.forEach(question => {
                     const answer = document.getElementById(question.id).value.trim();
                     if (answer) {
                         const questionDiv = document.createElement('div');
-                        questionDiv.style.cssText = `
-                            margin-bottom: 12px;
-                            font-size: 0.85rem;
-                        `;
-                        
+                        questionDiv.style.cssText = `margin-bottom: 12px; font-size: 0.85rem;`;
+
                         const questionLabel = document.createElement('div');
                         questionLabel.textContent = question.label;
-                        questionLabel.style.cssText = `
-                            font-weight: 600;
-                            color: #1a1a1a;
-                            margin-bottom: 4px;
-                        `;
+                        questionLabel.style.cssText = `font-weight: 600; color: #1a1a1a; margin-bottom: 4px;`;
                         questionDiv.appendChild(questionLabel);
-                        
+
                         const answerDiv = document.createElement('div');
                         answerDiv.textContent = answer;
-                        answerDiv.style.cssText = `
-                            color: #444444;
-                            line-height: 1.4;
-                            padding-left: 8px;
-                            border-left: 2px solid #ff6b9d;
-                        `;
+                        answerDiv.style.cssText = `color: #444444; line-height: 1.4; padding-left: 8px; border-left: 2px solid #ff405f;`;
                         questionDiv.appendChild(answerDiv);
-                        
                         quadDiv.appendChild(questionDiv);
                     }
                 });
-                
+
                 canvasGrid.appendChild(quadDiv);
             });
-            
+
             exportElement.appendChild(canvasGrid);
-            
-            // Temporarily add to DOM for rendering
             document.body.appendChild(exportElement);
-            
-            html2canvas(exportElement, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff'
-            }).then(canvas => {
+
+            html2canvas(exportElement, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF('p', 'mm', 'a4');
-                
-                const imgWidth = 210; // A4 width in mm
-                const pageHeight = 295; // A4 height in mm
+                const imgWidth = 210;
+                const pageHeight = 295;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 let heightLeft = imgHeight;
-                
                 let position = 0;
-                
+
                 pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                 heightLeft -= pageHeight;
-                
+
                 while (heightLeft >= 0) {
                     position = heightLeft - imgHeight;
                     pdf.addPage();
                     pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                     heightLeft -= pageHeight;
                 }
-                
+
                 pdf.save('fund-thesis-canvas.pdf');
-                
-                // Remove temporary element
                 document.body.removeChild(exportElement);
             }).catch(error => {
                 console.error('Error generating PDF:', error);
@@ -480,28 +423,22 @@
                 alert('Error generating PDF. Please try the text export instead.');
             });
         }
-        
+
         function exportCanvas() {
-            let content = "FUND THESIS CANVAS\n";
-            content += "=".repeat(50) + "\n\n";
-            
-            const quadrants = [
+            let content = "FUND THESIS CANVAS\n" + "=".repeat(50) + "\n\n";
+
+            [
                 { title: 'WHY?', id: 'canvas-why' },
                 { title: 'WHO', id: 'canvas-who' },
                 { title: 'FEEL', id: 'canvas-feel' }
-            ];
-            
-            quadrants.forEach(quadrant => {
-                content += `${quadrant.title}\n`;
-                content += "-".repeat(quadrant.title.length) + "\n";
-                
-                const items = document.querySelectorAll(`#${quadrant.id} .quadrant-item`);
-                items.forEach(item => {
+            ].forEach(q => {
+                content += `${q.title}\n` + "-".repeat(q.title.length) + "\n";
+                document.querySelectorAll(`#${q.id} .quadrant-item`).forEach(item => {
                     content += `• ${item.textContent}\n`;
                 });
                 content += "\n";
             });
-            
+
             const blob = new Blob([content], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -510,39 +447,9 @@
             a.click();
             URL.revokeObjectURL(url);
         }
-        
-        function restartProcess() {
-            const inputs = document.querySelectorAll('.question-input');
-            inputs.forEach(input => input.value = '');
-            
-            currentSection = 0;
-            showSection(0);
-            
-            document.getElementById('canvas-display').style.display = 'none';
-            document.getElementById('reflection-section').style.display = 'none';
-        }
-        
-        function goBackToEdit() {
-            document.getElementById('canvas-display').style.display = 'none';
-            document.getElementById('reflection-section').style.display = 'none';
-            currentSection = 0;
-            showSection(0);
-        }
-        
-        function proceedToCards() {
-            // Navigate to the method cards tool
-            window.location.href = 'method-cards.html';
-        }
 
-        function resetCanvas() {
-            document.querySelectorAll('.question-input').forEach(el => el.value = '');
-            document.getElementById('canvas-display').style.display = 'none';
-            document.getElementById('reflection-section').style.display = 'none';
-            currentSection = 0;
-            showSection(0);
-        }
-
-        showSection(0);
+        // Initialise
+        goToScreen(0);
     </script>
 </body>
 </html>
