@@ -9,9 +9,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <button class="toolbar-btn" title="Back" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="toolbar-btn" onclick="resetCanvas()" title="Reset">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+        </div>
+        <div class="toolbar-center">
+            <span class="toolbar-title">Building your open innovation fund</span>
+            <span class="part-badge">Part 1</span>
+        </div>
+        <div class="toolbar-right">
+            <button class="toolbar-btn" onclick="proceedToCards()" title="Next page">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="header">
-            <h1>Building your open innovation fund</h1>
             <p>PART 1: Let’s start by building a strong strategic foundation for your fund by answering some key questions.</p>
         </div>
         
@@ -514,7 +533,15 @@
             // Navigate to the method cards tool
             window.location.href = 'method-cards.html';
         }
-        
+
+        function resetCanvas() {
+            document.querySelectorAll('.question-input').forEach(el => el.value = '');
+            document.getElementById('canvas-display').style.display = 'none';
+            document.getElementById('reflection-section').style.display = 'none';
+            currentSection = 0;
+            showSection(0);
+        }
+
         showSection(0);
     </script>
 </body>

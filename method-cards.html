@@ -9,14 +9,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <button class="toolbar-btn" onclick="window.location.href='index.html'" title="Back to Part 1">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="toolbar-btn" onclick="goBackToStages()" title="Reset">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+        </div>
+        <div class="toolbar-center">
+            <span class="toolbar-title">Building your open innovation fund</span>
+            <span class="part-badge">Part 2</span>
+        </div>
+        <div class="toolbar-right">
+            <button class="toolbar-btn" title="Next page" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Building your open innovation fund</h1>
             <p>PART 2. Now we'll add more strategic layer on top of your foundation.</p>
-            <div style="text-align: center; margin-top: 16px;">
-                <a href="index.html" style="color: #ff405f; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #ff405f; padding-bottom: 2px;">← Start with Canvas Tool</a>
-            </div>
         </div>
 
         <!-- UX Explanation -->
