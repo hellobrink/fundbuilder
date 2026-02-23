@@ -100,7 +100,92 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 0 20px 60px;
+}
+
+/* Screen system */
+.screen.hidden {
+    display: none;
+}
+
+/* Splash screens (Screen 1 & 8) */
+.screen-splash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px - 50px);
+    padding: 40px 20px;
+}
+
+.splash-content {
+    max-width: 560px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.splash-part-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ff405f;
+}
+
+.splash-heading {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.5;
+}
+
+.splash-btn {
+    background: #06333d;
+    color: #f0f1ef;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 48px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    font-family: inherit;
+}
+
+.splash-btn:hover {
+    opacity: 0.85;
+}
+
+/* Part 2 splash — inverted */
+.screen-part2-splash {
+    background: #06333d;
+    border-radius: 16px;
+}
+
+.screen-part2-splash .splash-part-label {
+    color: rgba(240, 241, 239, 0.55);
+}
+
+.screen-part2-splash .splash-heading {
+    color: #f0f1ef;
+}
+
+.screen-part2-splash .splash-btn {
+    background: #f0f1ef;
+    color: #06333d;
+}
+
+.screen-part2-splash .splash-btn:hover {
+    opacity: 0.9;
+}
+
+/* Centred nav row below content cards */
+.screen-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
 }
 
 .header {
