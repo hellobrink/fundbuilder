@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap');
 
 * {
     margin: 0;
@@ -115,6 +115,8 @@ body {
     justify-content: center;
     min-height: calc(100vh - 64px - 50px);
     padding: 40px 20px;
+    background: #06333d;
+    border-radius: 12px;
 }
 
 .splash-content {
@@ -123,32 +125,37 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 32px;
 }
 
 .splash-part-label {
     font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #ff405f;
+    color: rgba(240, 241, 239, 0.6);
+    text-align: center;
 }
 
 .splash-heading {
-    font-size: 1.6rem;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.75rem;
     font-weight: 400;
-    color: #1a1a1a;
-    line-height: 1.5;
+    color: #f0f1ef;
+    line-height: 1.55;
+    text-align: center;
 }
 
 .splash-btn {
-    background: #06333d;
-    color: #f0f1ef;
+    background: #f0f1ef;
+    color: #06333d;
     border: none;
     border-radius: 8px;
-    padding: 14px 48px;
-    font-size: 1rem;
-    font-weight: 500;
+    padding: 18px 60px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: opacity 0.15s;
     font-family: inherit;
@@ -158,27 +165,26 @@ body {
     opacity: 0.85;
 }
 
-/* Part 2 splash — inverted */
+/* Part 2 splash — inverted (light bg, dark text) */
 .screen-part2-splash {
-    background: #06333d;
-    border-radius: 16px;
+    background: #f0f1ef;
 }
 
 .screen-part2-splash .splash-part-label {
-    color: rgba(240, 241, 239, 0.55);
+    color: rgba(6, 51, 61, 0.5);
 }
 
 .screen-part2-splash .splash-heading {
-    color: #f0f1ef;
-}
-
-.screen-part2-splash .splash-btn {
-    background: #f0f1ef;
     color: #06333d;
 }
 
+.screen-part2-splash .splash-btn {
+    background: #06333d;
+    color: #f0f1ef;
+}
+
 .screen-part2-splash .splash-btn:hover {
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 /* Centred nav row below content cards */
