@@ -215,8 +215,7 @@ body {
 }
 
 .splash-btn:hover {
-    background: #f0f1ef;
-    color: #06333d;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 /* Part 2 splash — inverted (light bg, dark text) */
@@ -238,8 +237,7 @@ body {
 }
 
 .screen-part2-splash .splash-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.08);
 }
 
 /* Centred nav row below content cards */
@@ -416,6 +414,12 @@ body {
     font-weight: 600;
 }
 
+/* Centre arrow text vertically when siblings are stretched to equal height */
+.canvas-flow > .flow-arrow {
+    display: flex;
+    align-items: center;
+}
+
 .tip {
     font-family: 'Libre Franklin', sans-serif;
     padding: 16px 0;
@@ -519,9 +523,8 @@ body {
 }
 
 .nav-btn:hover {
-    background: #789096;
-    color: #f0f1ef;
-    border-color: #789096;
+    color: #06333d;
+    border-color: #06333d;
 }
 
 .nav-btn.primary {
@@ -530,8 +533,7 @@ body {
 }
 
 .nav-btn.primary:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .cards-grid {
@@ -707,8 +709,7 @@ body {
 }
 
 .card-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .card-btn:disabled {
@@ -817,8 +818,7 @@ body {
 .export-section {
     text-align: center;
     margin-top: 40px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(240, 241, 239, 0.2);
+    padding-top: 20px;
 }
 
 .export-btn {
@@ -838,8 +838,7 @@ body {
 }
 
 .export-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .export-btn.secondary {
@@ -848,9 +847,9 @@ body {
 }
 
 .export-btn.secondary:hover {
-    background: #789096;
-    color: #f0f1ef;
-    border-color: #789096;
+    color: #06333d;
+    border-color: #06333d;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .hidden {
@@ -1009,12 +1008,12 @@ h2 {
     left: 0;
     right: 0;
     height: 2px;
-    background: rgba(255, 64, 95, 0.25);
+    background: rgba(240, 241, 239, 0.25);
     overflow: hidden;
 }
 
 .progress-fill {
-    background: #ff405f;
+    background: #f0f1ef;
     height: 100%;
     transition: width 0.3s ease;
 }
@@ -1206,9 +1205,7 @@ h2 {
 }
 
 .reflection-btn:hover {
-    background: #f0f1ef;
-    color: #06333d;
-    border-color: #f0f1ef;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 .reflection-btn.primary {
@@ -1217,8 +1214,7 @@ h2 {
 }
 
 .reflection-btn.primary:hover {
-    background: #ff405f;
-    color: #f0f1ef;
+    background: rgba(255, 64, 95, 0.1);
 }
 
 /* Nav buttons adapted for dark Part 1 screens */
@@ -1245,9 +1241,7 @@ h2 {
 #screen-who .nav-btn:hover,
 #screen-feel .nav-btn:hover,
 #screen-canvas .nav-btn:hover {
-    background: rgba(240, 241, 239, 0.7);
-    color: #06333d;
-    border-color: rgba(240, 241, 239, 0.7);
+    background: rgba(240, 241, 239, 0.12);
 }
 
 #screen-howto .nav-btn.primary:hover,
@@ -1255,9 +1249,7 @@ h2 {
 #screen-who .nav-btn.primary:hover,
 #screen-feel .nav-btn.primary:hover,
 #screen-canvas .nav-btn.primary:hover {
-    background: #f0f1ef;
-    color: #06333d;
-    border-color: #f0f1ef;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 /* Export buttons adapted for dark canvas screen */
@@ -1267,9 +1259,7 @@ h2 {
 }
 
 #screen-canvas .export-btn:hover {
-    background: #f0f1ef;
-    color: #06333d;
-    border-color: #f0f1ef;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 #screen-canvas .export-btn.secondary {
@@ -1278,9 +1268,54 @@ h2 {
 }
 
 #screen-canvas .export-btn.secondary:hover {
-    background: rgba(240, 241, 239, 0.6);
-    color: #06333d;
+    background: rgba(240, 241, 239, 0.12);
+    color: #f0f1ef;
     border-color: rgba(240, 241, 239, 0.6);
+}
+
+/* Coral Continue button on canvas screen */
+#screen-canvas .export-btn.coral {
+    color: #ff405f;
+    border-color: #ff405f;
+}
+
+#screen-canvas .export-btn.coral:hover {
+    background: rgba(255, 64, 95, 0.1);
+}
+
+/* ─── Part 2: How This Works screen ───────────────────────────────────────── */
+
+#p2-screen-howto {
+    background: #06333d;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+#p2-screen-howto > * {
+    max-width: 900px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+#p2-screen-howto .nav-btn {
+    color: rgba(240, 241, 239, 0.7);
+    border-color: rgba(240, 241, 239, 0.7);
+}
+
+#p2-screen-howto .nav-btn.primary {
+    color: #f0f1ef;
+    border-color: rgba(240, 241, 239, 0.6);
+}
+
+#p2-screen-howto .nav-btn:hover {
+    background: rgba(240, 241, 239, 0.12);
+}
+
+#p2-screen-howto .nav-btn.primary:hover {
+    background: rgba(240, 241, 239, 0.12);
 }
 
 /* Canvas Tool Responsive */
