@@ -453,26 +453,28 @@ body {
 }
 
 .stage-circle {
+    background: #ffffff;
     border-radius: 10px;
     padding: 28px 20px;
     cursor: pointer;
-    transition: transform 0.18s ease, opacity 0.18s ease;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
     text-align: center;
     min-height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-bottom: 3px solid transparent;
 }
 
-/* Column colours — applied directly to each circle */
-.stage-col-1 { background: #ff405f; }
-.stage-col-2 { background: #7155A6; }
-.stage-col-3 { background: #D4682A; }
-.stage-col-4 { background: #2E8B57; }
+/* Column border colours */
+.stage-col-1 { border-bottom-color: #06333d; }
+.stage-col-2 { border-bottom-color: #ff405f; }
+.stage-col-3 { border-bottom-color: #4472ec; }
+.stage-col-4 { border-bottom-color: #e99cd1; }
 
 .stage-circle:hover {
     transform: translateY(-4px);
-    opacity: 0.88;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
 }
 
 .stage-circle h3 {
@@ -481,13 +483,13 @@ body {
     font-weight: 600;
     margin-bottom: 8px;
     line-height: 1.3;
-    color: #ffffff;
+    color: #06333d;
 }
 
 .stage-circle p {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.82);
+    color: #789096;
     line-height: 1.4;
 }
 
