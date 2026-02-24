@@ -1286,7 +1286,7 @@ h2 {
 /* ─── Part 2: How This Works screen ───────────────────────────────────────── */
 
 #p2-screen-howto {
-    background: #06333d;
+    background: #f0f1ef;
     min-height: calc(100vh - 64px);
     display: flex;
     flex-direction: column;
@@ -1300,22 +1300,38 @@ h2 {
     flex-shrink: 0;
 }
 
+/* Text colours for light background */
+#p2-screen-howto .canvas-explanation h2,
+#p2-screen-howto .canvas-explanation > p,
+#p2-screen-howto .canvas-outcome {
+    color: #06333d;
+}
+
+/* Step boxes: white so they stand out from the #f0f1ef background */
+#p2-screen-howto .canvas-step {
+    background: #ffffff;
+    color: #06333d;
+}
+
+#p2-screen-howto .canvas-step h3,
+#p2-screen-howto .canvas-step p {
+    color: #06333d;
+}
+
+/* Nav button */
 #p2-screen-howto .nav-btn {
-    color: rgba(240, 241, 239, 0.7);
-    border-color: rgba(240, 241, 239, 0.7);
+    color: rgba(6, 51, 61, 0.7);
+    border-color: rgba(6, 51, 61, 0.5);
 }
 
 #p2-screen-howto .nav-btn.primary {
-    color: #f0f1ef;
-    border-color: rgba(240, 241, 239, 0.6);
+    color: #06333d;
+    border-color: #06333d;
 }
 
-#p2-screen-howto .nav-btn:hover {
-    background: rgba(240, 241, 239, 0.12);
-}
-
+#p2-screen-howto .nav-btn:hover,
 #p2-screen-howto .nav-btn.primary:hover {
-    background: rgba(240, 241, 239, 0.12);
+    background: rgba(6, 51, 61, 0.08);
 }
 
 /* Canvas Tool Responsive */
