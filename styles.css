@@ -447,9 +447,25 @@ body {
 
 .stage-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
     margin-top: 32px;
+}
+
+.stage-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stage-col-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
 }
 
 .stage-circle {
@@ -457,26 +473,35 @@ body {
     border-radius: 6px;
     padding: 24px;
     cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease, background 0.15s ease;
     text-align: center;
     min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
-    border-bottom: 2px solid transparent;
+    border-left: 4px solid transparent;
 }
 
-/* Stage-specific accent via bottom border */
-.stage-circle[data-stage="A"], .stage-circle[data-stage="E"] { border-bottom-color: #06333d; }
-.stage-circle[data-stage="B"], .stage-circle[data-stage="F"] { border-bottom-color: #ff405f; }
-.stage-circle[data-stage="C"], .stage-circle[data-stage="G"] { border-bottom-color: #4472ec; }
-.stage-circle[data-stage="D"], .stage-circle[data-stage="H"] { border-bottom-color: #e99cd1; }
+/* Column 1 — Design & Strategy — steel blue */
+.stage-col-1 .stage-col-label         { color: #2B7A9E; }
+.stage-col-1 .stage-circle             { border-left-color: #2B7A9E; background: rgba(43, 122, 158, 0.04); }
+.stage-col-1 .stage-circle:hover       { background: rgba(43, 122, 158, 0.12); transform: translateY(-3px); }
 
-.stage-circle:hover {
-    transform: translateY(-3px);
-    opacity: 0.8;
-}
+/* Column 2 — Financial & Non-Financial Support — violet */
+.stage-col-2 .stage-col-label         { color: #6B4FA2; }
+.stage-col-2 .stage-circle             { border-left-color: #6B4FA2; background: rgba(107, 79, 162, 0.04); }
+.stage-col-2 .stage-circle:hover       { background: rgba(107, 79, 162, 0.12); transform: translateY(-3px); }
+
+/* Column 3 — Awareness & Application — amber */
+.stage-col-3 .stage-col-label         { color: #D4682A; }
+.stage-col-3 .stage-circle             { border-left-color: #D4682A; background: rgba(212, 104, 42, 0.04); }
+.stage-col-3 .stage-circle:hover       { background: rgba(212, 104, 42, 0.12); transform: translateY(-3px); }
+
+/* Column 4 — Selection & Portfolio — green */
+.stage-col-4 .stage-col-label         { color: #2E8B57; }
+.stage-col-4 .stage-circle             { border-left-color: #2E8B57; background: rgba(46, 139, 87, 0.04); }
+.stage-col-4 .stage-circle:hover       { background: rgba(46, 139, 87, 0.12); transform: translateY(-3px); }
 
 .stage-circle h3 {
     font-family: 'Libre Franklin', sans-serif;
