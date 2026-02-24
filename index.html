@@ -193,10 +193,8 @@
                     <button class="export-btn" onclick="exportCanvasPDF()">Download as PDF</button>
                     <button class="export-btn secondary" onclick="exportCanvas()">Export as Text</button>
                     <button class="export-btn secondary" onclick="goToScreen(2)">Edit Answers</button>
+                    <button class="export-btn coral" onclick="goToScreen(6)">Continue</button>
                 </div>
-            </div>
-            <div class="screen-nav">
-                <button class="nav-btn primary" onclick="goToScreen(6)">Continue</button>
             </div>
         </div>
 
@@ -259,7 +257,6 @@
             currentScreen = index;
 
             document.getElementById('btn-back').disabled = index === 0;
-            document.getElementById('btn-next').disabled = index === screens.length - 1;
 
             const progress = (index / (screens.length - 1)) * 100;
             document.getElementById('progress').style.width = progress + '%';

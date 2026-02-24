@@ -11,11 +11,9 @@
 <body class="part2-page">
     <div class="toolbar">
         <div class="toolbar-left">
-            <button class="toolbar-btn" onclick="window.location.href='index.html'" title="Back to Part 1">
+            <button class="toolbar-btn" id="p2-btn-back" onclick="p2Back()" title="Back">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="toolbar-btn" onclick="goBackToStages()" title="Reset">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Back
             </button>
         </div>
         <div class="toolbar-center">
@@ -23,148 +21,176 @@
             <span class="part-badge">Part 2</span>
         </div>
         <div class="toolbar-right">
-            <button class="toolbar-btn" title="Next page" disabled>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <button class="toolbar-btn" onclick="p2Reset()" title="Refresh">
+                Refresh
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
             </button>
         </div>
     </div>
 
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <p class="part2-label">Part 2</p>
-            <h2>Now we'll add another strategic layer to your fund</h2>
-        </div>
-
-        <!-- UX Explanation -->
-        <div class="ux-explanation">
+    <!-- Screen 0: How This Works -->
+    <div id="p2-screen-howto">
+        <div class="canvas-explanation">
             <h2>How This Works</h2>
             <p>This tool works like a "choose your own adventure" story, but for grant fund design. Use the method cards in this section to spark discussion between you and your colleagues (and don't forget to enjoy the process!).</p>
-            
-            <div class="flow-steps">
-                <div class="flow-step">
-                    <span class="step-number">1</span>
-                    <p><strong>Pick a stage</strong> from the 8 fund building phases below</p>
+            <div class="canvas-flow">
+                <div class="canvas-step">
+                    <span class="step-icon">1</span>
+                    <h3>Pick a stage</h3>
+                    <p>from the 8 fund building phases below</p>
                 </div>
                 <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <span class="step-number">2</span>
-                    <p><strong>Explore method cards</strong> by clicking to flip and read detailed guidance</p>
+                <div class="canvas-step">
+                    <span class="step-icon">2</span>
+                    <h3>Explore method cards</h3>
+                    <p>click to flip and read detailed guidance</p>
                 </div>
                 <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <span class="step-number">3</span>
-                    <p><strong>Bank the methods</strong> you want to use in your fund strategy</p>
+                <div class="canvas-step">
+                    <span class="step-icon">3</span>
+                    <h3>Bank the methods</h3>
+                    <p>you want to use in your fund strategy</p>
                 </div>
             </div>
-            
-            <p class="tip">💡 <strong>Tip:</strong> You can jump between stages anytime and build your strategy piece by piece. Your banked cards will accumulate in the journey map below!</p>
+            <p class="canvas-outcome">💡 You can jump between stages anytime and build your strategy piece by piece. Your banked cards will accumulate in the journey map below!</p>
         </div>
-
-        <!-- Stage Selector -->
-        <div id="stage-selector" class="stage-selector">
-            <h2>Select a Stage</h2>
-            <p class="section-description">Choose which part of the grant fund building process you need guidance with</p>
-            <div class="stage-grid">
-                <div class="stage-circle" onclick="selectStage('A')" data-stage="A">
-                    <h3>Design & Thesis Development</h3>
-                    <p>Define your fund's core purpose</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('B')" data-stage="B">
-                    <h3>Strategy & Target Portfolio</h3>
-                    <p>Shape your funding approach</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('C')" data-stage="C">
-                    <h3>Awareness & Engagement</h3>
-                    <p>Build visibility and attract applicants</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('D')" data-stage="D">
-                    <h3>Financial Support</h3>
-                    <p>Types of financial support available to offer</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('E')" data-stage="E">
-                    <h3>Non-Financial Support</h3>
-                    <p>Methods for designing comprehensive grantee support systems</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('F')" data-stage="F">
-                    <h3>Engagement & Application</h3>
-                    <p>Create accessible processes</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('G')" data-stage="G">
-                    <h3>Selection & Rejection</h3>
-                    <p>Build fair selection processes</p>
-                </div>
-                <div class="stage-circle" onclick="selectStage('H')" data-stage="H">
-                    <h3>Portfolio Management</h3>
-                    <p>Manage and optimize your portfolio</p>
-                </div>
-            </div>
+        <div class="screen-nav">
+            <button class="nav-btn primary" onclick="goToP2Screen(1)">Let's go</button>
         </div>
+    </div>
 
-        <!-- Cards Section -->
-        <div id="cards-section" class="cards-section">
-            <div class="navigation">
-                <button class="nav-btn" onclick="goBackToStages()">← Back to Stages</button>
-                <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
-                <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
-            </div>
-            <h2 id="cards-title">Method Cards</h2>
-            <p class="section-description" id="cards-description">Click any card to flip it and read the detailed guidance</p>
-            <div id="cards-grid" class="cards-grid">
-                <!-- Cards will be populated here -->
-            </div>
-        </div>
+    <!-- Screen 1: Main Tool -->
+    <div id="p2-screen-main" style="display: none;">
+        <div class="container">
 
-        <!-- Journey Map -->
-        <div class="journey-map">
-            <h2>Your Fund Building Journey</h2>
-            <p class="section-description">Bank method cards to build your comprehensive funding strategy</p>
-            
-            <div class="journey-stages">
-                <div class="journey-stage" id="journey-A">
-                    <h4>Design & Thesis Development</h4>
+            <!-- Stage Selector -->
+            <div id="stage-selector" class="stage-selector">
+                <h2>Select a Stage</h2>
+                <p class="section-description">Choose which part of the grant fund building process you need guidance with</p>
+                <div class="stage-grid">
+                    <div class="stage-circle" onclick="selectStage('A')" data-stage="A">
+                        <h3>Design & Thesis Development</h3>
+                        <p>Define your fund's core purpose</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('B')" data-stage="B">
+                        <h3>Strategy & Target Portfolio</h3>
+                        <p>Shape your funding approach</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('C')" data-stage="C">
+                        <h3>Awareness & Engagement</h3>
+                        <p>Build visibility and attract applicants</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('D')" data-stage="D">
+                        <h3>Financial Support</h3>
+                        <p>Types of financial support available to offer</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('E')" data-stage="E">
+                        <h3>Non-Financial Support</h3>
+                        <p>Methods for designing comprehensive grantee support systems</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('F')" data-stage="F">
+                        <h3>Engagement & Application</h3>
+                        <p>Create accessible processes</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('G')" data-stage="G">
+                        <h3>Selection & Rejection</h3>
+                        <p>Build fair selection processes</p>
+                    </div>
+                    <div class="stage-circle" onclick="selectStage('H')" data-stage="H">
+                        <h3>Portfolio Management</h3>
+                        <p>Manage and optimize your portfolio</p>
+                    </div>
                 </div>
-                <div class="journey-stage" id="journey-B">
-                    <h4>Strategy & Target Portfolio</h4>
-                </div>
-                <div class="journey-stage" id="journey-C">
-                    <h4>Awareness & Engagement</h4>
-                </div>
-                <div class="journey-stage" id="journey-D">
-                    <h4>Financial Support</h4>
-                </div>
-                <div class="journey-stage" id="journey-E">
-                    <h4>Non-Financial Support</h4>
-                </div>
-                <div class="journey-stage" id="journey-F">
-                    <h4>Engagement & Application</h4>
-                </div>
-                <div class="journey-stage" id="journey-G">
-                    <h4>Selection & Rejection</h4>
-                </div>
-                <div class="journey-stage" id="journey-H">
-                    <h4>Portfolio Management</h4>
-                </div>
-            </div>
-
-            <div class="banked-cards">
-                <div class="card-stack" id="stack-A"></div>
-                <div class="card-stack" id="stack-B"></div>
-                <div class="card-stack" id="stack-C"></div>
-                <div class="card-stack" id="stack-D"></div>
-                <div class="card-stack" id="stack-E"></div>
-                <div class="card-stack" id="stack-F"></div>
-                <div class="card-stack" id="stack-G"></div>
-                <div class="card-stack" id="stack-H"></div>
             </div>
 
-            <div class="export-section">
-                <button class="export-btn" onclick="exportAdvicePDF()">Export as PDF</button>
-                <button class="export-btn secondary" onclick="exportAdvice()">Export as Text</button>
+            <!-- Cards Section -->
+            <div id="cards-section" class="cards-section">
+                <div class="navigation">
+                    <button class="nav-btn" onclick="goBackToStages()">← Back to Stages</button>
+                    <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
+                    <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
+                </div>
+                <h2 id="cards-title">Method Cards</h2>
+                <p class="section-description" id="cards-description">Click any card to flip it and read the detailed guidance</p>
+                <div id="cards-grid" class="cards-grid">
+                    <!-- Cards will be populated here -->
+                </div>
+            </div>
+
+            <!-- Journey Map -->
+            <div class="journey-map">
+                <h2>Your Fund Building Journey</h2>
+                <p class="section-description">Bank method cards to build your comprehensive funding strategy</p>
+
+                <div class="journey-stages">
+                    <div class="journey-stage" id="journey-A">
+                        <h4>Design & Thesis Development</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-B">
+                        <h4>Strategy & Target Portfolio</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-C">
+                        <h4>Awareness & Engagement</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-D">
+                        <h4>Financial Support</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-E">
+                        <h4>Non-Financial Support</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-F">
+                        <h4>Engagement & Application</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-G">
+                        <h4>Selection & Rejection</h4>
+                    </div>
+                    <div class="journey-stage" id="journey-H">
+                        <h4>Portfolio Management</h4>
+                    </div>
+                </div>
+
+                <div class="banked-cards">
+                    <div class="card-stack" id="stack-A"></div>
+                    <div class="card-stack" id="stack-B"></div>
+                    <div class="card-stack" id="stack-C"></div>
+                    <div class="card-stack" id="stack-D"></div>
+                    <div class="card-stack" id="stack-E"></div>
+                    <div class="card-stack" id="stack-F"></div>
+                    <div class="card-stack" id="stack-G"></div>
+                    <div class="card-stack" id="stack-H"></div>
+                </div>
+
+                <div class="export-section">
+                    <button class="export-btn" onclick="exportAdvicePDF()">Export as PDF</button>
+                    <button class="export-btn secondary" onclick="exportAdvice()">Export as Text</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="./app.js"></script>
+    <script>
+        let p2CurrentScreen = 0;
+
+        function goToP2Screen(screen) {
+            p2CurrentScreen = screen;
+            document.getElementById('p2-screen-howto').style.display = screen === 0 ? '' : 'none';
+            document.getElementById('p2-screen-main').style.display = screen === 1 ? '' : 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function p2Back() {
+            if (p2CurrentScreen === 0) {
+                window.location.href = 'index.html';
+            } else {
+                goToP2Screen(0);
+            }
+        }
+
+        function p2Reset() {
+            goBackToStages();
+            goToP2Screen(1);
+        }
+    </script>
 </body>
 </html>
