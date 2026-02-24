@@ -356,15 +356,17 @@ body {
 }
 
 .ux-explanation h2 {
+    font-family: 'Lora', Georgia, serif;
     color: #06333d;
-    font-size: 1.5rem;
+    font-size: 2.25rem;
     font-weight: 400;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
 
 .ux-explanation > p {
+    font-family: 'Libre Franklin', sans-serif;
     color: #06333d;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 32px;
     max-width: 600px;
     margin-left: auto;
@@ -401,8 +403,9 @@ body {
 }
 
 .flow-step p {
+    font-family: 'Libre Franklin', sans-serif;
     color: #06333d;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.4;
     margin: 0;
 }
@@ -414,6 +417,7 @@ body {
 }
 
 .tip {
+    font-family: 'Libre Franklin', sans-serif;
     padding: 16px 0;
     color: #06333d;
     font-size: 0.9rem;
@@ -445,6 +449,8 @@ body {
 }
 
 .stage-circle {
+    background: white;
+    border-radius: 6px;
     padding: 24px;
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
@@ -469,16 +475,18 @@ body {
 }
 
 .stage-circle h3 {
+    font-family: 'Libre Franklin', sans-serif;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 8px;
     line-height: 1.3;
-    color: #1a1a1a;
+    color: #06333d;
 }
 
 .stage-circle p {
-    font-size: 0.8rem;
-    color: #666666;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.85rem;
+    color: #06333d;
     line-height: 1.4;
 }
 
@@ -751,11 +759,12 @@ body {
 }
 
 .journey-stage h4 {
+    font-family: 'Libre Franklin', sans-serif;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0;
     line-height: 1.3;
-    color: #1a1a1a;
+    color: #06333d;
 }
 
 .banked-cards {
@@ -924,7 +933,61 @@ h2 {
     }
 }
 
-/* Canvas Tool Specific Styles */
+/* ─── Part 2 page (method-cards.html) ─────────────────────────────────────── */
+
+.part2-page {
+    background: #f0f1ef;
+    color: #06333d;
+}
+
+/* Re-apply correct text colour for shared classes that Part 1 forced to #f0f1ef */
+.part2-page .section-description {
+    color: #06333d;
+}
+
+.part2-page .header {
+    padding-top: 48px;
+    margin-bottom: 48px;
+}
+
+.part2-label {
+    font-family: Inconsolata, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(6, 51, 61, 0.5);
+    margin-bottom: 12px;
+}
+
+/* Lora headings for Part 2 sections */
+.part2-page .header h2,
+#stage-selector h2,
+.cards-section h2,
+.journey-map h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: #06333d;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Coral accent underline — same treatment as Part 1 */
+.part2-page .header h2::after,
+.ux-explanation h2::after,
+#stage-selector h2::after,
+.cards-section h2::after,
+.journey-map h2::after {
+    content: '';
+    display: block;
+    width: 3em;
+    height: 2px;
+    background: #ff405f;
+    margin: 10px auto 0;
+}
+
+/* ─── Canvas Tool Specific Styles ──────────────────────────────────────────── */
 
 .canvas-section {
     padding-top: 40px;
