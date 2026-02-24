@@ -215,8 +215,7 @@ body {
 }
 
 .splash-btn:hover {
-    background: #f0f1ef;
-    color: #06333d;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 /* Part 2 splash — inverted (light bg, dark text) */
@@ -238,8 +237,7 @@ body {
 }
 
 .screen-part2-splash .splash-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.08);
 }
 
 /* Centred nav row below content cards */
@@ -519,9 +517,8 @@ body {
 }
 
 .nav-btn:hover {
-    background: #789096;
-    color: #f0f1ef;
-    border-color: #789096;
+    color: #06333d;
+    border-color: #06333d;
 }
 
 .nav-btn.primary {
@@ -530,8 +527,7 @@ body {
 }
 
 .nav-btn.primary:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .cards-grid {
@@ -707,8 +703,7 @@ body {
 }
 
 .card-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .card-btn:disabled {
@@ -838,8 +833,7 @@ body {
 }
 
 .export-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .export-btn.secondary {
@@ -848,9 +842,9 @@ body {
 }
 
 .export-btn.secondary:hover {
-    background: #789096;
-    color: #f0f1ef;
-    border-color: #789096;
+    color: #06333d;
+    border-color: #06333d;
+    background: rgba(6, 51, 61, 0.06);
 }
 
 .hidden {
@@ -1206,9 +1200,7 @@ h2 {
 }
 
 .reflection-btn:hover {
-    background: #f0f1ef;
-    color: #06333d;
-    border-color: #f0f1ef;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 .reflection-btn.primary {
@@ -1217,8 +1209,7 @@ h2 {
 }
 
 .reflection-btn.primary:hover {
-    background: #ff405f;
-    color: #f0f1ef;
+    background: rgba(255, 64, 95, 0.1);
 }
 
 /* Nav buttons adapted for dark Part 1 screens */
@@ -1245,9 +1236,7 @@ h2 {
 #screen-who .nav-btn:hover,
 #screen-feel .nav-btn:hover,
 #screen-canvas .nav-btn:hover {
-    background: rgba(240, 241, 239, 0.7);
-    color: #06333d;
-    border-color: rgba(240, 241, 239, 0.7);
+    background: rgba(240, 241, 239, 0.12);
 }
 
 #screen-howto .nav-btn.primary:hover,
@@ -1255,9 +1244,7 @@ h2 {
 #screen-who .nav-btn.primary:hover,
 #screen-feel .nav-btn.primary:hover,
 #screen-canvas .nav-btn.primary:hover {
-    background: #f0f1ef;
-    color: #06333d;
-    border-color: #f0f1ef;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 /* Export buttons adapted for dark canvas screen */
@@ -1267,9 +1254,7 @@ h2 {
 }
 
 #screen-canvas .export-btn:hover {
-    background: #f0f1ef;
-    color: #06333d;
-    border-color: #f0f1ef;
+    background: rgba(240, 241, 239, 0.12);
 }
 
 #screen-canvas .export-btn.secondary {
@@ -1278,8 +1263,8 @@ h2 {
 }
 
 #screen-canvas .export-btn.secondary:hover {
-    background: rgba(240, 241, 239, 0.6);
-    color: #06333d;
+    background: rgba(240, 241, 239, 0.12);
+    color: #f0f1ef;
     border-color: rgba(240, 241, 239, 0.6);
 }
 
