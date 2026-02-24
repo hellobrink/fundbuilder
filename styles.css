@@ -139,6 +139,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #06333d;
 }
 
 #screen-howto > *,
@@ -287,7 +288,7 @@ body {
 
 .canvas-explanation h2 {
     font-family: 'Lora', Georgia, serif;
-    color: #06333d;
+    color: #f0f1ef;
     font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 16px;
@@ -295,7 +296,7 @@ body {
 
 .canvas-explanation > p {
     font-family: 'Libre Franklin', sans-serif;
-    color: #06333d;
+    color: #f0f1ef;
     font-size: 0.9rem;
     margin-bottom: 32px;
     max-width: 600px;
@@ -344,7 +345,7 @@ body {
 .canvas-outcome {
     font-family: 'Libre Franklin', sans-serif;
     padding: 16px 0;
-    color: #06333d;
+    color: #f0f1ef;
     font-size: 0.9rem;
     max-width: 500px;
     margin: 0 auto;
@@ -856,14 +857,14 @@ h2 {
     font-family: 'Lora', Georgia, serif;
     font-size: 1.5rem;
     font-weight: 400;
-    color: #06333d;
+    color: #f0f1ef;
     text-align: center;
     margin-bottom: 8px;
 }
 
 .section-description {
     font-family: 'Libre Franklin', sans-serif;
-    color: #06333d;
+    color: #f0f1ef;
     font-size: 0.9rem;
     margin-bottom: 24px;
     text-align: center;
@@ -922,15 +923,15 @@ h2 {
 
 /* Canvas Tool Specific Styles */
 
-#screen-canvas {
-    background: #f0f1ef;
+.canvas-section {
+    padding-top: 40px;
 }
 
 .canvas-section h2 {
     font-family: 'Lora', Georgia, serif;
     font-size: 1.5rem;
-    font-weight: 500;
-    color: #06333d;
+    font-weight: 400;
+    color: #f0f1ef;
     text-align: center;
     margin-bottom: 16px;
 }
@@ -968,7 +969,7 @@ h2 {
 .question-label {
     display: block;
     font-family: 'Libre Franklin', sans-serif;
-    color: #06333d;
+    color: #f0f1ef;
     font-size: 0.9rem;
     font-weight: 700;
     margin-bottom: 8px;
@@ -1056,19 +1057,22 @@ h2 {
 }
 
 .reflection-section h2 {
-    color: #06333d;
-    font-size: 1.8rem;
+    font-family: 'Lora', Georgia, serif;
+    color: #f0f1ef;
+    font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 16px;
 }
 
 .reflection-intro {
-    color: #06333d;
+    font-family: 'Libre Franklin', sans-serif;
+    color: #f0f1ef;
     font-size: 0.9rem;
     margin-bottom: 32px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .reflection-prompts {
@@ -1079,7 +1083,9 @@ h2 {
 }
 
 .reflection-prompt {
-    padding: 24px 0;
+    background: #f0f1ef;
+    border-radius: 6px;
+    padding: 24px;
     text-align: left;
 }
 
@@ -1109,18 +1115,19 @@ h2 {
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #06333d;
+    color: #f0f1ef;
     background-color: transparent;
-    border: 1px solid #06333d;
+    border: 1px solid rgba(240, 241, 239, 0.6);
     border-radius: 6px;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .reflection-btn:hover {
-    background: #06333d;
-    color: #f0f1ef;
+    background: #f0f1ef;
+    color: #06333d;
+    border-color: #f0f1ef;
 }
 
 .reflection-btn.primary {
@@ -1131,6 +1138,68 @@ h2 {
 .reflection-btn.primary:hover {
     background: #ff405f;
     color: #f0f1ef;
+}
+
+/* Nav buttons adapted for dark Part 1 screens */
+#screen-howto .nav-btn,
+#screen-why .nav-btn,
+#screen-who .nav-btn,
+#screen-feel .nav-btn,
+#screen-canvas .nav-btn {
+    color: rgba(240, 241, 239, 0.7);
+    border-color: rgba(240, 241, 239, 0.7);
+}
+
+#screen-howto .nav-btn.primary,
+#screen-why .nav-btn.primary,
+#screen-who .nav-btn.primary,
+#screen-feel .nav-btn.primary,
+#screen-canvas .nav-btn.primary {
+    color: #f0f1ef;
+    border-color: rgba(240, 241, 239, 0.6);
+}
+
+#screen-howto .nav-btn:hover,
+#screen-why .nav-btn:hover,
+#screen-who .nav-btn:hover,
+#screen-feel .nav-btn:hover,
+#screen-canvas .nav-btn:hover {
+    background: rgba(240, 241, 239, 0.7);
+    color: #06333d;
+    border-color: rgba(240, 241, 239, 0.7);
+}
+
+#screen-howto .nav-btn.primary:hover,
+#screen-why .nav-btn.primary:hover,
+#screen-who .nav-btn.primary:hover,
+#screen-feel .nav-btn.primary:hover,
+#screen-canvas .nav-btn.primary:hover {
+    background: #f0f1ef;
+    color: #06333d;
+    border-color: #f0f1ef;
+}
+
+/* Export buttons adapted for dark canvas screen */
+#screen-canvas .export-btn {
+    color: #f0f1ef;
+    border-color: rgba(240, 241, 239, 0.6);
+}
+
+#screen-canvas .export-btn:hover {
+    background: #f0f1ef;
+    color: #06333d;
+    border-color: #f0f1ef;
+}
+
+#screen-canvas .export-btn.secondary {
+    color: rgba(240, 241, 239, 0.6);
+    border-color: rgba(240, 241, 239, 0.4);
+}
+
+#screen-canvas .export-btn.secondary:hover {
+    background: rgba(240, 241, 239, 0.6);
+    color: #06333d;
+    border-color: rgba(240, 241, 239, 0.6);
 }
 
 /* Canvas Tool Responsive */
