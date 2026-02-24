@@ -726,6 +726,19 @@ body {
     padding: 4px 10px;
 }
 
+/* "Review Your Cards" button row at the bottom of the cards screen */
+.cards-review-nav {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(6, 51, 61, 0.1);
+}
+
+/* "← Back to Cards" row at the top of the review screen */
+.review-back-nav {
+    padding: 24px 0 8px;
+}
+
 .journey-map {
     padding: 40px 0;
 }
