@@ -50,19 +50,19 @@
                 <div class="canvas-flow">
                     <div class="canvas-step">
                         <span class="step-icon">🎯</span>
-                        <h3>WHY?</h3>
+                        <h3>Why?</h3>
                         <p>Define the fundamental purpose and urgency driving your fund</p>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="canvas-step">
                         <span class="step-icon">👥</span>
-                        <h3>WHO</h3>
+                        <h3>Who</h3>
                         <p>Identify your stakeholders, target portfolio, and key influencers</p>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="canvas-step">
                         <span class="step-icon">❤️</span>
-                        <h3>FEEL</h3>
+                        <h3>Feel</h3>
                         <p>Understand the emotional drivers and practical needs you're addressing</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
         <!-- Screen 3: WHY -->
         <div id="screen-why" class="screen hidden">
             <div class="question-section">
-                <div class="section-title">WHY?</div>
+                <div class="section-title">Why?</div>
                 <div class="section-description">What's the fundamental purpose of your fund</div>
 
                 <div class="question">
@@ -98,7 +98,7 @@
 
                 <div class="navigation">
                     <button class="nav-btn" onclick="goToScreen(1)">Previous</button>
-                    <button class="nav-btn primary" onclick="goToScreen(3)">Next: WHO</button>
+                    <button class="nav-btn primary" onclick="goToScreen(3)">Next: Who</button>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
         <!-- Screen 4: WHO -->
         <div id="screen-who" class="screen hidden">
             <div class="question-section">
-                <div class="section-title">WHO</div>
+                <div class="section-title">Who</div>
                 <div class="section-description">Who are your key stakeholders and target portfolio</div>
 
                 <div class="question">
@@ -136,7 +136,7 @@
 
                 <div class="navigation">
                     <button class="nav-btn" onclick="goToScreen(2)">Previous</button>
-                    <button class="nav-btn primary" onclick="goToScreen(4)">Next: FEEL</button>
+                    <button class="nav-btn primary" onclick="goToScreen(4)">Next: Feel</button>
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
         <!-- Screen 5: FEEL -->
         <div id="screen-feel" class="screen hidden">
             <div class="question-section">
-                <div class="section-title">FEEL</div>
+                <div class="section-title">Feel</div>
                 <div class="section-description">Understand the emotional and practical drivers</div>
 
                 <div class="question">
@@ -177,15 +177,15 @@
                 <h2>Your Fund Canvas</h2>
                 <div class="canvas-grid three-section">
                     <div class="canvas-quadrant">
-                        <div class="quadrant-title">WHY?</div>
+                        <div class="quadrant-title">Why?</div>
                         <div class="quadrant-content" id="canvas-why"></div>
                     </div>
                     <div class="canvas-quadrant">
-                        <div class="quadrant-title">WHO</div>
+                        <div class="quadrant-title">Who</div>
                         <div class="quadrant-content" id="canvas-who"></div>
                     </div>
                     <div class="canvas-quadrant">
-                        <div class="quadrant-title">FEEL</div>
+                        <div class="quadrant-title">Feel</div>
                         <div class="quadrant-content" id="canvas-feel"></div>
                     </div>
                 </div>
@@ -338,13 +338,13 @@
             canvasGrid.style.cssText = `display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;`;
 
             const quadrantData = [
-                { title: 'WHY?', questions: [
+                { title: 'Why?', questions: [
                     { label: 'Why this problem?', id: 'why-problem' },
                     { label: 'Why now?', id: 'why-now' },
                     { label: 'Why you?', id: 'why-you' },
                     { label: 'Why does it matter?', id: 'why-matter' }
                 ]},
-                { title: 'WHO', questions: [
+                { title: 'Who', questions: [
                     { label: 'Who are you raising money from?', id: 'who-funders' },
                     { label: 'Who is it going to?', id: 'who-recipients' },
                     { label: 'Where are they?', id: 'who-location' },
@@ -352,7 +352,7 @@
                     { label: 'Who do you need to influence to make this work?', id: 'who-influence' },
                     { label: 'Who needs to be at the table?', id: 'who-table' }
                 ]},
-                { title: 'FEEL', questions: [
+                { title: 'Feel', questions: [
                     { label: "What pain points in grantees' world are you solving?", id: 'feel-pain' },
                     { label: 'What do they struggle with currently?', id: 'feel-struggle' },
                     { label: 'What gap is your fund filling?', id: 'feel-gap' },
@@ -426,9 +426,9 @@
             let content = "FUND THESIS CANVAS\n" + "=".repeat(50) + "\n\n";
 
             [
-                { title: 'WHY?', id: 'canvas-why' },
-                { title: 'WHO', id: 'canvas-who' },
-                { title: 'FEEL', id: 'canvas-feel' }
+                { title: 'Why?', id: 'canvas-why' },
+                { title: 'Who', id: 'canvas-who' },
+                { title: 'Feel', id: 'canvas-feel' }
             ].forEach(q => {
                 content += `${q.title}\n` + "-".repeat(q.title.length) + "\n";
                 document.querySelectorAll(`#${q.id} .quadrant-item`).forEach(item => {
