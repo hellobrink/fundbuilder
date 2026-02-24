@@ -69,38 +69,59 @@
                     <h2>Select a Stage</h2>
                     <p class="section-description">Choose which part of the grant fund building process you need guidance with</p>
                     <div class="stage-grid">
-                        <div class="stage-circle" onclick="selectStage('A')" data-stage="A">
-                            <h3>Design & Thesis Development</h3>
-                            <p>Define your fund's core purpose</p>
+
+                        <!-- Column 1: Design -->
+                        <div class="stage-column stage-col-1">
+                            <div class="stage-col-label">Design</div>
+                            <div class="stage-circle" onclick="selectStage('A')" data-stage="A">
+                                <h3>Design & Thesis Development</h3>
+                                <p>Define your fund's core purpose</p>
+                            </div>
+                            <div class="stage-circle" onclick="selectStage('B')" data-stage="B">
+                                <h3>Strategy & Target Portfolio</h3>
+                                <p>Shape your funding approach</p>
+                            </div>
                         </div>
-                        <div class="stage-circle" onclick="selectStage('B')" data-stage="B">
-                            <h3>Strategy & Target Portfolio</h3>
-                            <p>Shape your funding approach</p>
+
+                        <!-- Column 2: Support -->
+                        <div class="stage-column stage-col-2">
+                            <div class="stage-col-label">Support</div>
+                            <div class="stage-circle" onclick="selectStage('D')" data-stage="D">
+                                <h3>Financial Support</h3>
+                                <p>Types of financial support available to offer</p>
+                            </div>
+                            <div class="stage-circle" onclick="selectStage('E')" data-stage="E">
+                                <h3>Non-Financial Support</h3>
+                                <p>Methods for designing comprehensive grantee support systems</p>
+                            </div>
                         </div>
-                        <div class="stage-circle" onclick="selectStage('C')" data-stage="C">
-                            <h3>Awareness & Engagement</h3>
-                            <p>Build visibility and attract applicants</p>
+
+                        <!-- Column 3: Outreach -->
+                        <div class="stage-column stage-col-3">
+                            <div class="stage-col-label">Outreach</div>
+                            <div class="stage-circle" onclick="selectStage('C')" data-stage="C">
+                                <h3>Awareness & Engagement</h3>
+                                <p>Build visibility and attract applicants</p>
+                            </div>
+                            <div class="stage-circle" onclick="selectStage('F')" data-stage="F">
+                                <h3>Engagement & Application</h3>
+                                <p>Create accessible processes</p>
+                            </div>
                         </div>
-                        <div class="stage-circle" onclick="selectStage('D')" data-stage="D">
-                            <h3>Financial Support</h3>
-                            <p>Types of financial support available to offer</p>
+
+                        <!-- Column 4: Delivery -->
+                        <div class="stage-column stage-col-4">
+                            <div class="stage-col-label">Delivery</div>
+                            <div class="stage-circle" onclick="selectStage('G')" data-stage="G">
+                                <h3>Selection & Rejection</h3>
+                                <p>Build fair selection processes</p>
+                            </div>
+                            <div class="stage-circle" onclick="selectStage('H')" data-stage="H">
+                                <h3>Portfolio Management</h3>
+                                <p>Manage and optimize your portfolio</p>
+                            </div>
                         </div>
-                        <div class="stage-circle" onclick="selectStage('E')" data-stage="E">
-                            <h3>Non-Financial Support</h3>
-                            <p>Methods for designing comprehensive grantee support systems</p>
-                        </div>
-                        <div class="stage-circle" onclick="selectStage('F')" data-stage="F">
-                            <h3>Engagement & Application</h3>
-                            <p>Create accessible processes</p>
-                        </div>
-                        <div class="stage-circle" onclick="selectStage('G')" data-stage="G">
-                            <h3>Selection & Rejection</h3>
-                            <p>Build fair selection processes</p>
-                        </div>
-                        <div class="stage-circle" onclick="selectStage('H')" data-stage="H">
-                            <h3>Portfolio Management</h3>
-                            <p>Manage and optimize your portfolio</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
