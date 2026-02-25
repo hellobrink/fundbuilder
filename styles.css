@@ -1510,3 +1510,62 @@ h2 {
         align-items: center;
     }
 }
+/* ─── Site Modal (replaces native alert()) ──────────────────────────────── */
+
+.site-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 51, 61, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.site-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.site-modal {
+    background: #f0f1ef;
+    border-radius: 12px;
+    padding: 36px 40px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 24px 60px rgba(6, 51, 61, 0.22);
+    border-top: 4px solid #06333d;
+    transform: translateY(10px);
+    transition: transform 0.2s ease;
+}
+
+.site-modal-overlay.open .site-modal {
+    transform: translateY(0);
+}
+
+.site-modal h3 {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #06333d;
+    margin: 0 0 14px;
+    line-height: 1.3;
+}
+
+#site-modal-body {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem;
+    color: #06333d;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.site-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}

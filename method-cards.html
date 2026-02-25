@@ -194,6 +194,17 @@
 
     </div><!-- /p2-screen-main -->
 
+    <!-- Custom modal (replaces native alert) -->
+    <div id="site-modal" class="site-modal-overlay" onclick="if(event.target===this)closeSiteModal()">
+        <div class="site-modal">
+            <h3 id="site-modal-title"></h3>
+            <p id="site-modal-body"></p>
+            <div class="site-modal-footer">
+                <button class="nav-btn" onclick="closeSiteModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script src="./app.js"></script>
     <script>
         let p2CurrentScreen = 0;
