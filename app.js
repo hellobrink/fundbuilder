@@ -387,7 +387,7 @@ function exportAdvicePDF() {
         margin-bottom: 30px;
         color: #06333d;
         font-size: 1.8rem;
-        font-weight: 500;
+        font-weight: 400;
         line-height: 1.2;
         font-family: 'Lora', Georgia, serif;
     `;
