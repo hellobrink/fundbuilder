@@ -1134,8 +1134,8 @@ h2 {
 /* Description inside box */
 .cards-section.stage-theme-1 .cards-theme-box .section-description,
 .cards-section.stage-theme-2 .cards-theme-box .section-description,
-.cards-section.stage-theme-3 .cards-theme-box .section-description { color: rgba(255, 255, 255, 0.8); }
-.cards-section.stage-theme-4 .cards-theme-box .section-description { color: rgba(6, 51, 61, 0.7); }
+.cards-section.stage-theme-3 .cards-theme-box .section-description { color: #ffffff; }
+.cards-section.stage-theme-4 .cards-theme-box .section-description { color: #06333d; }
 
 /* ─── Canvas Tool Specific Styles ──────────────────────────────────────────── */
 
