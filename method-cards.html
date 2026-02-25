@@ -108,7 +108,6 @@
                 <!-- Cards expand inline below the stage grid -->
                 <div id="cards-section" class="cards-section">
                     <div class="cards-theme-box">
-                        <h2 id="cards-title">Method Cards</h2>
                         <p class="section-description" id="cards-description">Click any card to flip it and read the detailed guidance</p>
                         <div id="cards-grid" class="cards-grid">
                             <!-- Cards will be populated here -->
@@ -117,7 +116,7 @@
                     <div class="cards-actions-nav">
                         <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
                         <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
-                        <button class="nav-btn primary" onclick="showP2SubScreen('review')">Review Your Cards</button>
+                        <button class="nav-btn primary" onclick="showP2SubScreen('review')">Review Your Banked Cards</button>
                     </div>
                 </div>
             </div>
@@ -172,9 +171,9 @@
 
                     <div class="export-section">
                         <button class="export-btn secondary" onclick="showP2SubScreen('stages')">← Back to Your Cards</button>
-                        <button class="export-btn" onclick="exportAdvicePDF()">Export as PDF</button>
+                        <button class="export-btn secondary" onclick="exportAdvicePDF()">Export as PDF</button>
                         <button class="export-btn secondary" onclick="exportAdvice()">Export as Text</button>
-                        <button class="export-btn coral" onclick="showP2SubScreen('next')">Continue</button>
+                        <button class="export-btn coral" onclick="showP2SubScreen('next')">Finish</button>
                     </div>
                 </div>
             </div>
@@ -243,7 +242,6 @@
         function selectStage(stage) {
             currentStage = stage;
             const stageData = methodCards[stage];
-            document.getElementById('cards-title').textContent = stageData.title;
             document.getElementById('cards-description').textContent = stageData.description;
             displayCards(stageData.cards);
             const colMap = { A: 1, B: 1, C: 3, D: 2, E: 2, F: 3, G: 4, H: 4 };
