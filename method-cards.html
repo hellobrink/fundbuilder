@@ -134,9 +134,6 @@
         <!-- Sub-screen C: Review (Journey Map + Export) -->
         <div id="p2-sub-review" style="display: none;">
             <div class="container">
-                <div class="review-back-nav">
-                    <button class="nav-btn" onclick="showP2SubScreen('cards')">← Back to Cards</button>
-                </div>
                 <div class="journey-map">
                     <h2>Your Fund Building Journey</h2>
                     <p class="section-description">Bank method cards to build your comprehensive funding strategy</p>
@@ -182,6 +179,7 @@
                     </div>
 
                     <div class="export-section">
+                        <button class="export-btn secondary" onclick="showP2SubScreen('cards')">← Back to Your Cards</button>
                         <button class="export-btn" onclick="exportAdvicePDF()">Export as PDF</button>
                         <button class="export-btn secondary" onclick="exportAdvice()">Export as Text</button>
                         <button class="export-btn coral" onclick="showP2SubScreen('next')">Continue</button>
@@ -193,9 +191,6 @@
         <!-- Sub-screen D: Next Steps -->
         <div id="p2-sub-next" style="display: none;">
             <div class="container">
-                <div class="review-back-nav">
-                    <button class="nav-btn" onclick="showP2SubScreen('review')">← Back to Journey</button>
-                </div>
                 <div class="next-steps-section">
                     <h2>What Comes Next</h2>
                     <p class="section-description">You've built your fund strategy — here's how to bring it to life</p>

@@ -445,6 +445,10 @@ body {
     margin-bottom: 40px;
 }
 
+#p2-sub-stages > .container {
+    padding-top: 40px;
+}
+
 .stage-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -765,6 +769,9 @@ body {
     line-height: 1.7;
     max-width: 680px;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .journey-stages {
@@ -855,7 +862,7 @@ body {
 .export-section {
     text-align: center;
     margin-top: 40px;
-    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .export-btn {
@@ -1148,7 +1155,7 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-top: 24px;
+    margin-top: 48px;
 }
 
 .canvas-grid.three-section {
@@ -1159,7 +1166,7 @@ h2 {
     background: #f0f1ef;
     border-radius: 6px;
     padding: 24px;
-    min-height: 280px;
+    min-height: 360px;
 }
 
 .quadrant-title {
@@ -1389,6 +1396,13 @@ h2 {
 /* Step boxes: white so they stand out from the #f0f1ef background */
 #p2-screen-howto .canvas-step {
     background: #ffffff;
+    color: #06333d;
+}
+
+#p2-screen-howto .step-icon {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 2.25rem;
+    font-weight: 400;
     color: #06333d;
 }
 

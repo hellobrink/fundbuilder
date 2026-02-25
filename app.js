@@ -372,23 +372,24 @@ function exportAdvicePDF() {
     // Create a temporary element for better PDF formatting
     const exportElement = document.createElement('div');
     exportElement.style.cssText = `
-        background: white;
+        background: #f0f1ef;
         padding: 40px;
         width: 800px;
         margin: 0 auto;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Libre Franklin', sans-serif;
     `;
-    
+
     // Add title
     const title = document.createElement('h1');
     title.textContent = 'Open Innovation Fund Builder - Your Method Cards';
     title.style.cssText = `
         text-align: center;
         margin-bottom: 30px;
-        color: #1a1a1a;
+        color: #06333d;
         font-size: 1.8rem;
         font-weight: 500;
         line-height: 1.2;
+        font-family: 'Lora', Georgia, serif;
     `;
     exportElement.appendChild(title);
     
@@ -405,21 +406,23 @@ function exportAdvicePDF() {
             const stageTitleText = methodCards[stage]?.title || `Stage ${stage}`;
             stageTitle.textContent = stageTitleText;
             stageTitle.style.cssText = `
-                color: #1a1a1a;
+                color: #06333d;
                 font-size: 1.3rem;
-                font-weight: 500;
+                font-weight: 600;
                 margin-bottom: 16px;
-                border-bottom: 2px solid #ff6b9d;
+                border-bottom: 2px solid #ff405f;
                 padding-bottom: 8px;
+                font-family: 'Libre Franklin', sans-serif;
             `;
             stageSection.appendChild(stageTitle);
             
             bankedCards[stage].forEach(card => {
                 const cardDiv = document.createElement('div');
                 cardDiv.style.cssText = `
-                    background: #f8f9fa;
-                    border: 1px solid #e5e5e5;
-                    border-radius: 8px;
+                    background: #ffffff;
+                    border: 1px solid rgba(6,51,61,0.12);
+                    border-left: 3px solid #ff405f;
+                    border-radius: 6px;
                     padding: 16px;
                     margin-bottom: 12px;
                     page-break-inside: avoid;
@@ -428,20 +431,22 @@ function exportAdvicePDF() {
                 const cardTitle = document.createElement('h3');
                 cardTitle.textContent = card.title;
                 cardTitle.style.cssText = `
-                    color: #1a1a1a;
+                    color: #06333d;
                     font-size: 1rem;
                     font-weight: 600;
                     margin-bottom: 8px;
+                    font-family: 'Libre Franklin', sans-serif;
                 `;
                 cardDiv.appendChild(cardTitle);
                 
                 const cardAdvice = document.createElement('p');
                 cardAdvice.textContent = card.advice;
                 cardAdvice.style.cssText = `
-                    color: #444444;
+                    color: rgba(6,51,61,0.8);
                     font-size: 0.9rem;
-                    line-height: 1.5;
+                    line-height: 1.6;
                     margin: 0;
+                    font-family: 'Libre Franklin', sans-serif;
                 `;
                 cardDiv.appendChild(cardAdvice);
                 
