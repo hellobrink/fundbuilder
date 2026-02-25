@@ -747,6 +747,26 @@ body {
     padding: 40px 0;
 }
 
+.journey-bank-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 28px;
+    margin: 24px 0;
+}
+
+.next-steps-section {
+    padding: 40px 0;
+}
+
+.next-steps-section p {
+    color: #06333d;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 680px;
+    margin-bottom: 20px;
+}
+
 .journey-stages {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -980,7 +1000,8 @@ h2 {
 .part2-page .header h2,
 #stage-selector h2,
 .cards-section h2,
-.journey-map h2 {
+.journey-map h2,
+.next-steps-section h2 {
     font-family: 'Lora', Georgia, serif;
     font-size: 2.25rem;
     font-weight: 400;
@@ -993,7 +1014,8 @@ h2 {
 .part2-page .header h2::after,
 .ux-explanation h2::after,
 #stage-selector h2::after,
-.journey-map h2::after {
+.journey-map h2::after,
+.next-steps-section h2::after {
     content: '';
     display: block;
     width: 3em;
@@ -1065,12 +1087,12 @@ h2 {
     left: 0;
     right: 0;
     height: 2px;
-    background: rgba(240, 241, 239, 0.25);
+    background: rgba(240, 241, 239, 0.55);
     overflow: hidden;
 }
 
 .progress-fill {
-    background: #f0f1ef;
+    display: none;
     height: 100%;
     transition: width 0.3s ease;
 }
