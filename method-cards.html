@@ -62,7 +62,7 @@
     <!-- Screen 1: Main Tool (three sub-screens) -->
     <div id="p2-screen-main" style="display: none;">
 
-        <!-- Sub-screen A: Stage Selector -->
+        <!-- Sub-screen A: Stage Selector + Inline Card Expansion -->
         <div id="p2-sub-stages">
             <div class="container">
                 <div id="stage-selector" class="stage-selector">
@@ -105,24 +105,19 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Sub-screen B: Cards View -->
-        <div id="p2-sub-cards" style="display: none;">
-            <div class="container">
+                <!-- Cards expand inline below the stage grid -->
                 <div id="cards-section" class="cards-section">
-                    <div class="navigation">
-                        <button class="nav-btn" onclick="goBackToStages()">← Back to Stages</button>
-                        <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
-                        <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
-                    </div>
                     <div class="cards-theme-box">
                         <h2 id="cards-title">Method Cards</h2>
                         <p class="section-description" id="cards-description">Click any card to flip it and read the detailed guidance</p>
                         <div id="cards-grid" class="cards-grid">
                             <!-- Cards will be populated here -->
                         </div>
+                    </div>
+                    <div class="cards-utility-nav">
+                        <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
+                        <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
                     </div>
                     <div class="cards-review-nav">
                         <button class="nav-btn primary" onclick="showP2SubScreen('review')">Review Your Cards</button>
@@ -179,7 +174,7 @@
                     </div>
 
                     <div class="export-section">
-                        <button class="export-btn secondary" onclick="showP2SubScreen('cards')">← Back to Your Cards</button>
+                        <button class="export-btn secondary" onclick="showP2SubScreen('stages')">← Back to Your Cards</button>
                         <button class="export-btn" onclick="exportAdvicePDF()">Export as PDF</button>
                         <button class="export-btn secondary" onclick="exportAdvice()">Export as Text</button>
                         <button class="export-btn coral" onclick="showP2SubScreen('next')">Continue</button>
@@ -217,8 +212,9 @@
 
         function showP2SubScreen(name) {
             p2CurrentSubScreen = name;
-            document.getElementById('p2-sub-stages').style.display = name === 'stages' ? '' : 'none';
-            document.getElementById('p2-sub-cards').style.display  = name === 'cards'  ? '' : 'none';
+            // 'stages' houses the inline cards expansion — both map to the same div
+            const showStages = (name === 'stages' || name === 'cards');
+            document.getElementById('p2-sub-stages').style.display = showStages ? '' : 'none';
             document.getElementById('p2-sub-review').style.display = name === 'review' ? '' : 'none';
             document.getElementById('p2-sub-next').style.display   = name === 'next'   ? '' : 'none';
             window.scrollTo(0, 0);
@@ -230,8 +226,6 @@
             } else if (p2CurrentSubScreen === 'next') {
                 showP2SubScreen('review');
             } else if (p2CurrentSubScreen === 'review') {
-                showP2SubScreen('cards');
-            } else if (p2CurrentSubScreen === 'cards') {
                 showP2SubScreen('stages');
             } else {
                 goToP2Screen(0);
@@ -239,11 +233,15 @@
         }
 
         function p2Reset() {
+            currentStage = '';
+            currentFlippedCard = null;
+            document.getElementById('cards-section').classList.remove('visible');
+            document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
             showP2SubScreen('stages');
             goToP2Screen(1);
         }
 
-        // Override app.js functions to use sub-screen navigation
+        // Override app.js: expand cards inline below stage grid
         function selectStage(stage) {
             currentStage = stage;
             const stageData = methodCards[stage];
@@ -251,15 +249,25 @@
             document.getElementById('cards-description').textContent = stageData.description;
             displayCards(stageData.cards);
             const colMap = { A: 1, B: 1, C: 3, D: 2, E: 2, F: 3, G: 4, H: 4 };
-            document.getElementById('cards-section').className =
-                'cards-section stage-theme-' + (colMap[stage] || 1);
-            showP2SubScreen('cards');
+            const cardsEl = document.getElementById('cards-section');
+            cardsEl.className = 'cards-section stage-theme-' + (colMap[stage] || 1);
+
+            // Mark the clicked stage as active, clear others
+            document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
+            document.querySelector('[data-stage="' + stage + '"]').classList.add('active');
+
+            // Expand inline (trigger CSS accordion)
+            requestAnimationFrame(() => cardsEl.classList.add('visible'));
+
+            // Scroll cards into view after expansion begins
+            setTimeout(() => cardsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
         }
 
         function goBackToStages() {
             currentStage = '';
             currentFlippedCard = null;
-            showP2SubScreen('stages');
+            document.getElementById('cards-section').classList.remove('visible');
+            document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
         }
     </script>
 </body>
