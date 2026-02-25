@@ -1117,6 +1117,7 @@ h2 {
 
 .cards-theme-box .section-description {
     margin-bottom: 28px;
+    font-weight: 600;
 }
 
 .cards-section.stage-theme-1 .cards-theme-box { background: #06333d; }
