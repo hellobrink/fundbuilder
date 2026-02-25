@@ -67,7 +67,6 @@
             <div class="container">
                 <div id="stage-selector" class="stage-selector">
                     <h2>Explore method cards</h2>
-                    <p class="section-description">Choose which part of the grant fund building process you need guidance with</p>
                     <div class="stage-grid">
                         <!-- Row 1 -->
                         <div class="stage-circle stage-col-1" onclick="selectStage('A')" data-stage="A">
@@ -237,6 +236,7 @@
             currentFlippedCard = null;
             document.getElementById('cards-section').classList.remove('visible');
             document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
+            document.querySelector('.stage-grid').classList.remove('compact');
             showP2SubScreen('stages');
             goToP2Screen(1);
         }
@@ -256,6 +256,9 @@
             document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
             document.querySelector('[data-stage="' + stage + '"]').classList.add('active');
 
+            // Collapse stage grid to slim nav row
+            document.querySelector('.stage-grid').classList.add('compact');
+
             // Expand inline (trigger CSS accordion)
             requestAnimationFrame(() => cardsEl.classList.add('visible'));
 
@@ -268,6 +271,7 @@
             currentFlippedCard = null;
             document.getElementById('cards-section').classList.remove('visible');
             document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
+            document.querySelector('.stage-grid').classList.remove('compact');
         }
     </script>
 </body>
