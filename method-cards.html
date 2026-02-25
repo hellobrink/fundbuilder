@@ -114,11 +114,9 @@
                             <!-- Cards will be populated here -->
                         </div>
                     </div>
-                    <div class="cards-utility-nav">
+                    <div class="cards-actions-nav">
                         <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
                         <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
-                    </div>
-                    <div class="cards-review-nav">
                         <button class="nav-btn primary" onclick="showP2SubScreen('review')">Review Your Cards</button>
                     </div>
                 </div>
@@ -252,18 +250,16 @@
             const cardsEl = document.getElementById('cards-section');
             cardsEl.className = 'cards-section stage-theme-' + (colMap[stage] || 1);
 
+            // Collapse grid to slim nav row BEFORE adding active, so the
+            // compact transform:none rule is already in place and prevents any lift
+            document.querySelector('.stage-grid').classList.add('compact');
+
             // Mark the clicked stage as active, clear others
             document.querySelectorAll('.stage-circle').forEach(el => el.classList.remove('active'));
             document.querySelector('[data-stage="' + stage + '"]').classList.add('active');
 
-            // Collapse stage grid to slim nav row
-            document.querySelector('.stage-grid').classList.add('compact');
-
             // Expand inline (trigger CSS accordion)
             requestAnimationFrame(() => cardsEl.classList.add('visible'));
-
-            // Scroll cards into view after expansion begins
-            setTimeout(() => cardsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
         }
 
         function goBackToStages() {
