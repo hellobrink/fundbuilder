@@ -553,8 +553,8 @@ body {
 .cards-section.visible {
     max-height: 5000px;
     opacity: 1;
-    padding: 24px 0;
-    margin-top: 4px;
+    padding: 4px 0 24px;
+    margin-top: 0;
     margin-bottom: 40px;
 }
 
@@ -615,7 +615,7 @@ body {
 .method-card {
     perspective: 1000px;
     width: 220px;
-    height: 240px;
+    height: 300px;
     cursor: pointer;
     border-radius: 12px;
     flex-shrink: 0;
@@ -793,16 +793,10 @@ body {
 }
 
 /* "Review Your Cards" button row at the bottom of the cards screen */
-.cards-utility-nav {
+.cards-actions-nav {
     display: flex;
     justify-content: center;
     gap: 16px;
-    margin-top: 24px;
-    margin-bottom: 8px;
-}
-
-.cards-review-nav {
-    text-align: center;
     margin-top: 24px;
 }
 
@@ -1029,7 +1023,7 @@ h2 {
     }
     
     .navigation,
-    .cards-utility-nav {
+    .cards-actions-nav {
         flex-direction: column;
         align-items: center;
     }
