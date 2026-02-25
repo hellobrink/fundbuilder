@@ -117,10 +117,12 @@
                         <button class="nav-btn" onclick="flipAllCards()">Flip All Cards</button>
                         <button class="nav-btn" onclick="getRandomCard()">Random Card</button>
                     </div>
-                    <h2 id="cards-title">Method Cards</h2>
-                    <p class="section-description" id="cards-description">Click any card to flip it and read the detailed guidance</p>
-                    <div id="cards-grid" class="cards-grid">
-                        <!-- Cards will be populated here -->
+                    <div class="cards-theme-box">
+                        <h2 id="cards-title">Method Cards</h2>
+                        <p class="section-description" id="cards-description">Click any card to flip it and read the detailed guidance</p>
+                        <div id="cards-grid" class="cards-grid">
+                            <!-- Cards will be populated here -->
+                        </div>
                     </div>
                     <div class="cards-review-nav">
                         <button class="nav-btn primary" onclick="showP2SubScreen('review')">Review Your Cards</button>
@@ -231,6 +233,9 @@
             document.getElementById('cards-title').textContent = stageData.title;
             document.getElementById('cards-description').textContent = stageData.description;
             displayCards(stageData.cards);
+            const colMap = { A: 1, B: 1, C: 3, D: 2, E: 2, F: 3, G: 4, H: 4 };
+            document.getElementById('cards-section').className =
+                'cards-section stage-theme-' + (colMap[stage] || 1);
             showP2SubScreen('cards');
         }
 

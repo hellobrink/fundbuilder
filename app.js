@@ -242,6 +242,9 @@ function displayCards(cards) {
                 <div class="card-front">
                     <div class="card-category">${methodCards[currentStage].title}</div>
                     <div class="card-title">${card.title}</div>
+                    <div class="card-front-actions">
+                        <button class="card-btn" onclick="event.stopPropagation(); flipCard(${index})">Flip</button>
+                    </div>
                 </div>
                 <div class="card-back">
                     <div class="card-back-title">${card.title}</div>
