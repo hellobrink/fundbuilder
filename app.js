@@ -1,5 +1,23 @@
 let currentStage = '';
 let currentFlippedCard = null;
+
+// ─── Custom modal (replaces native alert) ───────────────────────────────────
+function showSiteModal(title, body) {
+    const el = document.getElementById('site-modal');
+    if (!el) return;
+    document.getElementById('site-modal-title').textContent = title;
+    document.getElementById('site-modal-body').textContent = body;
+    el.classList.add('open');
+}
+
+function closeSiteModal() {
+    const el = document.getElementById('site-modal');
+    if (el) el.classList.remove('open');
+}
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSiteModal();
+});
 let bankedCards = {
     A: [], B: [], C: [], D: [], E: [], F: [], G: [], H: []
 };
@@ -336,7 +354,7 @@ function updateJourneyMap() {
 
 function viewBankedCard(stage, index) {
     const card = bankedCards[stage][index];
-    alert(`${card.title}\n\n${card.advice}`);
+    showSiteModal(card.title, card.advice);
 }
 
 function getRandomCard() {
@@ -363,7 +381,7 @@ function goBackToStages() {
 
 function exportAdvicePDF() {
     if (Object.values(bankedCards).every(stageCards => stageCards.length === 0)) {
-        alert("No cards banked yet. Please select and bank some method cards first.");
+        showSiteModal("No cards banked yet", "Please select and bank some method cards first.");
         return;
     }
 
@@ -492,7 +510,7 @@ function exportAdvicePDF() {
     }).catch(error => {
         console.error('Error generating PDF:', error);
         document.body.removeChild(exportElement);
-        alert('Error generating PDF. Please try the text export instead.');
+        showSiteModal("Export error", "Error generating PDF. Please try the text export instead.");
     });
 }
 
@@ -515,7 +533,7 @@ function exportAdvice() {
     });
     
     if (content === "Open Innovation Fund Builder - Your Method Cards\n\n") {
-        alert("No cards banked yet. Please select and bank some method cards first.");
+        showSiteModal("No cards banked yet", "Please select and bank some method cards first.");
         return;
     }
     

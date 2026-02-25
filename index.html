@@ -191,7 +191,7 @@
                     </div>
                 </div>
                 <div class="export-section">
-                    <button class="export-btn" onclick="exportCanvasPDF()">Download as PDF</button>
+                    <button class="export-btn secondary" onclick="exportCanvasPDF()">Download as PDF</button>
                     <button class="export-btn secondary" onclick="exportCanvas()">Export as Text</button>
                     <button class="export-btn secondary" onclick="goToScreen(2)">Edit Answers</button>
                     <button class="export-btn coral" onclick="goToScreen(6)">Continue</button>
@@ -417,7 +417,7 @@
             }).catch(error => {
                 console.error('Error generating PDF:', error);
                 document.body.removeChild(exportElement);
-                alert('Error generating PDF. Please try the text export instead.');
+                showSiteModal("Export error", "Error generating PDF. Please try the text export instead.");
             });
         }
 
@@ -448,5 +448,16 @@
         // Initialise
         goToScreen(0);
     </script>
+
+    <!-- Custom modal (replaces native alert) -->
+    <div id="site-modal" class="site-modal-overlay" onclick="if(event.target===this)closeSiteModal()">
+        <div class="site-modal">
+            <h3 id="site-modal-title"></h3>
+            <p id="site-modal-body"></p>
+            <div class="site-modal-footer">
+                <button class="nav-btn" onclick="closeSiteModal()">Close</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
