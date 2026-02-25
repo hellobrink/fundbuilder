@@ -320,13 +320,13 @@
             const exportElement = document.createElement('div');
             exportElement.style.cssText = `
                 background: white; padding: 40px; width: 800px;
-                margin: 0 auto; font-family: 'Inter', sans-serif;
+                margin: 0 auto; font-family: 'Libre Franklin', sans-serif;
             `;
 
             const title = document.createElement('h1');
             title.textContent = 'Fund Thesis Canvas';
             title.style.cssText = `
-                text-align: center; margin-bottom: 30px; color: #1a1a1a;
+                text-align: center; margin-bottom: 30px; color: #06333d;
                 font-size: 2rem; font-weight: 500;
             `;
             exportElement.appendChild(title);
@@ -363,7 +363,7 @@
 
                 const quadTitle = document.createElement('div');
                 quadTitle.textContent = quadrant.title;
-                quadTitle.style.cssText = `font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: #1a1a1a; text-align: center; border-bottom: 2px solid #ff405f; padding-bottom: 8px;`;
+                quadTitle.style.cssText = `font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: #06333d; text-align: center; border-bottom: 2px solid #ff405f; padding-bottom: 8px;`;
                 quadDiv.appendChild(quadTitle);
 
                 quadrant.questions.forEach(question => {
@@ -374,7 +374,7 @@
 
                         const questionLabel = document.createElement('div');
                         questionLabel.textContent = question.label;
-                        questionLabel.style.cssText = `font-weight: 600; color: #1a1a1a; margin-bottom: 4px;`;
+                        questionLabel.style.cssText = `font-weight: 600; color: #06333d; margin-bottom: 4px;`;
                         questionDiv.appendChild(questionLabel);
 
                         const answerDiv = document.createElement('div');
