@@ -489,7 +489,7 @@ body {
 .stage-circle p {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 0.82rem;
-    color: #789096;
+    color: #06333d;
     line-height: 1.4;
 }
 
@@ -619,13 +619,19 @@ body {
 .card-front {
     flex-direction: column;
     background: white;
-    background-image: 
+    background-image:
         url('../assets/BRINK_PATTERN_PLANE-01.png'),
         repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 64, 95, 0.02) 10px, rgba(255, 64, 95, 0.02) 20px);
     background-size: 200px 200px, 20px 20px;
     background-repeat: repeat;
     background-position: 0 0;
-    color: #1a1a1a;
+    color: #06333d;
+}
+
+.card-front-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
 }
 
 .card-title {
@@ -635,12 +641,12 @@ body {
     text-align: center;
     border-bottom: 2px solid #ff405f;
     padding-bottom: 8px;
-    color: #1a1a1a;
+    color: #06333d;
 }
 
 .card-category {
     font-size: 0.75rem;
-    color: #999999;
+    color: rgba(6, 51, 61, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 12px;
@@ -650,7 +656,7 @@ body {
 .card-back {
     transform: rotateY(180deg);
     background: white;
-    color: #1a1a1a;
+    color: #06333d;
     padding: 16px;
     text-align: left;
     align-items: flex-start;
@@ -660,7 +666,7 @@ body {
 .card-back-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #1a1a1a;
+    color: #06333d;
     margin-bottom: 12px;
     text-align: center;
     border-bottom: 2px solid #ff405f;
@@ -670,7 +676,7 @@ body {
 .card-advice {
     font-size: 0.8rem;
     line-height: 1.4;
-    color: #444444;
+    color: rgba(6, 51, 61, 0.8);
     flex: 1;
     overflow: hidden;
     padding-bottom: 8px;
@@ -987,7 +993,6 @@ h2 {
 .part2-page .header h2::after,
 .ux-explanation h2::after,
 #stage-selector h2::after,
-.cards-section h2::after,
 .journey-map h2::after {
     content: '';
     display: block;
@@ -996,6 +1001,43 @@ h2 {
     background: #ff405f;
     margin: 10px auto 0;
 }
+
+/* Cards screen heading: Libre Franklin, ~20% smaller, no underline */
+.cards-section h2 {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.cards-section h2::after {
+    display: none;
+}
+
+/* ─── Themed colour box (title + cards grid) ───────────────────────────────── */
+
+.cards-theme-box {
+    border-radius: 16px;
+    padding: 32px 32px 28px;
+    margin: 16px 0 28px;
+}
+
+.cards-section.stage-theme-1 .cards-theme-box { background: #06333d; }
+.cards-section.stage-theme-2 .cards-theme-box { background: #ff405f; }
+.cards-section.stage-theme-3 .cards-theme-box { background: #4472ec; }
+.cards-section.stage-theme-4 .cards-theme-box { background: #e99cd1; }
+
+/* Heading inside box — white on dark/vivid themes, dark teal on light pink */
+.cards-section.stage-theme-1 .cards-theme-box h2,
+.cards-section.stage-theme-2 .cards-theme-box h2,
+.cards-section.stage-theme-3 .cards-theme-box h2 { color: #ffffff; }
+.cards-section.stage-theme-4 .cards-theme-box h2 { color: #06333d; }
+
+/* Description inside box */
+.cards-section.stage-theme-1 .cards-theme-box .section-description,
+.cards-section.stage-theme-2 .cards-theme-box .section-description,
+.cards-section.stage-theme-3 .cards-theme-box .section-description { color: rgba(255, 255, 255, 0.8); }
+.cards-section.stage-theme-4 .cards-theme-box .section-description { color: rgba(6, 51, 61, 0.7); }
 
 /* ─── Canvas Tool Specific Styles ──────────────────────────────────────────── */
 
