@@ -224,7 +224,7 @@ body {
 }
 
 .screen-part2-splash .splash-part-label {
-    color: rgba(6, 51, 61, 0.5);
+    color: #789096;
 }
 
 .screen-part2-splash .splash-heading {
@@ -320,7 +320,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .step-icon {
@@ -610,7 +610,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(6,51,61,0.12);
     background: white;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -652,7 +652,7 @@ body {
 
 .card-category {
     font-size: 0.75rem;
-    color: rgba(6, 51, 61, 0.5);
+    color: #789096;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 12px;
@@ -999,7 +999,7 @@ h2 {
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(6, 51, 61, 0.5);
+    color: #789096;
     margin-bottom: 12px;
 }
 
@@ -1129,7 +1129,7 @@ h2 {
 .question-input {
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(6,51,61,0.15);
     border-radius: 6px;
     background: white;
     color: #06333d;
@@ -1144,11 +1144,11 @@ h2 {
 .question-input:focus {
     outline: none;
     border-color: #ff405f;
-    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 64, 95, 0.12);
 }
 
 .question-input::placeholder {
-    color: #999999;
+    color: rgba(6, 51, 61, 0.35);
 }
 
 .canvas-grid {
@@ -1359,13 +1359,13 @@ h2 {
     border-color: rgba(240, 241, 239, 0.6);
 }
 
-/* Coral Continue button on canvas screen */
-#screen-canvas .export-btn.coral {
+/* Coral Continue button — global, works on both Part 1 and Part 2 */
+.export-btn.coral {
     color: #ff405f;
     border-color: #ff405f;
 }
 
-#screen-canvas .export-btn.coral:hover {
+.export-btn.coral:hover {
     background: rgba(255, 64, 95, 0.1);
 }
 
@@ -1413,8 +1413,8 @@ h2 {
 
 /* Nav button */
 #p2-screen-howto .nav-btn {
-    color: rgba(6, 51, 61, 0.7);
-    border-color: rgba(6, 51, 61, 0.5);
+    color: #789096;
+    border-color: #789096;
 }
 
 #p2-screen-howto .nav-btn.primary {
