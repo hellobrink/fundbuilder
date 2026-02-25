@@ -1259,7 +1259,7 @@ h2 {
 }
 
 .quadrant-item::before {
-    content: "•";
+    content: ">";
     color: #ff405f;
     position: absolute;
     left: 0;
