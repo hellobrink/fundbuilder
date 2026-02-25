@@ -502,7 +502,8 @@ body {
     display: flex;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 .nav-btn {
@@ -618,6 +619,7 @@ body {
 
 .card-front {
     flex-direction: column;
+    justify-content: space-between;
     background: white;
     background-image:
         url('../assets/BRINK_PATTERN_PLANE-01.png'),
@@ -668,7 +670,7 @@ body {
     font-weight: 500;
     color: #06333d;
     margin-bottom: 12px;
-    text-align: center;
+    text-align: left;
     border-bottom: 2px solid #ff405f;
     padding-bottom: 6px;
 }
@@ -733,9 +735,7 @@ body {
 /* "Review Your Cards" button row at the bottom of the cards screen */
 .cards-review-nav {
     text-align: center;
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(6, 51, 61, 0.1);
+    margin-top: 32px;
 }
 
 /* "← Back to Cards" row at the top of the review screen */
@@ -1007,7 +1007,7 @@ h2 {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
 }
 
 .cards-section h2::after {
@@ -1018,8 +1018,12 @@ h2 {
 
 .cards-theme-box {
     border-radius: 16px;
-    padding: 32px 32px 28px;
+    padding: 32px 32px 44px;
     margin: 16px 0 28px;
+}
+
+.cards-theme-box .section-description {
+    margin-bottom: 28px;
 }
 
 .cards-section.stage-theme-1 .cards-theme-box { background: #06333d; }
