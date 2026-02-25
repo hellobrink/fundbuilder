@@ -493,6 +493,12 @@ body {
 .stage-col-3.active { background: rgba(68, 114, 236, 0.07); }
 .stage-col-4.active { background: rgba(233, 156, 209, 0.22); }
 
+/* In compact mode suppress the lift on hover and active — prevents jumping */
+.stage-grid.compact .stage-circle:hover,
+.stage-grid.compact .stage-circle.active {
+    transform: none;
+}
+
 .stage-circle h3 {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 0.95rem;
@@ -547,8 +553,8 @@ body {
 .cards-section.visible {
     max-height: 5000px;
     opacity: 1;
-    padding: 40px 0;
-    margin-top: 16px;
+    padding: 24px 0;
+    margin-top: 4px;
     margin-bottom: 40px;
 }
 
@@ -609,7 +615,7 @@ body {
 .method-card {
     perspective: 1000px;
     width: 220px;
-    height: 300px;
+    height: 240px;
     cursor: pointer;
     border-radius: 12px;
     flex-shrink: 0;
