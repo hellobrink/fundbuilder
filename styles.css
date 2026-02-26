@@ -839,8 +839,8 @@ body {
 
 .journey-columns {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .journey-col {
@@ -989,9 +989,9 @@ h2 {
     text-align: center;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
     .journey-columns {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1011,10 +1011,6 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    .journey-columns {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .stage-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
