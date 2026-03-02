@@ -1507,6 +1507,101 @@ h2 {
         align-items: center;
     }
 }
+/* ─── About This Tool screen ────────────────────────────────────────────── */
+
+#screen-about {
+    background: #f0f1ef;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#screen-about > * {
+    max-width: 680px;
+    width: 100%;
+}
+
+/* ─── How This Works: coloured top halves on canvas-step boxes ───────────── */
+
+#screen-howto .canvas-step {
+    padding: 0;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.canvas-step-top {
+    padding: 24px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#screen-howto .canvas-step-why .canvas-step-top { background: #ff405f; }
+#screen-howto .canvas-step-who .canvas-step-top { background: #4472ec; }
+#screen-howto .canvas-step-feel .canvas-step-top { background: #e99cd1; }
+
+#screen-howto .canvas-step-why .canvas-step-top h3,
+#screen-howto .canvas-step-who .canvas-step-top h3 { color: #ffffff; }
+#screen-howto .canvas-step-feel .canvas-step-top h3 { color: #06333d; }
+
+#screen-howto .canvas-step p {
+    padding: 12px 20px 20px;
+    margin: 0;
+}
+
+/* ─── Form screens: coloured backgrounds ────────────────────────────────── */
+
+#screen-why { background: #ff405f; }
+#screen-who { background: #4472ec; }
+#screen-feel { background: #e99cd1; }
+
+/* Feel screen: dark text on light pink */
+#screen-feel .section-title,
+#screen-feel .section-description,
+#screen-feel .question-label {
+    color: #06333d;
+}
+
+#screen-feel .nav-btn {
+    color: rgba(6, 51, 61, 0.7);
+    border-color: rgba(6, 51, 61, 0.7);
+}
+
+#screen-feel .nav-btn.primary {
+    color: #06333d;
+    border-color: #06333d;
+}
+
+#screen-feel .nav-btn:hover,
+#screen-feel .nav-btn.primary:hover {
+    background: rgba(6, 51, 61, 0.08);
+    color: #06333d;
+    border-color: #06333d;
+}
+
+/* ─── Fund Canvas: coloured quadrant-title headers ───────────────────────── */
+
+.canvas-quadrant.quad-why,
+.canvas-quadrant.quad-who,
+.canvas-quadrant.quad-feel {
+    overflow: hidden;
+}
+
+.canvas-quadrant.quad-why .quadrant-title,
+.canvas-quadrant.quad-who .quadrant-title,
+.canvas-quadrant.quad-feel .quadrant-title {
+    margin: -24px -24px 16px;
+    padding: 16px 24px;
+    border-bottom: none;
+}
+
+.canvas-quadrant.quad-why .quadrant-title { background: #ff405f; color: #ffffff; }
+.canvas-quadrant.quad-who .quadrant-title { background: #4472ec; color: #ffffff; }
+.canvas-quadrant.quad-feel .quadrant-title { background: #e99cd1; color: #06333d; }
+
 /* ─── Site Modal (replaces native alert()) ──────────────────────────────── */
 
 .site-modal-overlay {
