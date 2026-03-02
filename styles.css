@@ -153,13 +153,15 @@ body {
     flex-shrink: 0;
 }
 
-/* Screen 8: outer shell, inner splash fills it */
-#screen-part2 {
+/* Splash wrappers: outer shell, inner splash fills it */
+#screen-part2,
+#screen-intro {
     display: flex;
     padding: 0;
 }
 
-#screen-part2 > .screen-splash {
+#screen-part2 > .screen-splash,
+#screen-intro > .screen-splash {
     flex: 1;
 }
 
@@ -197,6 +199,16 @@ body {
     color: #f0f1ef;
     line-height: 1.55;
     text-align: center;
+}
+
+.splash-description {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1rem;
+    color: rgba(240, 241, 239, 0.85);
+    line-height: 1.7;
+    text-align: center;
+    max-width: 480px;
+    margin-top: 16px;
 }
 
 .splash-btn {
@@ -343,6 +355,23 @@ body {
     line-height: 1.4;
     margin: 0;
 }
+
+/* Coloured top-half for How This Works boxes */
+.step-header {
+    width: calc(100% + 40px);
+    margin: -24px -20px 16px;
+    padding: 24px 20px;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+}
+
+.step-why .step-header { background: #ff405f; }
+.step-who .step-header { background: #4472ec; }
+.step-feel .step-header { background: #e99cd1; }
+
+.step-why .step-header h3,
+.step-who .step-header h3 { color: #ffffff; }
+.step-feel .step-header h3 { color: #06333d; }
 
 .canvas-outcome {
     font-family: 'Libre Franklin', sans-serif;
@@ -1171,6 +1200,15 @@ h2 {
     margin-bottom: 30px;
 }
 
+/* Form screen background colours */
+#screen-why { background: #ff405f; }
+#screen-who { background: #4472ec; }
+#screen-feel { background: #e99cd1; }
+
+#screen-feel .section-title,
+#screen-feel .section-description,
+#screen-feel .question-label { color: #06333d; }
+
 .question-section.hidden {
     display: none;
 }
@@ -1235,11 +1273,16 @@ h2 {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 16px;
-    color: #06333d;
+    margin: -24px -24px 16px;
+    padding: 16px 24px;
     text-align: center;
-    border-bottom: 2px solid #ff405f;
-    padding-bottom: 8px;
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
+}
+
+.quadrant-why .quadrant-title { background: #ff405f; color: #ffffff; }
+.quadrant-who .quadrant-title { background: #4472ec; color: #ffffff; }
+.quadrant-feel .quadrant-title { background: #e99cd1; color: #06333d;
 }
 
 .quadrant-content {

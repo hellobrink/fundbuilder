@@ -33,12 +33,23 @@
 
     <div class="container" id="screens-container">
 
-        <!-- Screen 1: Intro -->
-        <div id="screen-intro" class="screen screen-splash">
+        <!-- Screen 0: About -->
+        <div id="screen-about" class="screen screen-splash">
             <div class="splash-content">
-                <p class="splash-part-label">PART 1</p>
-                <h2 class="splash-heading">Let's start by building a strong strategic foundation for your fund by answering some key questions.</h2>
+                <h2 class="splash-heading">About this tool</h2>
+                <p class="splash-description">This tool helps you build the strategic foundations of an open innovation fund. You'll work through two parts: first defining your fund's purpose, audience, and emotional drivers, then exploring method cards to shape your operational approach.</p>
                 <button class="splash-btn" onclick="goToScreen(1)">Get Started</button>
+            </div>
+        </div>
+
+        <!-- Screen 1: Intro -->
+        <div id="screen-intro" class="screen hidden">
+            <div class="screen-splash">
+                <div class="splash-content">
+                    <p class="splash-part-label">PART 1</p>
+                    <h2 class="splash-heading">Let's start by building a strong strategic foundation for your fund by answering some key questions.</h2>
+                    <button class="splash-btn" onclick="goToScreen(2)">Get Started</button>
+                </div>
             </div>
         </div>
 
@@ -48,35 +59,41 @@
                 <h2>How This Works</h2>
                 <p>This canvas helps you think through the fundamentals of your fund by exploring three key questions:</p>
                 <div class="canvas-flow">
-                    <div class="canvas-step">
-                        <span class="step-icon">🎯</span>
-                        <h3>Why?</h3>
+                    <div class="canvas-step step-why">
+                        <div class="step-header">
+                            <span class="step-icon">🎯</span>
+                            <h3>Why</h3>
+                        </div>
                         <p>Define the fundamental purpose and urgency driving your fund</p>
                     </div>
                     <div class="flow-arrow">→</div>
-                    <div class="canvas-step">
-                        <span class="step-icon">👥</span>
-                        <h3>Who</h3>
+                    <div class="canvas-step step-who">
+                        <div class="step-header">
+                            <span class="step-icon">👥</span>
+                            <h3>Who</h3>
+                        </div>
                         <p>Identify your stakeholders, target portfolio, and key influencers</p>
                     </div>
                     <div class="flow-arrow">→</div>
-                    <div class="canvas-step">
-                        <span class="step-icon">❤️</span>
-                        <h3>Feel</h3>
+                    <div class="canvas-step step-feel">
+                        <div class="step-header">
+                            <span class="step-icon">❤️</span>
+                            <h3>Feel</h3>
+                        </div>
                         <p>Understand the emotional drivers and practical needs you're addressing</p>
                     </div>
                 </div>
                 <p class="canvas-outcome">Once you've answered these questions you should have a clearer view of your fund's strategic foundation, plus you'll have the chance to reflect and refine that foundation before moving to the next stage.</p>
             </div>
             <div class="screen-nav">
-                <button class="nav-btn primary" onclick="goToScreen(2)">Let's go</button>
+                <button class="nav-btn primary" onclick="goToScreen(3)">Let's go</button>
             </div>
         </div>
 
         <!-- Screen 3: WHY -->
         <div id="screen-why" class="screen hidden">
             <div class="question-section">
-                <div class="section-title">Why?</div>
+                <div class="section-title">Why</div>
                 <div class="section-description">What's the fundamental purpose of your fund</div>
 
                 <div class="question">
@@ -97,8 +114,8 @@
                 </div>
 
                 <div class="navigation">
-                    <button class="nav-btn" onclick="goToScreen(1)">Previous</button>
-                    <button class="nav-btn primary" onclick="goToScreen(3)">Next: Who</button>
+                    <button class="nav-btn" onclick="goToScreen(2)">Previous</button>
+                    <button class="nav-btn primary" onclick="goToScreen(4)">Next: Who</button>
                 </div>
             </div>
         </div>
@@ -135,8 +152,8 @@
                 </div>
 
                 <div class="navigation">
-                    <button class="nav-btn" onclick="goToScreen(2)">Previous</button>
-                    <button class="nav-btn primary" onclick="goToScreen(4)">Next: Feel</button>
+                    <button class="nav-btn" onclick="goToScreen(3)">Previous</button>
+                    <button class="nav-btn primary" onclick="goToScreen(5)">Next: Feel</button>
                 </div>
             </div>
         </div>
@@ -165,7 +182,7 @@
                 </div>
 
                 <div class="navigation">
-                    <button class="nav-btn" onclick="goToScreen(3)">Previous</button>
+                    <button class="nav-btn" onclick="goToScreen(4)">Previous</button>
                     <button class="nav-btn primary" onclick="buildCanvas()">Generate your fund's foundations</button>
                 </div>
             </div>
@@ -177,15 +194,15 @@
                 <h2>Your Fund Canvas</h2>
                 <p class="section-description">A summary of your fund's strategic foundation based on your answers.</p>
                 <div class="canvas-grid three-section">
-                    <div class="canvas-quadrant">
-                        <div class="quadrant-title">Why?</div>
+                    <div class="canvas-quadrant quadrant-why">
+                        <div class="quadrant-title">Why</div>
                         <div class="quadrant-content" id="canvas-why"></div>
                     </div>
-                    <div class="canvas-quadrant">
+                    <div class="canvas-quadrant quadrant-who">
                         <div class="quadrant-title">Who</div>
                         <div class="quadrant-content" id="canvas-who"></div>
                     </div>
-                    <div class="canvas-quadrant">
+                    <div class="canvas-quadrant quadrant-feel">
                         <div class="quadrant-title">Feel</div>
                         <div class="quadrant-content" id="canvas-feel"></div>
                     </div>
@@ -193,8 +210,8 @@
                 <div class="export-section">
                     <button class="export-btn secondary" onclick="exportCanvasPDF()">Download as PDF</button>
                     <button class="export-btn secondary" onclick="exportCanvas()">Export as Text</button>
-                    <button class="export-btn secondary" onclick="goToScreen(2)">Edit Answers</button>
-                    <button class="export-btn coral" onclick="goToScreen(6)">Continue</button>
+                    <button class="export-btn secondary" onclick="goToScreen(3)">Edit Answers</button>
+                    <button class="export-btn coral" onclick="goToScreen(7)">Continue</button>
                 </div>
             </div>
         </div>
@@ -225,8 +242,8 @@
                 </div>
 
                 <div class="reflection-actions">
-                    <button class="reflection-btn" onclick="goToScreen(2)">← Revise My Answers</button>
-                    <button class="reflection-btn primary" onclick="goToScreen(7)">Continue to Part 2</button>
+                    <button class="reflection-btn" onclick="goToScreen(3)">← Revise My Answers</button>
+                    <button class="reflection-btn primary" onclick="goToScreen(8)">Continue to Part 2</button>
                 </div>
             </div>
         </div>
@@ -245,11 +262,11 @@
     </div><!-- /container -->
 
     <script>
-        const screens = ['intro', 'howto', 'why', 'who', 'feel', 'canvas', 'reflection', 'part2'];
+        const screens = ['about', 'intro', 'howto', 'why', 'who', 'feel', 'canvas', 'reflection', 'part2'];
         let currentScreen = 0;
 
         function goToScreen(index) {
-            if (index === 5) populateCanvas();
+            if (index === 6) populateCanvas();
 
             screens.forEach((name, i) => {
                 document.getElementById(`screen-${name}`).classList.toggle('hidden', i !== index);
@@ -258,7 +275,7 @@
             currentScreen = index;
 
             document.getElementById('btn-back').disabled = index === 0;
-            document.querySelector('.part-badge').textContent = index === 7 ? 'Part 2' : 'Part 1';
+            document.querySelector('.part-badge').textContent = index === 8 ? 'Part 2' : 'Part 1';
 
             const progress = (index / (screens.length - 1)) * 100;
             document.getElementById('progress').style.width = progress + '%';
@@ -274,7 +291,7 @@
             if (currentScreen === screens.length - 1) {
                 proceedToCards();
             } else {
-                if (currentScreen === 4) {
+                if (currentScreen === 5) {
                     buildCanvas();
                 } else {
                     goToScreen(currentScreen + 1);
@@ -284,7 +301,7 @@
 
         function buildCanvas() {
             populateCanvas();
-            goToScreen(5);
+            goToScreen(6);
         }
 
         function populateCanvas() {
@@ -337,7 +354,7 @@
             canvasGrid.style.cssText = `display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 20px;`;
 
             const quadrantData = [
-                { title: 'Why?', questions: [
+                { title: 'Why', questions: [
                     { label: 'Why this problem?', id: 'why-problem' },
                     { label: 'Why now?', id: 'why-now' },
                     { label: 'Why you?', id: 'why-you' },
@@ -425,7 +442,7 @@
             let content = "FUND THESIS CANVAS\n" + "=".repeat(50) + "\n\n";
 
             [
-                { title: 'Why?', id: 'canvas-why' },
+                { title: 'Why', id: 'canvas-why' },
                 { title: 'Who', id: 'canvas-who' },
                 { title: 'Feel', id: 'canvas-feel' }
             ].forEach(q => {
