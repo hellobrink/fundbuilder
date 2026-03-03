@@ -61,8 +61,8 @@ body {
 }
 
 .part-badge {
-    background: rgba(240, 241, 239, 0.15);
-    color: #f0f1ef;
+    background: rgba(255, 64, 95, 0.15);
+    color: #ff405f;
     font-size: 0.7rem;
     font-weight: 600;
     padding: 4px 10px;
@@ -1309,7 +1309,7 @@ h2 {
 }
 
 .reflection-prompt {
-    background: #f0f1ef;
+    background: #ffffff;
     border-radius: 6px;
     padding: 24px;
     text-align: left;
