@@ -1527,10 +1527,10 @@ h2 {
 
 #screen-howto .canvas-step-why .canvas-step-top { background: #4472ec; }
 #screen-howto .canvas-step-who .canvas-step-top { background: #e99cd1; }
-#screen-howto .canvas-step-feel .canvas-step-top { background: #7770ff; }
+#screen-howto .canvas-step-feel .canvas-step-top { background: #f9f771; }
 
-#screen-howto .canvas-step-why .canvas-step-top h3,
-#screen-howto .canvas-step-feel .canvas-step-top h3 { color: #ffffff; }
+#screen-howto .canvas-step-why .canvas-step-top h3 { color: #ffffff; }
+#screen-howto .canvas-step-feel .canvas-step-top h3 { color: #06333d; }
 #screen-howto .canvas-step-who .canvas-step-top h3 { color: #06333d; }
 
 #screen-howto .canvas-step p {
@@ -1544,7 +1544,7 @@ h2 {
    the accent colour appears only on the form box itself. */
 #screen-why .question-section  { background: #4472ec; }
 #screen-who .question-section  { background: #e99cd1; }
-#screen-feel .question-section { background: #7770ff; }
+#screen-feel .question-section { background: #f9f771; }
 
 #screen-why .question-section,
 #screen-who .question-section,
@@ -1555,25 +1555,32 @@ h2 {
     margin: 24px auto;
 }
 
-/* Who screen: dark text on light pink box */
+/* Who and Feel screens: dark text on light-coloured boxes */
 #screen-who .section-title,
 #screen-who .section-description,
-#screen-who .question-label {
+#screen-who .question-label,
+#screen-feel .section-title,
+#screen-feel .section-description,
+#screen-feel .question-label {
     color: #06333d;
 }
 
-#screen-who .nav-btn {
+#screen-who .nav-btn,
+#screen-feel .nav-btn {
     color: rgba(6, 51, 61, 0.7);
     border-color: rgba(6, 51, 61, 0.7);
 }
 
-#screen-who .nav-btn.primary {
+#screen-who .nav-btn.primary,
+#screen-feel .nav-btn.primary {
     color: #06333d;
     border-color: #06333d;
 }
 
 #screen-who .nav-btn:hover,
-#screen-who .nav-btn.primary:hover {
+#screen-who .nav-btn.primary:hover,
+#screen-feel .nav-btn:hover,
+#screen-feel .nav-btn.primary:hover {
     background: rgba(6, 51, 61, 0.08);
     color: #06333d;
     border-color: #06333d;
@@ -1597,7 +1604,7 @@ h2 {
 
 .canvas-quadrant.quad-why .quadrant-title { background: #4472ec; color: #ffffff; }
 .canvas-quadrant.quad-who .quadrant-title { background: #e99cd1; color: #06333d; }
-.canvas-quadrant.quad-feel .quadrant-title { background: #7770ff; color: #ffffff; }
+.canvas-quadrant.quad-feel .quadrant-title { background: #f9f771; color: #06333d; }
 
 /* ─── Site Modal (replaces native alert()) ──────────────────────────────── */
 
