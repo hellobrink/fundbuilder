@@ -61,8 +61,8 @@ body {
 }
 
 .part-badge {
-    background: rgba(255, 64, 95, 0.15);
-    color: #ff405f;
+    background: rgba(240, 241, 239, 0.15);
+    color: #f0f1ef;
     font-size: 0.7rem;
     font-weight: 600;
     padding: 4px 10px;
@@ -186,7 +186,7 @@ body {
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(240, 241, 239, 0.6);
+    color: #ff405f;
     text-align: center;
 }
 
@@ -224,7 +224,7 @@ body {
 }
 
 .screen-part2-splash .splash-part-label {
-    color: #789096;
+    color: #ff405f;
 }
 
 .screen-part2-splash .splash-heading {
