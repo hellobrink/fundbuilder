@@ -134,8 +134,7 @@ body {
 #screen-who,
 #screen-feel,
 #screen-canvas,
-#screen-reflection,
-#screen-about {
+#screen-reflection {
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -148,8 +147,7 @@ body {
 #screen-who > *,
 #screen-feel > *,
 #screen-canvas > *,
-#screen-reflection > *,
-#screen-about > * {
+#screen-reflection > * {
     max-width: 900px;
     width: 100%;
     flex-shrink: 0;
@@ -1368,7 +1366,6 @@ h2 {
 }
 
 /* Nav buttons adapted for dark Part 1 screens */
-#screen-about .nav-btn,
 #screen-howto .nav-btn,
 #screen-why .nav-btn,
 #screen-feel .nav-btn,
@@ -1377,7 +1374,6 @@ h2 {
     border-color: rgba(240, 241, 239, 0.7);
 }
 
-#screen-about .nav-btn.primary,
 #screen-howto .nav-btn.primary,
 #screen-why .nav-btn.primary,
 #screen-feel .nav-btn.primary,
@@ -1386,7 +1382,6 @@ h2 {
     border-color: rgba(240, 241, 239, 0.6);
 }
 
-#screen-about .nav-btn:hover,
 #screen-howto .nav-btn:hover,
 #screen-why .nav-btn:hover,
 #screen-feel .nav-btn:hover,
@@ -1394,7 +1389,6 @@ h2 {
     background: rgba(240, 241, 239, 0.12);
 }
 
-#screen-about .nav-btn.primary:hover,
 #screen-howto .nav-btn.primary:hover,
 #screen-why .nav-btn.primary:hover,
 #screen-feel .nav-btn.primary:hover,
@@ -1509,6 +1503,12 @@ h2 {
         align-items: center;
     }
 }
+/* ─── About This Tool screen ────────────────────────────────────────────── */
+
+#screen-about {
+    padding: 40px 20px;
+}
+
 /* ─── How This Works: coloured top halves on canvas-step boxes ───────────── */
 
 #screen-howto .canvas-step {
