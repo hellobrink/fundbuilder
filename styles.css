@@ -388,7 +388,7 @@ body {
 
 .step-number {
     background: #ff405f;
-    color: white;
+    color: #f0f1ef;
     border-radius: 50%;
     width: 28px;
     height: 28px;
@@ -874,7 +874,7 @@ body {
 
 .col-theme-1 .journey-stage h4,
 .col-theme-2 .journey-stage h4,
-.col-theme-3 .journey-stage h4 { color: #ffffff; }
+.col-theme-3 .journey-stage h4 { color: #f0f1ef; }
 .col-theme-4 .journey-stage h4 { color: #06333d; }
 
 .card-stack {
@@ -1129,13 +1129,13 @@ h2 {
 /* Heading inside box — white on dark/vivid themes, dark teal on light pink */
 .cards-section.stage-theme-1 .cards-theme-box h2,
 .cards-section.stage-theme-2 .cards-theme-box h2,
-.cards-section.stage-theme-3 .cards-theme-box h2 { color: #ffffff; }
+.cards-section.stage-theme-3 .cards-theme-box h2 { color: #f0f1ef; }
 .cards-section.stage-theme-4 .cards-theme-box h2 { color: #06333d; }
 
 /* Description inside box */
 .cards-section.stage-theme-1 .cards-theme-box .section-description,
 .cards-section.stage-theme-2 .cards-theme-box .section-description,
-.cards-section.stage-theme-3 .cards-theme-box .section-description { color: #ffffff; }
+.cards-section.stage-theme-3 .cards-theme-box .section-description { color: #f0f1ef; }
 .cards-section.stage-theme-4 .cards-theme-box .section-description { color: #06333d; }
 
 /* ─── Canvas Tool Specific Styles ──────────────────────────────────────────── */
