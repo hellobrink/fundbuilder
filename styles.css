@@ -1509,34 +1509,11 @@ h2 {
     padding: 40px 20px;
 }
 
-/* ─── How This Works: coloured top halves on canvas-step boxes ───────────── */
+/* ─── How This Works: coloured boxes on canvas-step ─────────────────────── */
 
-#screen-howto .canvas-step {
-    padding: 0;
-    overflow: hidden;
-    align-items: stretch;
-}
-
-.canvas-step-top {
-    padding: 24px 20px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-#screen-howto .canvas-step-why .canvas-step-top { background: #eff5fc; }
-#screen-howto .canvas-step-who .canvas-step-top { background: #e99cd1; }
-#screen-howto .canvas-step-feel .canvas-step-top { background: #f9f771; }
-
-#screen-howto .canvas-step-why .canvas-step-top h3 { color: #06333d; }
-#screen-howto .canvas-step-feel .canvas-step-top h3 { color: #06333d; }
-#screen-howto .canvas-step-who .canvas-step-top h3 { color: #06333d; }
-
-#screen-howto .canvas-step p {
-    padding: 12px 20px 20px;
-    margin: 0;
-}
+#screen-howto .canvas-step-why  { background: #eff5fc; }
+#screen-howto .canvas-step-who  { background: #e99cd1; }
+#screen-howto .canvas-step-feel { background: #f9f771; }
 
 /* ─── Form screens: question box on dark background ─────────────────────── */
 
