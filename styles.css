@@ -201,7 +201,7 @@ body {
 
 .splash-btn {
     font-family: Inconsolata, monospace;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -682,7 +682,7 @@ body {
     justify-content: space-between;
     background: white;
     background-image:
-        url('../assets/BRINK_PATTERN_PLANE-01.png'),
+        url('./BRINK_PATTERN_PLANE-01.png'),
         repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 64, 95, 0.02) 10px, rgba(255, 64, 95, 0.02) 20px);
     background-size: 200px 200px, 20px 20px;
     background-repeat: repeat;
@@ -979,11 +979,13 @@ h2 {
     font-weight: 400;
     color: #f0f1ef;
     text-align: center;
+    margin-top: 0;
     margin-bottom: 24px;
 }
 
 .section-description {
     font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem;
     color: #f0f1ef;
     margin-bottom: 24px;
     text-align: center;
@@ -1064,12 +1066,13 @@ h2 {
     margin-bottom: 12px;
 }
 
-/* Lora headings for Part 2 sections */
+/* Lora headings for Part 2 sections + About screen */
 .part2-page .header h2,
 #stage-selector h2,
 .cards-section h2,
 .journey-map h2,
-.next-steps-section h2 {
+.next-steps-section h2,
+#screen-about h2 {
     font-family: 'Lora', Georgia, serif;
     font-size: 2.25rem;
     font-weight: 400;
@@ -1083,7 +1086,8 @@ h2 {
 .ux-explanation h2::after,
 #stage-selector h2::after,
 .journey-map h2::after,
-.next-steps-section h2::after {
+.next-steps-section h2::after,
+#screen-about h2::after {
     content: '';
     display: block;
     width: 3em;
