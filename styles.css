@@ -201,7 +201,7 @@ body {
 
 .splash-btn {
     font-family: Inconsolata, monospace;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -388,7 +388,7 @@ body {
 
 .step-number {
     background: #ff405f;
-    color: white;
+    color: #f0f1ef;
     border-radius: 50%;
     width: 28px;
     height: 28px;
@@ -682,7 +682,7 @@ body {
     justify-content: space-between;
     background: white;
     background-image:
-        url('../assets/BRINK_PATTERN_PLANE-01.png'),
+        url('./BRINK_PATTERN_PLANE-01.png'),
         repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 64, 95, 0.02) 10px, rgba(255, 64, 95, 0.02) 20px);
     background-size: 200px 200px, 20px 20px;
     background-repeat: repeat;
@@ -874,7 +874,7 @@ body {
 
 .col-theme-1 .journey-stage h4,
 .col-theme-2 .journey-stage h4,
-.col-theme-3 .journey-stage h4 { color: #ffffff; }
+.col-theme-3 .journey-stage h4 { color: #f0f1ef; }
 .col-theme-4 .journey-stage h4 { color: #06333d; }
 
 .card-stack {
@@ -979,11 +979,13 @@ h2 {
     font-weight: 400;
     color: #f0f1ef;
     text-align: center;
+    margin-top: 0;
     margin-bottom: 24px;
 }
 
 .section-description {
     font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem;
     color: #f0f1ef;
     margin-bottom: 24px;
     text-align: center;
@@ -1064,12 +1066,13 @@ h2 {
     margin-bottom: 12px;
 }
 
-/* Lora headings for Part 2 sections */
+/* Lora headings for Part 2 sections + About screen */
 .part2-page .header h2,
 #stage-selector h2,
 .cards-section h2,
 .journey-map h2,
-.next-steps-section h2 {
+.next-steps-section h2,
+#screen-about h2 {
     font-family: 'Lora', Georgia, serif;
     font-size: 2.25rem;
     font-weight: 400;
@@ -1083,7 +1086,8 @@ h2 {
 .ux-explanation h2::after,
 #stage-selector h2::after,
 .journey-map h2::after,
-.next-steps-section h2::after {
+.next-steps-section h2::after,
+#screen-about h2::after {
     content: '';
     display: block;
     width: 3em;
@@ -1125,13 +1129,13 @@ h2 {
 /* Heading inside box — white on dark/vivid themes, dark teal on light pink */
 .cards-section.stage-theme-1 .cards-theme-box h2,
 .cards-section.stage-theme-2 .cards-theme-box h2,
-.cards-section.stage-theme-3 .cards-theme-box h2 { color: #ffffff; }
+.cards-section.stage-theme-3 .cards-theme-box h2 { color: #f0f1ef; }
 .cards-section.stage-theme-4 .cards-theme-box h2 { color: #06333d; }
 
 /* Description inside box */
 .cards-section.stage-theme-1 .cards-theme-box .section-description,
 .cards-section.stage-theme-2 .cards-theme-box .section-description,
-.cards-section.stage-theme-3 .cards-theme-box .section-description { color: #ffffff; }
+.cards-section.stage-theme-3 .cards-theme-box .section-description { color: #f0f1ef; }
 .cards-section.stage-theme-4 .cards-theme-box .section-description { color: #06333d; }
 
 /* ─── Canvas Tool Specific Styles ──────────────────────────────────────────── */
