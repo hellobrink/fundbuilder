@@ -1202,11 +1202,16 @@
         }
 
         function handleRefresh() {
-            if (currentPart === 1) {
-                resetCanvas();
-            } else {
-                p2Reset();
+            if (currentPart === 2) {
+                currentStage = '';
+                currentFlippedCard = null;
+                document.getElementById('p2-container').style.display = 'none';
+                document.getElementById('screens-container').style.display = '';
+                document.body.classList.remove('part2-page');
+                document.querySelector('.part-badge').textContent = 'Part 1';
+                currentPart = 1;
             }
+            resetCanvas();
         }
 
         // ─── Init ─────────────────────────────────────────────────────────────
