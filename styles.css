@@ -134,7 +134,8 @@ body {
 #screen-who,
 #screen-feel,
 #screen-canvas,
-#screen-reflection {
+#screen-reflection,
+#screen-about {
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -147,7 +148,8 @@ body {
 #screen-who > *,
 #screen-feel > *,
 #screen-canvas > *,
-#screen-reflection > * {
+#screen-reflection > *,
+#screen-about > * {
     max-width: 900px;
     width: 100%;
     flex-shrink: 0;
@@ -1366,35 +1368,35 @@ h2 {
 }
 
 /* Nav buttons adapted for dark Part 1 screens */
+#screen-about .nav-btn,
 #screen-howto .nav-btn,
 #screen-why .nav-btn,
-#screen-who .nav-btn,
 #screen-feel .nav-btn,
 #screen-canvas .nav-btn {
     color: rgba(240, 241, 239, 0.7);
     border-color: rgba(240, 241, 239, 0.7);
 }
 
+#screen-about .nav-btn.primary,
 #screen-howto .nav-btn.primary,
 #screen-why .nav-btn.primary,
-#screen-who .nav-btn.primary,
 #screen-feel .nav-btn.primary,
 #screen-canvas .nav-btn.primary {
     color: #f0f1ef;
     border-color: rgba(240, 241, 239, 0.6);
 }
 
+#screen-about .nav-btn:hover,
 #screen-howto .nav-btn:hover,
 #screen-why .nav-btn:hover,
-#screen-who .nav-btn:hover,
 #screen-feel .nav-btn:hover,
 #screen-canvas .nav-btn:hover {
     background: rgba(240, 241, 239, 0.12);
 }
 
+#screen-about .nav-btn.primary:hover,
 #screen-howto .nav-btn.primary:hover,
 #screen-why .nav-btn.primary:hover,
-#screen-who .nav-btn.primary:hover,
 #screen-feel .nav-btn.primary:hover,
 #screen-canvas .nav-btn.primary:hover {
     background: rgba(240, 241, 239, 0.12);
@@ -1507,22 +1509,6 @@ h2 {
         align-items: center;
     }
 }
-/* ─── About This Tool screen ────────────────────────────────────────────── */
-
-#screen-about {
-    background: #f0f1ef;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#screen-about > * {
-    max-width: 680px;
-    width: 100%;
-}
-
 /* ─── How This Works: coloured top halves on canvas-step boxes ───────────── */
 
 #screen-howto .canvas-step {
@@ -1539,44 +1525,55 @@ h2 {
     width: 100%;
 }
 
-#screen-howto .canvas-step-why .canvas-step-top { background: #ff405f; }
-#screen-howto .canvas-step-who .canvas-step-top { background: #4472ec; }
-#screen-howto .canvas-step-feel .canvas-step-top { background: #e99cd1; }
+#screen-howto .canvas-step-why .canvas-step-top { background: #4472ec; }
+#screen-howto .canvas-step-who .canvas-step-top { background: #e99cd1; }
+#screen-howto .canvas-step-feel .canvas-step-top { background: #7770ff; }
 
 #screen-howto .canvas-step-why .canvas-step-top h3,
-#screen-howto .canvas-step-who .canvas-step-top h3 { color: #ffffff; }
-#screen-howto .canvas-step-feel .canvas-step-top h3 { color: #06333d; }
+#screen-howto .canvas-step-feel .canvas-step-top h3 { color: #ffffff; }
+#screen-howto .canvas-step-who .canvas-step-top h3 { color: #06333d; }
 
 #screen-howto .canvas-step p {
     padding: 12px 20px 20px;
     margin: 0;
 }
 
-/* ─── Form screens: coloured backgrounds ────────────────────────────────── */
+/* ─── Form screens: question box on dark background ─────────────────────── */
 
-#screen-why { background: #ff405f; }
-#screen-who { background: #4472ec; }
-#screen-feel { background: #e99cd1; }
+/* All three form screens keep the dark (#06333d) body background;
+   the accent colour appears only on the form box itself. */
+#screen-why .question-section  { background: #4472ec; }
+#screen-who .question-section  { background: #e99cd1; }
+#screen-feel .question-section { background: #7770ff; }
 
-/* Feel screen: dark text on light pink */
-#screen-feel .section-title,
-#screen-feel .section-description,
-#screen-feel .question-label {
+#screen-why .question-section,
+#screen-who .question-section,
+#screen-feel .question-section {
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 720px;
+    margin: 24px auto;
+}
+
+/* Who screen: dark text on light pink box */
+#screen-who .section-title,
+#screen-who .section-description,
+#screen-who .question-label {
     color: #06333d;
 }
 
-#screen-feel .nav-btn {
+#screen-who .nav-btn {
     color: rgba(6, 51, 61, 0.7);
     border-color: rgba(6, 51, 61, 0.7);
 }
 
-#screen-feel .nav-btn.primary {
+#screen-who .nav-btn.primary {
     color: #06333d;
     border-color: #06333d;
 }
 
-#screen-feel .nav-btn:hover,
-#screen-feel .nav-btn.primary:hover {
+#screen-who .nav-btn:hover,
+#screen-who .nav-btn.primary:hover {
     background: rgba(6, 51, 61, 0.08);
     color: #06333d;
     border-color: #06333d;
@@ -1598,9 +1595,9 @@ h2 {
     border-bottom: none;
 }
 
-.canvas-quadrant.quad-why .quadrant-title { background: #ff405f; color: #ffffff; }
-.canvas-quadrant.quad-who .quadrant-title { background: #4472ec; color: #ffffff; }
-.canvas-quadrant.quad-feel .quadrant-title { background: #e99cd1; color: #06333d; }
+.canvas-quadrant.quad-why .quadrant-title { background: #4472ec; color: #ffffff; }
+.canvas-quadrant.quad-who .quadrant-title { background: #e99cd1; color: #06333d; }
+.canvas-quadrant.quad-feel .quadrant-title { background: #7770ff; color: #ffffff; }
 
 /* ─── Site Modal (replaces native alert()) ──────────────────────────────── */
 

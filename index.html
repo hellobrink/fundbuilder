@@ -35,8 +35,8 @@
     <div class="container" id="screens-container">
 
         <!-- Screen 0: About This Tool -->
-        <div id="screen-about" class="screen screen-about">
-            <div class="next-steps-section">
+        <div id="screen-about" class="screen">
+            <div class="canvas-explanation">
                 <h2>About this tool</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -117,7 +117,6 @@
                 </div>
 
                 <div class="navigation">
-                    <button class="nav-btn" onclick="goToScreen(2)">Previous</button>
                     <button class="nav-btn primary" onclick="goToScreen(4)">Next: Who</button>
                 </div>
             </div>
@@ -155,7 +154,6 @@
                 </div>
 
                 <div class="navigation">
-                    <button class="nav-btn" onclick="goToScreen(3)">Previous</button>
                     <button class="nav-btn primary" onclick="goToScreen(5)">Next: Feel</button>
                 </div>
             </div>
@@ -185,7 +183,6 @@
                 </div>
 
                 <div class="navigation">
-                    <button class="nav-btn" onclick="goToScreen(4)">Previous</button>
                     <button class="nav-btn primary" onclick="buildCanvas()">Generate your fund's foundations</button>
                 </div>
             </div>
@@ -1002,7 +999,7 @@
 
         function resetCanvas() {
             document.querySelectorAll('.question-input').forEach(el => el.value = '');
-            goToScreen(0);
+            goToScreen(1);
         }
 
         function exportCanvasPDF() {
