@@ -837,6 +837,14 @@ body {
     text-align: center;
 }
 
+.next-steps-section p:has(> strong:only-child) {
+    margin-bottom: 0;
+}
+
+.next-steps-section a {
+    color: #ff405f;
+}
+
 .journey-columns {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
