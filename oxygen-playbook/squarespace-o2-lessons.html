@@ -234,7 +234,7 @@
   .o2-guide .o2-tips-collapsible.open { display: block !important; }
   .o2-guide .o2-tip-body { display: none !important; }
   .o2-guide .o2-accordion-tip.open .o2-tip-body { display: block !important; }
-  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; width: 28px; height: 28px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; width: 28px; height: 28px; border-radius: 50%; background: transparent; border: 2px solid white; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .o2-guide .o2-tips-toggle.open .o2-tips-toggle-arrow { transform: rotate(180deg); }
   .o2-guide .o2-tip-arrow { transition: transform 0.25s ease; }
   .o2-guide .o2-accordion-tip.open .o2-tip-arrow { transform: rotate(180deg); }
@@ -242,14 +242,14 @@
   .o2-guide .o2-tips-toggle { width: 100%; max-width: 100%; margin: 0; box-sizing: border-box; min-width: 0; }
   .o2-guide .o2-lesson-intro, .o2-guide .o2-case-study-body, .o2-guide .o2-meaning-body { max-width: none !important; width: 100%; }
   /* ── TIPS COLLAPSIBLE: blue background, white tip cards ── */
-  .o2-guide .o2-tips-collapsible.open { background: #73c7f0; padding: 12px 16px 16px; border-radius: 0 0 4px 4px; }
+  .o2-guide .o2-tips-collapsible.open { background: #73c7f0; padding: 12px 0 16px 16px; border-radius: 0 0 4px 4px; }
   .o2-guide .o2-accordion-tip { background: #ffffff; border-radius: 4px; }
   /* ── TIP BADGE: true circle (number only via JS), brand light blue, black text ── */
   .o2-guide .o2-tip-badge { background: #73c7f0 !important; color: #000000 !important; border-radius: 50% !important; width: 28px !important; height: 28px !important; padding: 0 !important; font-size: 0.85em !important; font-weight: 700 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; line-height: 1 !important; }
   /* ── TIP ARROW: circle like toggle arrow ── */
-  .o2-guide .o2-tip-arrow { width: 28px !important; height: 28px !important; border-radius: 50% !important; background: #73c7f0 !important; color: #154734 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; line-height: 1; }
+  .o2-guide .o2-tip-arrow { width: 28px !important; height: 28px !important; border-radius: 50% !important; background: transparent !important; border: 2px solid #73c7f0 !important; color: #73c7f0 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; line-height: 1; }
   /* ── FIX: tip trigger was content-box so width:100%+padding overflowed, clipping arrow ── */
-  .o2-guide .o2-tip-trigger { box-sizing: border-box !important; }
+  .o2-guide .o2-tip-trigger { box-sizing: border-box !important; padding-right: 22px !important; }
   /* ── TOGGLE LABEL: body-text size so lesson h2 is clearly bigger ── */
   .o2-guide .o2-tips-toggle-label { font-size: 1em !important; font-weight: bold; }
   /* ── LESSON H2: explicitly larger, Squarespace h2 font cascades via all:revert ── */
@@ -284,7 +284,7 @@
           <span class="o2-tips-toggle-label">Tips from implementation</span>
           <span class="o2-tips-toggle-meta">5 tips · Click to expand</span>
         </div>
-        <span class="o2-tips-toggle-arrow">▾</span>
+        <span class="o2-tips-toggle-arrow">▽</span>
       </button>
 
       <div class="o2-tips-collapsible">
@@ -297,7 +297,7 @@
               <h4>Prepare to adapt your model as real facility needs surface</h4>
               <span class="o2-tip-source">HealthPort · Nigeria</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -339,7 +339,7 @@
               <h4>Design with local technical capability as a foundation</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -380,7 +380,7 @@
               <h4>Treat equipment choice as a commercial risk</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -421,7 +421,7 @@
               <h4>Use modular configurations when full systems are not commercially viable</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -463,7 +463,7 @@
               <h4>Replace assumptions with validated field data before committing capital</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -512,7 +512,7 @@
           <span class="o2-tips-toggle-label">Tips from implementation</span>
           <span class="o2-tips-toggle-meta">4 tips · Click to expand</span>
         </div>
-        <span class="o2-tips-toggle-arrow">▾</span>
+        <span class="o2-tips-toggle-arrow">▽</span>
       </button>
 
       <div class="o2-tips-collapsible">
@@ -525,7 +525,7 @@
               <h4>Reliable access to oxygen is the value</h4>
               <span class="o2-tip-source">HealthPort · Nigeria + AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -572,7 +572,7 @@
               <h4>Show value-alignment with facilities</h4>
               <span class="o2-tip-source">HealthPort · Nigeria</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -608,7 +608,7 @@
               <h4>To unlock latent demand, train the community as well as the facility</h4>
               <span class="o2-tip-source">FREO2 · Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -649,7 +649,7 @@
               <h4>Design for psychological safety</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -699,7 +699,7 @@
           <span class="o2-tips-toggle-label">Tips from implementation</span>
           <span class="o2-tips-toggle-meta">6 tips · Click to expand</span>
         </div>
-        <span class="o2-tips-toggle-arrow">▾</span>
+        <span class="o2-tips-toggle-arrow">▽</span>
       </button>
 
       <div class="o2-tips-collapsible">
@@ -712,7 +712,7 @@
               <h4>Treat logistics and geographic clustering as core to service reliability</h4>
               <span class="o2-tip-source">HealthPort · Nigeria</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -753,7 +753,7 @@
               <h4>Integrate specialised vendors into your operating system</h4>
               <span class="o2-tip-source">HealthPort · Nigeria</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -794,7 +794,7 @@
               <h4>Treat distribution and transport of oxygen as a core business capability</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -835,7 +835,7 @@
               <h4>Treat local service delivery capability as non-negotiable to expansion</h4>
               <span class="o2-tip-source">FREO2 · Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -875,7 +875,7 @@
               <h4>Embed technicians into facility life to reduce clinical burden</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -915,7 +915,7 @@
               <h4>Align leadership and implementation teams to de-risk partnerships</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -965,7 +965,7 @@
           <span class="o2-tips-toggle-label">Tips from implementation</span>
           <span class="o2-tips-toggle-meta">1 tip · Click to expand</span>
         </div>
-        <span class="o2-tips-toggle-arrow">▾</span>
+        <span class="o2-tips-toggle-arrow">▽</span>
       </button>
 
       <div class="o2-tips-collapsible">
@@ -978,7 +978,7 @@
               <h4>Treat regulatory delay and import costs as core unit-economics risks</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1027,7 +1027,7 @@
           <span class="o2-tips-toggle-label">Tips from implementation</span>
           <span class="o2-tips-toggle-meta">7 tips · Click to expand</span>
         </div>
-        <span class="o2-tips-toggle-arrow">▾</span>
+        <span class="o2-tips-toggle-arrow">▽</span>
       </button>
 
       <div class="o2-tips-collapsible">
@@ -1040,7 +1040,7 @@
               <h4>Design contracting to align with healthcare facility realities</h4>
               <span class="o2-tip-source">HealthPort · Nigeria</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1081,7 +1081,7 @@
               <h4>Map the real decision pathway before assuming service delivery can begin</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1122,7 +1122,7 @@
               <h4>Design payment terms around healthcare facility cash-flow volatility</h4>
               <span class="o2-tip-source">HealthPort · Nigeria</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1163,7 +1163,7 @@
               <h4>Design for the market that exists</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1200,7 +1200,7 @@
               <h4>Use cross-subsidisation to stabilise medical oxygen supply</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1241,7 +1241,7 @@
               <h4>Design guardrails that make emergencies the exception</h4>
               <span class="o2-tip-source">HealthPort · Nigeria + AFHIA · Uganda</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
@@ -1290,7 +1290,7 @@
               <h4>Design the commercial model around how oxygen is actually funded</h4>
               <span class="o2-tip-source">FREO2 · Tanzania</span>
             </div>
-            <span class="o2-tip-arrow">▾</span>
+            <span class="o2-tip-arrow">▽</span>
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
