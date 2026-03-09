@@ -279,17 +279,19 @@
     background: transparent !important;
     position: relative;
   }
-  /* Divider spans only the height of the quote text */
-  .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote::after {
+  /* Remove the left-column divider */
+  .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote::after { display: none; }
+  /* Divider anchored to right column — starts/ends with the body text */
+  .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body { flex: 1; padding: 28px; position: relative; }
+  .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body::before {
     content: '';
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    left: 0;
+    top: 28px;
+    bottom: 28px;
     width: 1px;
     background: #73c7f0;
   }
-  .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body { flex: 1; padding: 28px; }
   /* ── CASE STUDY: quote text italic+bold, attribution stays regular ── */
   .o2-guide .o2-opening-quote p { font-style: italic !important; font-weight: 700 !important; }
   /* ── TABS ── */
