@@ -269,7 +269,7 @@
   .o2-guide .o2-case-study-header { display: none !important; }
   /* ── CASE STUDY: 2-column — quote left, body right, thin inset divider ── */
   .o2-guide .o2-tab-panel[data-tab="case"] { padding: 0; }
-  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: stretch; background: #ffffff; }
+  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: flex-start; background: #ffffff; }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote {
     flex: 0 0 42%;
     margin-bottom: 0;
@@ -279,42 +279,35 @@
     background: transparent !important;
     position: relative;
   }
-  /* Thin divider that doesn't span full height */
+  /* Divider spans only the height of the quote text */
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote::after {
     content: '';
     position: absolute;
     right: 0;
-    top: 15%;
-    bottom: 15%;
+    top: 0;
+    bottom: 0;
     width: 1px;
     background: #73c7f0;
   }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body { flex: 1; padding: 28px; }
   /* ── CASE STUDY: quote text italic+bold, attribution stays regular ── */
   .o2-guide .o2-opening-quote p { font-style: italic !important; font-weight: 700 !important; }
-  /* ── TABS: border around the whole tip-body (nav + panel together) ── */
-  .o2-guide .o2-accordion-tip.open .o2-tip-body { border: 1px solid #9ab8c4 !important; border-top: none !important; overflow: hidden !important; border-radius: 0 0 6px 6px !important; }
-  .o2-guide .o2-tab-nav { background: #e0f6fe !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: 1px solid #9ab8c4 !important; border-top: 1px solid #9ab8c4 !important; }
+  /* ── TABS ── */
+  .o2-guide .o2-tab-nav { background: #e0f6fe !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: 1px solid #c5dfe8 !important; }
   .o2-guide .o2-tab-btn {
     border-radius: 6px 6px 0 0 !important;
     padding: 10px 20px !important;
     font-weight: 600 !important;
     color: #4A5568 !important;
     border: none !important;
-    margin-bottom: 0 !important;
     background: transparent !important;
+    opacity: 1 !important;
   }
-  .o2-guide .o2-tab-btn.active {
-    background: #ffffff !important;
-    color: #1C2B3A !important;
-  }
+  .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; opacity: 1 !important; }
   .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
   /* ── "WHAT THIS MEANS" TAB: #154734 identity ── */
   .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { color: #154734 !important; }
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active {
-    background: #154734 !important;
-    color: #ffffff !important;
-  }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { background: #154734 !important; color: #ffffff !important; }
   .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2):hover { background: rgba(21,71,52,0.12) !important; color: #154734 !important; }
   /* ── "WHAT THIS MEANS" PANEL: dark green bg, all text white ── */
   .o2-guide .o2-tab-panel[data-tab="means"].active { background: #154734 !important; }
