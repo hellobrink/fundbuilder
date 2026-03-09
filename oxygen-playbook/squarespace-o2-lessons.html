@@ -267,29 +267,60 @@
   .o2-guide .o2-org-afhia { background: #8a90ed !important; color: #ffffff !important; }
   /* ── CASE STUDY: hide repeated org/country (already in trigger header) ── */
   .o2-guide .o2-case-study-header { display: none !important; }
-  /* ── CASE STUDY: 2-column — quote left, body right, #73c7f0 divider, all white bg ── */
+  /* ── CASE STUDY: 2-column — quote left, body right, thin inset divider ── */
   .o2-guide .o2-tab-panel[data-tab="case"] { padding: 0; }
   .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: stretch; background: #ffffff; }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote {
     flex: 0 0 42%;
     margin-bottom: 0;
     border-radius: 0;
-    border-left: none;
-    border-right: 3px solid #73c7f0;
+    border: none;
     padding: 28px;
     background: transparent !important;
+    position: relative;
+  }
+  /* Thin divider that doesn't span full height */
+  .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: #73c7f0;
   }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body { flex: 1; padding: 28px; }
   /* ── CASE STUDY: quote text italic+bold, attribution stays regular ── */
   .o2-guide .o2-opening-quote p { font-style: italic !important; font-weight: 700 !important; }
-  /* ── TABS: more visually distinct ── */
-  .o2-guide .o2-tab-nav { background: #e0f6fe !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: none !important; }
-  .o2-guide .o2-tab-btn { border-radius: 4px 4px 0 0 !important; padding: 10px 20px !important; font-weight: 600 !important; color: #4A5568 !important; border-bottom: 3px solid transparent !important; background: transparent !important; }
-  .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; border-bottom-color: #73c7f0 !important; }
+  /* ── TABS: connected look — nav has bottom border, active tab overlaps it ── */
+  .o2-guide .o2-tab-nav { background: #e0f6fe !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: 2px solid #c5dfe8 !important; }
+  .o2-guide .o2-tab-btn {
+    border-radius: 6px 6px 0 0 !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    color: #4A5568 !important;
+    border: 1px solid transparent !important;
+    border-bottom: none !important;
+    margin-bottom: -2px !important;
+    position: relative !important;
+    background: transparent !important;
+  }
+  .o2-guide .o2-tab-btn.active {
+    background: #ffffff !important;
+    color: #1C2B3A !important;
+    border-color: #c5dfe8 !important;
+    border-bottom: 2px solid #ffffff !important;
+    z-index: 1 !important;
+  }
   .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
   /* ── "WHAT THIS MEANS" TAB: #154734 identity ── */
   .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { color: #154734 !important; }
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { background: #154734 !important; color: #ffffff !important; border-bottom-color: #154734 !important; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active {
+    background: #154734 !important;
+    color: #ffffff !important;
+    border-color: #154734 !important;
+    border-bottom: 2px solid #154734 !important;
+  }
   .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2):hover { background: rgba(21,71,52,0.12) !important; color: #154734 !important; }
   /* ── "WHAT THIS MEANS" PANEL: dark green bg, all text white ── */
   .o2-guide .o2-tab-panel[data-tab="means"].active { background: #154734 !important; }
@@ -302,7 +333,8 @@
   /* ── RESPONSIVE: stack case study cols on small screens ── */
   @media (max-width: 640px) {
     .o2-guide .o2-tab-panel[data-tab="case"].active { flex-direction: column !important; }
-    .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote { flex: none; border-right: none; border-bottom: 3px solid #73c7f0; }
+    .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote { flex: none; }
+    .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote::after { top: auto; bottom: 0; left: 15%; right: 15%; width: auto; height: 1px; }
   }
 </style>
 
