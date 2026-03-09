@@ -327,14 +327,14 @@
   /* ── ACTION LIST: plain bullets, no divider lines ── */
   .o2-guide .o2-action-list li { border-bottom: none !important; padding: 3px 0 !important; }
   .o2-guide .o2-action-bullet { width: 5px !important; height: 5px !important; background: #73c7f0 !important; margin-top: 10px !important; }
-  /* ── DUAL CASE STUDY: block layout, show company name labels ── */
+  /* ── DUAL CASE STUDY: block layout, hide redundant company labels (text opens with company name) ── */
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case.active { display: block !important; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-case-study-body { padding: 0; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-case-study-body::before { display: none; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case { padding: 0 28px 28px !important; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section { margin-bottom: 20px; padding-top: 20px; border-top: 1px solid var(--o2-rule); }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section:first-child { border-top: none; padding-top: 0; margin-bottom: 20px; }
-  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-company-label { font-weight: 700; display: block; margin-bottom: 8px; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-company-label { display: none !important; }
   /* ── RESPONSIVE: stack case study cols on small screens ── */
   @media (max-width: 640px) {
     .o2-guide .o2-tab-panel[data-tab="case"].active { flex-direction: column !important; }
