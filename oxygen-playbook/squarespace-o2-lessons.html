@@ -263,13 +263,14 @@
   .o2-guide .o2-tip-source { font-size: 0.875rem !important; display: block !important; margin-top: 4px; text-transform: uppercase !important; }
   /* ── CENTER alignment ── */
   .o2-guide .o2-tips-toggle { align-items: center !important; }
-  /* ── Remove h4 default margins inside trigger so align-items:center works correctly ── */
+  /* ── Align trigger items to top so title position is consistent regardless of source line length ── */
   .o2-guide .o2-tip-trigger-text h4 { margin: 0 0 2px !important; font-size: 1.15rem !important; font-weight: 700 !important; }
-  .o2-guide .o2-tip-trigger { align-items: center !important; }
+  .o2-guide .o2-tip-trigger { align-items: flex-start !important; }
+  .o2-guide .o2-tip-arrow { align-self: center !important; }
   /* ── ORG TAG: brand palette ── */
   .o2-guide .o2-org-healthport { background: #154734 !important; color: #ffffff !important; }
   .o2-guide .o2-org-freo2 { background: #00f399 !important; color: #000000 !important; }
-  .o2-guide .o2-org-afhia { background: #e584ec !important; color: #ffffff !important; }
+  .o2-guide .o2-org-afhia { background: #e584ec !important; color: #000000 !important; }
   /* ── CASE STUDY: hide repeated org/country (already in trigger header) ── */
   .o2-guide .o2-case-study-header { display: none !important; }
   /* ── CASE STUDY: 2-column — quote left, body right, thin inset divider ── */
@@ -300,7 +301,7 @@
   /* ── CASE STUDY: quote text italic+bold, attribution stays regular ── */
   .o2-guide .o2-opening-quote p { font-style: italic !important; font-weight: 700 !important; }
   /* ── TABS ── */
-  .o2-guide .o2-tab-nav { background: #e0f6fe !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: 1px solid #c5dfe8 !important; }
+  .o2-guide .o2-tab-nav { background: #bcbcbc !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: 1px solid #a8a8a8 !important; }
   .o2-guide .o2-tab-btn {
     border-radius: 6px 6px 0 0 !important;
     padding: 10px 20px !important;
@@ -1441,14 +1442,14 @@
   // ── ORG BADGES + COUNTRY FLAGS ──
   (function() {
     var orgColors     = { 'HealthPort': '#154734', 'FREO2': '#00f399', 'AFHIA': '#e584ec' };
-    var orgTextColors = { 'HealthPort': '#ffffff',  'FREO2': '#000000', 'AFHIA': '#ffffff' };
+    var orgTextColors = { 'HealthPort': '#ffffff',  'FREO2': '#000000', 'AFHIA': '#000000' };
     var countryFlags  = { 'Nigeria': '🇳🇬', 'Uganda': '🇺🇬', 'Tanzania': '🇹🇿' };
 
     function processText(text) {
       // Replace org names with brand-coloured badges
       Object.keys(orgColors).forEach(function(org) {
         var style = 'background:' + orgColors[org] + ';color:' + orgTextColors[org] +
-          ';padding:1px 7px;border-radius:2px;font-size:1em;letter-spacing:0.03em;white-space:nowrap;margin-right:0.5em;';
+          ';padding:1px 7px;border-radius:2px;font-size:1em;letter-spacing:0.03em;white-space:nowrap;margin-left:0.5em;margin-right:0.5em;';
         text = text.replace(new RegExp('\\b' + org + '\\b', 'g'),
           '<span style="' + style + '">' + org + '</span>');
       });
@@ -1457,9 +1458,9 @@
       text = text.replace(/\s*\+\s*/g, ' ');
       // Collapse extra spaces
       text = text.replace(/\s{2,}/g, ' ').trim();
-      // Append flag emojis after country names
+      // Append flag emojis after country names, with matching right margin
       text = text.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
-        return m + '\u00a0' + countryFlags[m];
+        return '<span style="margin-right:0.5em">' + m + '\u00a0' + countryFlags[m] + '</span>';
       });
       return text;
     }
