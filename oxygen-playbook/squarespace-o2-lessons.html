@@ -255,8 +255,10 @@
   .o2-guide .o2-tip-trigger { box-sizing: border-box !important; padding-right: 24px !important; }
   /* ── TOGGLE LABEL: body-text size so lesson h2 is clearly bigger ── */
   .o2-guide .o2-tips-toggle-label { font-size: 1em !important; font-weight: bold; }
-  /* ── LESSON H2: explicitly larger, Squarespace h2 font cascades via all:revert ── */
-  .o2-guide .o2-lesson-header-bar h2 { font-size: 2em !important; margin-bottom: 12px; }
+  /* ── LESSON H2: Georgia serif, 3rem, 400 weight, 1.4 line-height ── */
+  .o2-guide .o2-lesson-header-bar h2 { font-family: Georgia, 'Times New Roman', serif !important; font-size: 3rem !important; font-weight: 400 !important; line-height: 1.4em !important; margin-bottom: 12px; }
+  /* ── LESSON TAG: all caps ── */
+  .o2-guide .o2-lesson-tag { text-transform: uppercase !important; }
   /* ── SOURCE LINE: body text size ── */
   .o2-guide .o2-tip-source { font-size: 1em !important; display: block !important; margin-top: 4px; }
   /* ── CENTER alignment ── */
@@ -289,7 +291,7 @@
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body::before {
     content: '';
     position: absolute;
-    left: 0;
+    right: 0;
     top: 28px;
     bottom: 28px;
     width: 1px;
@@ -310,11 +312,12 @@
   }
   .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; opacity: 1 !important; }
   .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
-  /* ── "CASE STUDY" TAB: always white bg ── */
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1) { background: #ffffff !important; color: #1C2B3A !important; }
-  /* ── "WHAT THIS MEANS" TAB: always #154734 bg + white text, 80% opacity when not active ── */
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { background: #154734 !important; color: #ffffff !important; opacity: 0.8; }
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { opacity: 1; }
+  /* ── CASE STUDY TAB: outlined inactive, filled white active ── */
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1) { background: transparent !important; color: #1C2B3A !important; border: 1px solid #1C2B3A !important; border-bottom: none !important; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1).active { background: #ffffff !important; border-color: transparent !important; }
+  /* ── WHAT THIS MEANS TAB: outlined inactive (80% opacity), filled green active ── */
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { background: transparent !important; color: #154734 !important; border: 1px solid #154734 !important; border-bottom: none !important; opacity: 0.8; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { background: #154734 !important; color: #ffffff !important; border-color: transparent !important; opacity: 1; }
   /* ── "WHAT THIS MEANS" PANEL: dark green bg, all text white ── */
   .o2-guide .o2-tab-panel[data-tab="means"].active { background: #154734 !important; }
   .o2-guide .o2-tab-panel[data-tab="means"].active .o2-meaning-body p { color: #ffffff !important; }
@@ -323,6 +326,14 @@
   /* ── ACTION LIST: plain bullets, no divider lines ── */
   .o2-guide .o2-action-list li { border-bottom: none !important; padding: 3px 0 !important; }
   .o2-guide .o2-action-bullet { width: 5px !important; height: 5px !important; background: #73c7f0 !important; margin-top: 10px !important; }
+  /* ── DUAL CASE STUDY: block layout, show company name labels ── */
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case.active { display: block !important; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-case-study-body { padding: 0; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-case-study-body::before { display: none; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case { padding: 0 28px 28px !important; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section { margin-bottom: 20px; padding-top: 20px; border-top: 1px solid var(--o2-rule); }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section:first-child { border-top: none; padding-top: 0; margin-bottom: 20px; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-company-label { font-weight: 700; display: block; margin-bottom: 8px; }
   /* ── RESPONSIVE: stack case study cols on small screens ── */
   @media (max-width: 640px) {
     .o2-guide .o2-tab-panel[data-tab="case"].active { flex-direction: column !important; }
@@ -596,22 +607,19 @@
               <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l2t1','case')">Case Studies</button>
               <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l2t1','means')">What this means in practice</button>
             </div>
-            <div class="o2-tab-panel active" data-tab="case">
-              <div class="o2-case-study-header">
-                <span class="o2-org-tag o2-org-healthport">HealthPort</span>
-                <span>Nigeria</span>
+            <div class="o2-tab-panel active o2-dual-case" data-tab="case">
+              <div class="o2-dual-case-section">
+                <span class="o2-dual-company-label">HealthPort</span>
+                <div class="o2-case-study-body">
+                  <p>HealthPort learned early that while affordability mattered, healthcare facilities consistently prioritised reliability once the service was live. Before go-live, HealthPort encountered quiet skepticism. Facilities agreed to trial the service, but were watching closely to see whether oxygen would still run out. As reliability stabilised, behaviour changed. Facility leadership described the benefit of O2aaS as: fewer late-night escalation calls, fewer weekend shortages, and less constant worry about running out of oxygen.</p>
+                  <p>Only after this experience did trust build. Facilities became more transparent about usage and constraints, and conversations shifted from "will this work?" to practical co-design. Predictability became the reason facilities stayed and deepened engagement.</p>
+                </div>
               </div>
-              <div class="o2-case-study-body">
-                <p>HealthPort learned early that while affordability mattered, healthcare facilities consistently prioritised reliability once the service was live. Before go-live, HealthPort encountered quiet skepticism. Facilities agreed to trial the service, but were watching closely to see whether oxygen would still run out. As reliability stabilised, behaviour changed. Facility leadership described the benefit of O2aaS as: fewer late-night escalation calls, fewer weekend shortages, and less constant worry about running out of oxygen.</p>
-                <p>Only after this experience did trust build. Facilities became more transparent about usage and constraints, and conversations shifted from "will this work?" to practical co-design. Predictability became the reason facilities stayed and deepened engagement.</p>
-              </div>
-              <div style="border-top: 1px solid var(--o2-rule); margin: 20px 0;"></div>
-              <div class="o2-case-study-header">
-                <span class="o2-org-tag o2-org-afhia">AFHIA</span>
-                <span>Uganda</span>
-              </div>
-              <div class="o2-case-study-body">
-                <p>AFHIA observed that once facilities trusted their delivery schedule, they would sometimes prevent other suppliers from delivering on the same day. This increased the stakes of every promised delivery. A delay could leave a facility without oxygen entirely. AFHIA therefore treated delivery commitments as non-negotiable, building redundancy and operational discipline around promised schedules, which became central to building trust and maintaining long-term relationships.</p>
+              <div class="o2-dual-case-section">
+                <span class="o2-dual-company-label">AFHIA</span>
+                <div class="o2-case-study-body">
+                  <p>AFHIA observed that once facilities trusted their delivery schedule, they would sometimes prevent other suppliers from delivering on the same day. This increased the stakes of every promised delivery. A delay could leave a facility without oxygen entirely. AFHIA therefore treated delivery commitments as non-negotiable, building redundancy and operational discipline around promised schedules, which became central to building trust and maintaining long-term relationships.</p>
+                </div>
               </div>
             </div>
             <div class="o2-tab-panel" data-tab="means">
@@ -1312,25 +1320,22 @@
               <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l5t6','case')">Case Studies</button>
               <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l5t6','means')">What this means in practice</button>
             </div>
-            <div class="o2-tab-panel active" data-tab="case">
-              <div class="o2-case-study-header">
-                <span class="o2-org-tag o2-org-healthport">HealthPort</span>
-                <span>Nigeria</span>
+            <div class="o2-tab-panel active o2-dual-case" data-tab="case">
+              <div class="o2-dual-case-section">
+                <span class="o2-dual-company-label">HealthPort</span>
+                <div class="o2-case-study-body">
+                  <p>HealthPort introduced a minimum-threshold rule requiring facilities to notify the team when oxygen dropped to a defined level, rather than waiting until depletion. Crossing this threshold triggered automatic internal response, even if facility leadership was unavailable. This reduced last-minute emergencies, improved surge management, and reinforced planned replenishment behaviour.</p>
+                </div>
               </div>
-              <div class="o2-case-study-body">
-                <p>HealthPort introduced a minimum-threshold rule requiring facilities to notify the team when oxygen dropped to a defined level, rather than waiting until depletion. Crossing this threshold triggered automatic internal response, even if facility leadership was unavailable. This reduced last-minute emergencies, improved surge management, and reinforced planned replenishment behaviour.</p>
-              </div>
-              <div style="border-top: 1px solid var(--o2-rule); margin: 20px 0;"></div>
-              <div class="o2-case-study-header">
-                <span class="o2-org-tag o2-org-afhia">AFHIA</span>
-                <span>Uganda</span>
-              </div>
-              <div class="o2-case-study-body">
-                <p>AFHIA operates a distributed cylinder model in rural Uganda, where emergency deliveries are costly and logistically disruptive. When emergency delivery was underpriced or too flexible, facilities defaulted to reactive ordering. AFHIA therefore applied premium pricing and fuel cost recovery for emergency requests. Over time, this reduced unnecessary emergency calls and reinforced predictable ordering behaviour.</p>
-              </div>
-              <div class="o2-closing-quote">
-                <p>"If emergency orders are underpriced, everything becomes an emergency."</p>
-                <div class="o2-quote-attr">John Kanyonyozi, Executive Director, AFHIA</div>
+              <div class="o2-dual-case-section">
+                <span class="o2-dual-company-label">AFHIA</span>
+                <div class="o2-case-study-body">
+                  <p>AFHIA operates a distributed cylinder model in rural Uganda, where emergency deliveries are costly and logistically disruptive. When emergency delivery was underpriced or too flexible, facilities defaulted to reactive ordering. AFHIA therefore applied premium pricing and fuel cost recovery for emergency requests. Over time, this reduced unnecessary emergency calls and reinforced predictable ordering behaviour.</p>
+                  <div class="o2-closing-quote" style="margin-top: 12px;">
+                    <p>"If emergency orders are underpriced, everything becomes an emergency."</p>
+                    <div class="o2-quote-attr">John Kanyonyozi, Executive Director, AFHIA</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="o2-tab-panel" data-tab="means">
@@ -1443,7 +1448,7 @@
       // Replace org names with brand-coloured badges
       Object.keys(orgColors).forEach(function(org) {
         var style = 'background:' + orgColors[org] + ';color:' + orgTextColors[org] +
-          ';padding:1px 7px;border-radius:2px;font-size:1em;font-weight:600;letter-spacing:0.03em;white-space:nowrap;margin-right:0.5em;';
+          ';padding:1px 7px;border-radius:2px;font-size:1em;letter-spacing:0.03em;white-space:nowrap;margin-right:0.5em;';
         text = text.replace(new RegExp('\\b' + org + '\\b', 'g'),
           '<span style="' + style + '">' + org + '</span>');
       });
