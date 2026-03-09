@@ -28,14 +28,14 @@
     padding: 0 24px 80px;
   }
   /* ── LESSON BLOCK ── */
-  .o2-guide .o2-lesson-block { margin-bottom: 8px; }
+  .o2-guide .o2-lesson-block { margin-bottom: 40px; }
   .o2-guide .o2-lesson-header-bar {
     background: #73c7f0;
-    border: 1px solid var(--o2-rule);
+    border: none;
     border-radius: 4px 4px 0 0;
     padding: 28px 32px 22px;
   }
-  .o2-guide .o2-lesson-tag { margin-bottom: 8px; }
+  .o2-guide .o2-lesson-tag { margin-bottom: 8px; color: white; text-transform: uppercase; letter-spacing: 0.1em; }
   .o2-guide .o2-lesson-header-bar h3 { margin-bottom: 12px; }
   .o2-guide .o2-lesson-intro { max-width: 800px; margin: 0; }
   /* ── IMAGE PLACEHOLDER ── */
@@ -82,43 +82,39 @@
     margin-bottom: 8px;
     transition: all 0.18s;
   }
-  .o2-guide .o2-tips-toggle:hover { border-color: var(--o2-oxygen); background: var(--o2-oxygen-light); }
-  .o2-guide .o2-tips-toggle.open { border-color: var(--o2-oxygen); background: var(--o2-oxygen-light); }
-  .o2-guide .o2-tips-toggle-icon {
+  .o2-guide .o2-tips-toggle:hover { background: #5ab9e8; }
+  .o2-guide .o2-tips-toggle.open { background: #5ab9e8; }
+  .o2-guide .o2-tips-toggle-icon { display: none; }
+  .o2-guide .o2-tips-toggle-text { flex: 1; }
+  .o2-guide .o2-tips-toggle-label { display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .o2-guide .o2-tips-toggle-meta { display: block; font-size: 0.75em; }
+  .o2-guide .o2-tips-toggle-arrow {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--o2-bg);
-    border: 1px solid var(--o2-rule);
+    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.18s;
+    line-height: 28px;
+    text-align: center;
   }
-  .o2-guide .o2-tips-toggle.open .o2-tips-toggle-icon {
-    background: var(--o2-oxygen);
-    color: var(--o2-white);
-    border-color: var(--o2-oxygen);
-  }
-  .o2-guide .o2-tips-toggle-text { flex: 1; }
-  .o2-guide .o2-tips-toggle-label { display: block; margin-bottom: 2px; }
-  .o2-guide .o2-tips-toggle-meta { display: block; }
-  .o2-guide .o2-tips-toggle-arrow { flex-shrink: 0; transition: transform 0.25s ease; }
   .o2-guide .o2-tips-toggle.open .o2-tips-toggle-arrow { transform: rotate(180deg); }
   .o2-guide .o2-tips-collapsible { display: none; }
   .o2-guide .o2-tips-collapsible.open { display: block; }
   /* ── ACCORDION ── */
   .o2-guide .o2-accordion-tip {
     background: var(--o2-white);
-    border: 1px solid var(--o2-rule);
+    border: none;
     border-radius: 4px;
     margin-bottom: 8px;
     overflow: hidden;
     transition: box-shadow 0.2s;
   }
   .o2-guide .o2-accordion-tip:hover { box-shadow: 0 2px 12px rgba(0,102,204,0.08); }
-  .o2-guide .o2-accordion-tip.open { border-color: var(--o2-oxygen-mid); box-shadow: 0 2px 16px rgba(0,102,204,0.1); }
+  .o2-guide .o2-accordion-tip.open { box-shadow: 0 2px 16px rgba(0,102,204,0.1); }
   .o2-guide .o2-tip-trigger {
     width: 100%;
     background: none;
@@ -230,7 +226,7 @@
   .o2-guide p, .o2-guide ul, .o2-guide ol, .o2-guide li,
   .o2-guide blockquote, .o2-guide span, .o2-guide strong, .o2-guide em { all: revert; }
   .o2-guide .o2-tips-toggle, .o2-guide .o2-tip-trigger, .o2-guide .o2-tab-btn { all: unset; display: flex; align-items: center; cursor: pointer; }
-  .o2-guide .o2-tips-toggle { width: 100%; background: var(--o2-white); border: 1px solid var(--o2-rule); border-radius: 4px; padding: 14px 22px; gap: 12px; text-align: left; margin-bottom: 8px; transition: all 0.18s; }
+  .o2-guide .o2-tips-toggle { width: 100%; background: #73c7f0; border: none; border-top: 2px solid white; border-radius: 0; padding: 14px 22px; gap: 12px; text-align: left; transition: all 0.18s; }
   .o2-guide .o2-tip-trigger { width: 100%; background: none; border: none; padding: 18px 24px; gap: 14px; text-align: left; transition: background 0.15s; }
   .o2-guide .o2-tab-btn { display: inline-block; padding: 11px 22px; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.15s; }
   /* ── FORCE accordion visibility ── */
@@ -238,7 +234,7 @@
   .o2-guide .o2-tips-collapsible.open { display: block !important; }
   .o2-guide .o2-tip-body { display: none !important; }
   .o2-guide .o2-accordion-tip.open .o2-tip-body { display: block !important; }
-  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; }
+  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; width: 28px; height: 28px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .o2-guide .o2-tips-toggle.open .o2-tips-toggle-arrow { transform: rotate(180deg); }
   .o2-guide .o2-tip-arrow { transition: transform 0.25s ease; }
   .o2-guide .o2-accordion-tip.open .o2-tip-arrow { transform: rotate(180deg); }
@@ -248,13 +244,6 @@
 </style>
 
 <div class="o2-guide">
-  <!-- LESSONS HEADER -->
-  <div class="o2-lessons-header">
-    <span class="o2-kicker">The lessons</span>
-    <h2>Five areas where getting it right makes the difference</h2>
-    <p>Each lesson draws on real operational experience. Tips are grounded in specific grantee stories, with case studies, practical implications, and direct quotes from the field.</p>
-  </div>
-
   <div class="o2-lessons-wrap">
 
     <!-- ══════════════════════════════ LESSON 1 ══════════════════════════════ -->
