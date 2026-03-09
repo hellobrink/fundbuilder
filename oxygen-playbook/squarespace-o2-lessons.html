@@ -269,7 +269,7 @@
   /* ── ORG TAG: brand palette ── */
   .o2-guide .o2-org-healthport { background: #154734 !important; color: #ffffff !important; }
   .o2-guide .o2-org-freo2 { background: #00f399 !important; color: #000000 !important; }
-  .o2-guide .o2-org-afhia { background: #e584ec !important; color: #ffffff !important; }
+  .o2-guide .o2-org-afhia { background: #e584ec !important; color: #000000 !important; }
   /* ── CASE STUDY: hide repeated org/country (already in trigger header) ── */
   .o2-guide .o2-case-study-header { display: none !important; }
   /* ── CASE STUDY: 2-column — quote left, body right, thin inset divider ── */
@@ -1441,14 +1441,14 @@
   // ── ORG BADGES + COUNTRY FLAGS ──
   (function() {
     var orgColors     = { 'HealthPort': '#154734', 'FREO2': '#00f399', 'AFHIA': '#e584ec' };
-    var orgTextColors = { 'HealthPort': '#ffffff',  'FREO2': '#000000', 'AFHIA': '#ffffff' };
+    var orgTextColors = { 'HealthPort': '#ffffff',  'FREO2': '#000000', 'AFHIA': '#000000' };
     var countryFlags  = { 'Nigeria': '🇳🇬', 'Uganda': '🇺🇬', 'Tanzania': '🇹🇿' };
 
     function processText(text) {
       // Replace org names with brand-coloured badges
       Object.keys(orgColors).forEach(function(org) {
         var style = 'background:' + orgColors[org] + ';color:' + orgTextColors[org] +
-          ';padding:1px 7px;border-radius:2px;font-size:1em;letter-spacing:0.03em;white-space:nowrap;margin-right:0.5em;';
+          ';padding:1px 7px;border-radius:2px;font-size:1em;letter-spacing:0.03em;white-space:nowrap;margin-left:0.5em;margin-right:0.5em;';
         text = text.replace(new RegExp('\\b' + org + '\\b', 'g'),
           '<span style="' + style + '">' + org + '</span>');
       });
