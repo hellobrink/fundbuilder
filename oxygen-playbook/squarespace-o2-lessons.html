@@ -36,7 +36,7 @@
     padding: 28px 32px 22px;
   }
   .o2-guide .o2-lesson-tag { padding-bottom: 10px; padding-left: 32px; padding-right: 32px; margin-bottom: 12px; margin-left: -32px; margin-right: -32px; border-bottom: 2px solid white; color: inherit; text-transform: none; letter-spacing: normal; }
-  .o2-guide .o2-lesson-header-bar h3 { margin-bottom: 12px; }
+  .o2-guide .o2-lesson-header-bar h2 { margin-bottom: 12px; }
   .o2-guide .o2-lesson-intro { max-width: 800px; margin: 0; }
   /* ── IMAGE PLACEHOLDER ── */
   .o2-guide .o2-image-placeholder {
@@ -244,8 +244,19 @@
   /* ── TIPS COLLAPSIBLE: blue background, white tip cards ── */
   .o2-guide .o2-tips-collapsible.open { background: #73c7f0; padding: 12px 16px 16px; border-radius: 0 0 4px 4px; }
   .o2-guide .o2-accordion-tip { background: #ffffff; border-radius: 4px; overflow: hidden; }
-  /* ── TIP BADGE: smaller, blue ── */
-  .o2-guide .o2-tip-badge { background: #0066CC !important; font-size: 0.75em !important; }
+  /* ── TIP BADGE: pill/circle, brand light blue ── */
+  .o2-guide .o2-tip-badge { background: #73c7f0 !important; color: #154734 !important; border-radius: 2em !important; font-size: 0.7em !important; font-weight: 700 !important; padding: 3px 11px !important; letter-spacing: 0.04em !important; flex-shrink: 0; white-space: nowrap; }
+  /* ── TIP ARROW: circle like toggle arrow ── */
+  .o2-guide .o2-tip-arrow { width: 28px !important; height: 28px !important; border-radius: 50% !important; background: #73c7f0 !important; color: #154734 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; font-size: 0.9em; line-height: 1; }
+  /* ── TOGGLE LABEL: match lesson title (h2) size ── */
+  .o2-guide .o2-tips-toggle-label { font-size: 1.4em !important; font-weight: bold; }
+  /* ── CENTER alignment in toggle and tip trigger rows ── */
+  .o2-guide .o2-tips-toggle { align-items: center !important; }
+  .o2-guide .o2-tip-trigger { align-items: center !important; }
+  /* ── ORG TAG: brand palette ── */
+  .o2-guide .o2-org-healthport { background: #154734 !important; color: #ffffff !important; }
+  .o2-guide .o2-org-freo2 { background: #00f399 !important; color: #000000 !important; }
+  .o2-guide .o2-org-afhia { background: #8a90ed !important; color: #ffffff !important; }
 </style>
 
 <div class="o2-guide">
@@ -255,7 +266,7 @@
     <div class="o2-lesson-block">
       <div class="o2-lesson-header-bar">
         <div class="o2-lesson-tag">Lesson 1</div>
-        <h3>A mix of equipment across your portfolio is needed to maximise revenue while responding to diverse needs</h3>
+        <h2>A mix of equipment across your portfolio is needed to maximise revenue while responding to diverse needs</h2>
         <p class="o2-lesson-intro">One of the earliest assumptions you may make is that you can standardise your equipment offer and scale it up or down depending on facility size. In practice, this rarely works. Apart from size, facilities differ in demand volatility, power reliability, ward configuration, funding flows, and growth trajectory. A single "standard package" will either overspecify some facilities (wasting capital) or underserve others (limiting revenue and reliability). A flexible equipment mix allows you to optimise production per asset, respond to changing demand, and build a model that works at both facility and aggregate level.</p>
       </div>
 
@@ -483,7 +494,7 @@
     <div class="o2-lesson-block">
       <div class="o2-lesson-header-bar">
         <div class="o2-lesson-tag">Lesson 2</div>
-        <h3>Increased oxygen utilisation following O2aaS provision indicates significant unrealised latent demand in low-volume facilities</h3>
+        <h2>Increased oxygen utilisation following O2aaS provision indicates significant unrealised latent demand in low-volume facilities</h2>
         <p class="o2-lesson-intro">If a facility appears to use very little oxygen today, do not assume this reflects true demand. Across multiple settings, oxygen use has increased significantly once supply became reliable and clinicians were equipped with pulse oximeters and appropriate training. Oxygen is a service that can stimulate demand when delivered properly.</p>
       </div>
 
@@ -670,7 +681,7 @@
     <div class="o2-lesson-block">
       <div class="o2-lesson-header-bar">
         <div class="o2-lesson-tag">Lesson 3</div>
-        <h3>Strategic expansion while leveraging tech innovations can lower cost per facility</h3>
+        <h2>Strategic expansion while leveraging tech innovations can lower cost per facility</h2>
         <p class="o2-lesson-intro">Growth is signing more facilities while building revenue density. The economics of O2aaS depend on sharing costs across a critical mass of nearby customers. If you expand into isolated facilities without geographic clustering, your logistics, technician time, and maintenance costs will escalate quickly. Technology can extend your reach. But technology works best when layered onto a thoughtful clustering strategy. Without careful expansion planning, providers risk becoming overstretched long before they achieve sustainability.</p>
       </div>
 
@@ -936,7 +947,7 @@
     <div class="o2-lesson-block">
       <div class="o2-lesson-header-bar">
         <div class="o2-lesson-tag">Lesson 4</div>
-        <h3>Strategic procurement based on aggregated demand allows cost reduction beyond what individual facilities can achieve</h3>
+        <h2>Strategic procurement based on aggregated demand allows cost reduction beyond what individual facilities can achieve</h2>
         <p class="o2-lesson-intro">Individual facilities often pay high prices for oxygen equipment and parts because they purchase in low volumes and through multiple intermediaries. As an O2aaS provider, you have the opportunity to aggregate demand across facilities, negotiate higher up the supply chain, and access volume-based pricing.</p>
       </div>
 
@@ -998,7 +1009,7 @@
     <div class="o2-lesson-block">
       <div class="o2-lesson-header-bar">
         <div class="o2-lesson-tag">Lesson 5</div>
-        <h3>Adaptable pricing and revenue models are better able to meet the diverse financial capabilities and preferences of facilities</h3>
+        <h2>Adaptable pricing and revenue models are better able to meet the diverse financial capabilities and preferences of facilities</h2>
         <p class="o2-lesson-intro">Pricing is about aligning with how facilities actually budget, procure, and think about risk. Fixed subscription models can offer predictability but often feel wasteful to facilities during low-demand periods and may not align with public procurement systems. Pure usage-based models are easier to sell but create unpredictable revenue for you as the provider. Hybrid models, combining a modest base fee with usage-based charges, are emerging as the most balanced approach. They offer facilities price stability while giving providers predictable income and incentives to grow demand. The precise mix will depend on facility type, purchasing autonomy, and patient volume. There is no single correct structure, but there is a clear lesson: your pricing model must be as adaptable as your service model.</p>
       </div>
 
@@ -1341,15 +1352,23 @@
 
   // ── ORG BADGES + COUNTRY FLAGS ──
   (function() {
-    var orgColors = { 'HealthPort': '#0066CC', 'FREO2': '#0D9488', 'AFHIA': '#92400E' };
-    var countryFlags = { 'Nigeria': '🇳🇬', 'Uganda': '🇺🇬', 'Tanzania': '🇹🇿' };
+    var orgColors     = { 'HealthPort': '#154734', 'FREO2': '#00f399', 'AFHIA': '#8a90ed' };
+    var orgTextColors = { 'HealthPort': '#ffffff',  'FREO2': '#000000', 'AFHIA': '#ffffff' };
+    var countryFlags  = { 'Nigeria': '🇳🇬', 'Uganda': '🇺🇬', 'Tanzania': '🇹🇿' };
 
     function processText(text) {
-      // Replace org names with coloured badges
+      // Replace org names with brand-coloured badges
       Object.keys(orgColors).forEach(function(org) {
+        var style = 'background:' + orgColors[org] + ';color:' + orgTextColors[org] +
+          ';padding:1px 7px;border-radius:2px;font-size:0.85em;font-weight:600;letter-spacing:0.03em;white-space:nowrap;';
         text = text.replace(new RegExp('\\b' + org + '\\b', 'g'),
-          '<span style="background:' + orgColors[org] + ';color:#fff;padding:1px 7px;border-radius:2px;font-size:0.85em;font-weight:600;letter-spacing:0.03em;">' + org + '</span>');
+          '<span style="' + style + '">' + org + '</span>');
       });
+      // Remove · separator (between org and country) and + between entries
+      text = text.replace(/\s*[·•]\s*/g, ' ');
+      text = text.replace(/\s*\+\s*/g, ' ');
+      // Collapse extra spaces
+      text = text.replace(/\s{2,}/g, ' ').trim();
       // Append flag emojis after country names
       text = text.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
         return m + '\u00a0' + countryFlags[m];
@@ -1364,9 +1383,11 @@
 
     // Process country spans in case study headers
     document.querySelectorAll('.o2-case-study-header > span:not(.o2-org-tag)').forEach(function(el) {
-      el.innerHTML = el.textContent.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
+      var text = el.textContent.replace(/\s*\+\s*/g, ' ').trim();
+      text = text.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
         return m + '\u00a0' + countryFlags[m];
       });
+      el.innerHTML = text;
     });
   })();
 </script>
