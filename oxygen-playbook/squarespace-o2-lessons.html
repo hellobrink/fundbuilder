@@ -241,6 +241,11 @@
   .o2-guide .o2-lesson-block { overflow: hidden; border-radius: 4px; }
   .o2-guide .o2-tips-toggle { width: 100%; max-width: 100%; margin: 0; box-sizing: border-box; min-width: 0; }
   .o2-guide .o2-lesson-intro, .o2-guide .o2-case-study-body, .o2-guide .o2-meaning-body { max-width: none !important; width: 100%; }
+  /* ── TIPS COLLAPSIBLE: blue background, white tip cards ── */
+  .o2-guide .o2-tips-collapsible.open { background: #73c7f0; padding: 12px 16px 16px; border-radius: 0 0 4px 4px; }
+  .o2-guide .o2-accordion-tip { background: #ffffff; border-radius: 4px; overflow: hidden; }
+  /* ── TIP BADGE: smaller, blue ── */
+  .o2-guide .o2-tip-badge { background: #0066CC !important; font-size: 0.75em !important; }
 </style>
 
 <div class="o2-guide">
@@ -1333,4 +1338,35 @@
       panel.classList.toggle('active', panel.getAttribute('data-tab') === tabKey);
     });
   }
+
+  // ── ORG BADGES + COUNTRY FLAGS ──
+  (function() {
+    var orgColors = { 'HealthPort': '#0066CC', 'FREO2': '#0D9488', 'AFHIA': '#92400E' };
+    var countryFlags = { 'Nigeria': '🇳🇬', 'Uganda': '🇺🇬', 'Tanzania': '🇹🇿' };
+
+    function processText(text) {
+      // Replace org names with coloured badges
+      Object.keys(orgColors).forEach(function(org) {
+        text = text.replace(new RegExp('\\b' + org + '\\b', 'g'),
+          '<span style="background:' + orgColors[org] + ';color:#fff;padding:1px 7px;border-radius:2px;font-size:0.85em;font-weight:600;letter-spacing:0.03em;">' + org + '</span>');
+      });
+      // Append flag emojis after country names
+      text = text.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
+        return m + '\u00a0' + countryFlags[m];
+      });
+      return text;
+    }
+
+    // Process trigger source lines
+    document.querySelectorAll('.o2-tip-source').forEach(function(el) {
+      el.innerHTML = processText(el.textContent);
+    });
+
+    // Process country spans in case study headers
+    document.querySelectorAll('.o2-case-study-header > span:not(.o2-org-tag)').forEach(function(el) {
+      el.innerHTML = el.textContent.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
+        return m + '\u00a0' + countryFlags[m];
+      });
+    });
+  })();
 </script>
