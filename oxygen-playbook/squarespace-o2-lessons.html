@@ -1457,9 +1457,9 @@
       text = text.replace(/\s*\+\s*/g, ' ');
       // Collapse extra spaces
       text = text.replace(/\s{2,}/g, ' ').trim();
-      // Append flag emojis after country names
+      // Append flag emojis after country names, with matching right margin
       text = text.replace(/\b(Nigeria|Uganda|Tanzania)\b/g, function(m) {
-        return m + '\u00a0' + countryFlags[m];
+        return '<span style="margin-right:0.5em">' + m + '\u00a0' + countryFlags[m] + '</span>';
       });
       return text;
     }
