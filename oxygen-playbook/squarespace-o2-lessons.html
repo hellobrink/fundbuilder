@@ -1,9 +1,9 @@
 <style>
   /* ── SCOPE: all styles prefixed with .o2-guide to avoid Squarespace conflicts ── */
   .o2-guide {
-    --o2-oxygen: #0066CC;
-    --o2-oxygen-light: #E8F2FF;
-    --o2-oxygen-mid: #B8D4F0;
+    --o2-oxygen: #73c7f0;
+    --o2-oxygen-light: #e0f6fe;
+    --o2-oxygen-mid: #a8e1f7;
     --o2-charcoal: #1C2B3A;
     --o2-mid: #4A5568;
     --o2-soft: #8899AA;
@@ -113,8 +113,8 @@
     overflow: hidden;
     transition: box-shadow 0.2s;
   }
-  .o2-guide .o2-accordion-tip:hover { box-shadow: 0 2px 12px rgba(0,102,204,0.08); }
-  .o2-guide .o2-accordion-tip.open { box-shadow: 0 2px 16px rgba(0,102,204,0.1); }
+  .o2-guide .o2-accordion-tip:hover { box-shadow: 0 2px 12px rgba(115,199,240,0.2); }
+  .o2-guide .o2-accordion-tip.open { box-shadow: 0 2px 16px rgba(115,199,240,0.3); }
   .o2-guide .o2-tip-trigger {
     width: 100%;
     background: none;
@@ -265,6 +265,35 @@
   .o2-guide .o2-org-healthport { background: #154734 !important; color: #ffffff !important; }
   .o2-guide .o2-org-freo2 { background: #00f399 !important; color: #000000 !important; }
   .o2-guide .o2-org-afhia { background: #8a90ed !important; color: #ffffff !important; }
+  /* ── CASE STUDY: hide repeated org/country (already in trigger header) ── */
+  .o2-guide .o2-case-study-header { display: none !important; }
+  /* ── CASE STUDY: 2-column — quote left, body right, #73c7f0 divider ── */
+  .o2-guide .o2-tab-panel[data-tab="case"] { padding: 0; }
+  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: stretch; }
+  .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote {
+    flex: 0 0 42%;
+    margin-bottom: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: 3px solid #73c7f0;
+    padding: 28px;
+  }
+  .o2-guide .o2-tab-panel[data-tab="case"] .o2-case-study-body { flex: 1; padding: 28px; }
+  /* ── CASE STUDY: quote text italic+bold, attribution stays regular ── */
+  .o2-guide .o2-opening-quote p { font-style: italic !important; font-weight: 700 !important; }
+  /* ── TABS: more visually distinct ── */
+  .o2-guide .o2-tab-nav { background: #e0f6fe !important; padding: 8px 12px 0 !important; gap: 4px !important; border-bottom: none !important; }
+  .o2-guide .o2-tab-btn { border-radius: 4px 4px 0 0 !important; padding: 10px 20px !important; font-weight: 600 !important; color: #4A5568 !important; border-bottom: 3px solid transparent !important; background: transparent !important; }
+  .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; border-bottom-color: #73c7f0 !important; }
+  .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
+  /* ── ACTION LIST: plain bullets, no divider lines ── */
+  .o2-guide .o2-action-list li { border-bottom: none !important; padding: 3px 0 !important; }
+  .o2-guide .o2-action-bullet { width: 8px !important; height: 8px !important; background: #73c7f0 !important; margin-top: 6px !important; }
+  /* ── RESPONSIVE: stack case study cols on small screens ── */
+  @media (max-width: 640px) {
+    .o2-guide .o2-tab-panel[data-tab="case"].active { flex-direction: column !important; }
+    .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote { flex: none; border-right: none; border-bottom: 3px solid #73c7f0; }
+  }
 </style>
 
 <div class="o2-guide">
