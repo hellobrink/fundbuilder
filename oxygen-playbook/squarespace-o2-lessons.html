@@ -229,7 +229,7 @@
   .o2-guide .o2-tips-toggle { width: 100%; background: #000000; border: none; border-top: 2px solid white; border-radius: 0; padding: 14px 24px 14px 32px; gap: 12px; text-align: left; transition: all 0.18s; color: #ffffff; }
   .o2-guide .o2-tips-toggle:hover { background: #1a1a1a !important; }
   .o2-guide .o2-tips-toggle.open { background: #000000 !important; }
-  .o2-guide .o2-tip-trigger { width: 100%; background: none; border: none; padding: 18px 24px; gap: 14px; text-align: left; transition: background 0.15s; }
+  .o2-guide .o2-tip-trigger { width: 100%; background: none; border: none; padding: 18px 24px; gap: 22px; text-align: left; transition: background 0.15s; }
   .o2-guide .o2-tab-btn { display: inline-block; padding: 11px 22px; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.15s; }
   /* ── FORCE accordion visibility ── */
   .o2-guide .o2-tips-collapsible { display: none !important; }
@@ -257,12 +257,12 @@
   .o2-guide .o2-tips-toggle-label { font-size: 1em !important; font-weight: bold; }
   /* ── LESSON H2: explicitly larger, Squarespace h2 font cascades via all:revert ── */
   .o2-guide .o2-lesson-header-bar h2 { font-size: 2em !important; margin-bottom: 12px; }
-  /* ── SOURCE LINE: same small size as toggle meta ── */
-  .o2-guide .o2-tip-source { font-size: 0.75em !important; display: block !important; margin-top: 4px; }
+  /* ── SOURCE LINE: body text size ── */
+  .o2-guide .o2-tip-source { font-size: 1em !important; display: block !important; margin-top: 4px; }
   /* ── CENTER alignment ── */
   .o2-guide .o2-tips-toggle { align-items: center !important; }
   /* ── Remove h4 default margins inside trigger so align-items:center works correctly ── */
-  .o2-guide .o2-tip-trigger-text h4 { margin: 0 0 2px !important; }
+  .o2-guide .o2-tip-trigger-text h4 { margin: 0 0 2px !important; font-size: 1.15em !important; }
   .o2-guide .o2-tip-trigger { align-items: center !important; }
   /* ── ORG TAG: brand palette ── */
   .o2-guide .o2-org-healthport { background: #154734 !important; color: #ffffff !important; }
@@ -272,7 +272,7 @@
   .o2-guide .o2-case-study-header { display: none !important; }
   /* ── CASE STUDY: 2-column — quote left, body right, thin inset divider ── */
   .o2-guide .o2-tab-panel[data-tab="case"] { padding: 0; }
-  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: flex-start; background: #ffffff; }
+  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; flex-direction: row-reverse; align-items: flex-start; background: #ffffff; }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote {
     flex: 0 0 42%;
     margin-bottom: 0;
@@ -312,8 +312,9 @@
   .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
   /* ── "CASE STUDY" TAB: always white bg ── */
   .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1) { background: #ffffff !important; color: #1C2B3A !important; }
-  /* ── "WHAT THIS MEANS" TAB: always #154734 bg + white text ── */
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { background: #154734 !important; color: #ffffff !important; }
+  /* ── "WHAT THIS MEANS" TAB: always #154734 bg + white text, 80% opacity when not active ── */
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { background: #154734 !important; color: #ffffff !important; opacity: 0.8; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { opacity: 1; }
   /* ── "WHAT THIS MEANS" PANEL: dark green bg, all text white ── */
   .o2-guide .o2-tab-panel[data-tab="means"].active { background: #154734 !important; }
   .o2-guide .o2-tab-panel[data-tab="means"].active .o2-meaning-body p { color: #ffffff !important; }
