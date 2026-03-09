@@ -1,0 +1,522 @@
+<style>
+  /* ── SCOPE: all styles prefixed with .o2-guide to avoid Squarespace conflicts ── */
+  .o2-guide {
+    --o2-oxygen: #0066CC;
+    --o2-oxygen-light: #E8F2FF;
+    --o2-oxygen-mid: #B8D4F0;
+    --o2-charcoal: #1C2B3A;
+    --o2-mid: #4A5568;
+    --o2-soft: #8899AA;
+    --o2-rule: #DDE5EE;
+    --o2-bg: #F7F9FC;
+    --o2-white: #FFFFFF;
+  }
+  /* ── LESSONS HEADER ── */
+  .o2-guide .o2-lessons-header {
+    max-width: none;
+    margin: 0 auto;
+    padding: 48px 24px 24px;
+    border-top: 1px solid var(--o2-rule);
+  }
+  .o2-guide .o2-kicker { display: block; margin-bottom: 10px; }
+  .o2-guide .o2-lessons-header h2 { max-width: 620px; margin-bottom: 10px; }
+  .o2-guide .o2-lessons-header p { max-width: 640px; margin: 0; }
+  /* ── LESSONS WRAP ── */
+  .o2-guide .o2-lessons-wrap {
+    max-width: none;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  /* ── LESSON BLOCK ── */
+  .o2-guide .o2-lesson-block { margin-bottom: 8px; }
+  .o2-guide .o2-lesson-header-bar {
+    background: var(--o2-white);
+    border: 1px solid var(--o2-rule);
+    border-top: 4px solid var(--o2-oxygen);
+    border-radius: 4px 4px 0 0;
+    padding: 28px 32px 22px;
+  }
+  .o2-guide .o2-lesson-tag { margin-bottom: 8px; }
+  .o2-guide .o2-lesson-header-bar h3 { margin-bottom: 12px; }
+  .o2-guide .o2-lesson-intro { max-width: 800px; margin: 0; }
+  /* ── IMAGE PLACEHOLDER ── */
+  .o2-guide .o2-image-placeholder {
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .o2-guide .o2-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 12px,
+      rgba(0,0,0,0.03) 12px,
+      rgba(0,0,0,0.03) 13px
+    );
+  }
+  .o2-guide .o2-image-placeholder-inner { position: relative; text-align: center; padding: 24px 20px; }
+  .o2-guide .o2-image-placeholder-icon { margin-bottom: 6px; display: block; }
+  .o2-guide .o2-image-placeholder-label { margin-bottom: 4px; }
+  .o2-guide .o2-image-placeholder-desc { max-width: 300px; margin: 0; }
+  .o2-guide .o2-image-placeholder.hero { height: 200px; background: #DDE5EE; }
+  .o2-guide .o2-image-placeholder.inline { height: 160px; background: #E8EDF3; margin: 16px 0 0; }
+  /* ── TIPS PARENT TOGGLE ── */
+  .o2-guide .o2-tips-toggle {
+    width: 100%;
+    background: var(--o2-white);
+    border: 1px solid var(--o2-rule);
+    border-radius: 4px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 8px;
+    transition: all 0.18s;
+  }
+  .o2-guide .o2-tips-toggle:hover { border-color: var(--o2-oxygen); background: var(--o2-oxygen-light); }
+  .o2-guide .o2-tips-toggle.open { border-color: var(--o2-oxygen); background: var(--o2-oxygen-light); }
+  .o2-guide .o2-tips-toggle-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--o2-bg);
+    border: 1px solid var(--o2-rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.18s;
+  }
+  .o2-guide .o2-tips-toggle.open .o2-tips-toggle-icon {
+    background: var(--o2-oxygen);
+    color: var(--o2-white);
+    border-color: var(--o2-oxygen);
+  }
+  .o2-guide .o2-tips-toggle-text { flex: 1; }
+  .o2-guide .o2-tips-toggle-label { display: block; margin-bottom: 2px; }
+  .o2-guide .o2-tips-toggle-meta { display: block; }
+  .o2-guide .o2-tips-toggle-arrow { flex-shrink: 0; transition: transform 0.25s ease; }
+  .o2-guide .o2-tips-toggle.open .o2-tips-toggle-arrow { transform: rotate(180deg); }
+  .o2-guide .o2-tips-collapsible { display: none; }
+  .o2-guide .o2-tips-collapsible.open { display: block; }
+  /* ── ACCORDION ── */
+  .o2-guide .o2-accordion-tip {
+    background: var(--o2-white);
+    border: 1px solid var(--o2-rule);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .o2-guide .o2-accordion-tip:hover { box-shadow: 0 2px 12px rgba(0,102,204,0.08); }
+  .o2-guide .o2-accordion-tip.open { border-color: var(--o2-oxygen-mid); box-shadow: 0 2px 16px rgba(0,102,204,0.1); }
+  .o2-guide .o2-tip-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .o2-guide .o2-tip-trigger:hover { background: var(--o2-oxygen-light); }
+  .o2-guide .o2-tip-badge {
+    background: var(--o2-charcoal);
+    color: var(--o2-white);
+    padding: 3px 9px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .o2-guide .o2-accordion-tip.open .o2-tip-badge { background: var(--o2-oxygen); }
+  .o2-guide .o2-tip-trigger-text { flex: 1; }
+  .o2-guide .o2-tip-trigger-text h4 { margin-bottom: 2px; }
+  .o2-guide .o2-tip-arrow { color: var(--o2-oxygen); flex-shrink: 0; transition: transform 0.25s ease; }
+  .o2-guide .o2-accordion-tip.open .o2-tip-arrow { transform: rotate(180deg); }
+  .o2-guide .o2-tip-body { display: none; border-top: 1px solid var(--o2-rule); }
+  .o2-guide .o2-accordion-tip.open .o2-tip-body { display: block; }
+  /* ── TABS ── */
+  .o2-guide .o2-tab-nav { display: flex; border-bottom: 1px solid var(--o2-rule); background: #FAFBFD; }
+  .o2-guide .o2-tab-btn {
+    padding: 11px 22px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .o2-guide .o2-tab-btn:hover { color: var(--o2-oxygen); }
+  .o2-guide .o2-tab-btn.active { color: var(--o2-oxygen); border-bottom-color: var(--o2-oxygen); background: var(--o2-white); }
+  .o2-guide .o2-tab-panel { display: none; padding: 24px 28px; }
+  .o2-guide .o2-tab-panel.active { display: block; }
+  /* ── QUOTES ── */
+  .o2-guide .o2-opening-quote {
+    border-left: 3px solid var(--o2-oxygen);
+    padding: 12px 18px;
+    background: var(--o2-oxygen-light);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 20px;
+  }
+  .o2-guide .o2-opening-quote p { margin-bottom: 6px; }
+  .o2-guide .o2-closing-quote {
+    border-left: 3px solid var(--o2-rule);
+    padding: 11px 17px;
+    background: #FAFBFD;
+    border-radius: 0 4px 4px 0;
+    margin-top: 16px;
+  }
+  .o2-guide .o2-closing-quote p { margin-bottom: 5px; }
+  .o2-guide .o2-quote-attr { margin-top: 0; }
+  /* ── CASE STUDY ── */
+  .o2-guide .o2-case-study-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .o2-guide .o2-org-tag {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    color: var(--o2-white);
+  }
+  .o2-guide .o2-org-healthport { background: #0066CC; }
+  .o2-guide .o2-org-freo2 { background: #0D9488; }
+  .o2-guide .o2-org-afhia { background: #92400E; }
+  .o2-guide .o2-case-study-body p + p { margin-top: 10px; }
+  .o2-guide .o2-case-inline-image { margin: 16px 0 0; border-radius: 4px; overflow: hidden; }
+  /* ── WHAT THIS MEANS ── */
+  .o2-guide .o2-meaning-body p { margin-bottom: 12px; }
+  .o2-guide .o2-action-list { list-style: none; margin-top: 14px; padding: 0; }
+  .o2-guide .o2-action-list li {
+    display: flex;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--o2-rule);
+  }
+  .o2-guide .o2-action-list li:last-child { border-bottom: none; }
+  .o2-guide .o2-action-bullet {
+    width: 6px;
+    height: 6px;
+    background: var(--o2-oxygen);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .o2-guide .o2-lesson-header-bar { padding: 20px; }
+    .o2-guide .o2-tab-btn { padding: 10px 12px; }
+    .o2-guide .o2-tab-panel { padding: 18px 16px; }
+    .o2-guide .o2-tip-trigger { padding: 14px 16px; }
+  }
+  /* ── LAYOUT SAFETY ── */
+  .o2-guide, .o2-guide * { box-sizing: border-box; }
+  .o2-guide .o2-lessons-header, .o2-guide .o2-lessons-wrap { max-width: 1200px; width: 100%; margin-left: auto; margin-right: auto; }
+  .o2-guide .o2-lesson-block { width: 100%; overflow: hidden; }
+  .o2-guide .o2-lesson-header-bar, .o2-guide .o2-tips-toggle, .o2-guide .o2-tips-collapsible { display: block; width: 100%; max-width: 100%; }
+  .o2-guide .o2-tips-toggle, .o2-guide .o2-tip-trigger, .o2-guide .o2-tab-btn { min-width: 0; }
+  /* ── TYPOGRAPHY: inherit from Squarespace theme ── */
+  .o2-guide { font: inherit; color: inherit; }
+  .o2-guide h1, .o2-guide h2, .o2-guide h3, .o2-guide h4,
+  .o2-guide p, .o2-guide ul, .o2-guide ol, .o2-guide li,
+  .o2-guide blockquote, .o2-guide span, .o2-guide strong, .o2-guide em { all: revert; }
+  .o2-guide .o2-tips-toggle, .o2-guide .o2-tip-trigger, .o2-guide .o2-tab-btn { all: unset; display: flex; align-items: center; cursor: pointer; }
+  .o2-guide .o2-tips-toggle { width: 100%; background: var(--o2-white); border: 1px solid var(--o2-rule); border-radius: 4px; padding: 14px 22px; gap: 12px; text-align: left; margin-bottom: 8px; transition: all 0.18s; }
+  .o2-guide .o2-tip-trigger { width: 100%; background: none; border: none; padding: 18px 24px; gap: 14px; text-align: left; transition: background 0.15s; }
+  .o2-guide .o2-tab-btn { display: inline-block; padding: 11px 22px; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.15s; }
+  /* ── FORCE accordion visibility ── */
+  .o2-guide .o2-tips-collapsible { display: none !important; }
+  .o2-guide .o2-tips-collapsible.open { display: block !important; }
+  .o2-guide .o2-tip-body { display: none !important; }
+  .o2-guide .o2-accordion-tip.open .o2-tip-body { display: block !important; }
+  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; }
+  .o2-guide .o2-tips-toggle.open .o2-tips-toggle-arrow { transform: rotate(180deg); }
+  .o2-guide .o2-tip-arrow { transition: transform 0.25s ease; }
+  .o2-guide .o2-accordion-tip.open .o2-tip-arrow { transform: rotate(180deg); }
+  .o2-guide .o2-lesson-block { overflow: hidden; border-radius: 4px; }
+  .o2-guide .o2-tips-toggle { width: 100%; max-width: 100%; margin: 0; box-sizing: border-box; min-width: 0; }
+  .o2-guide .o2-lesson-intro, .o2-guide .o2-case-study-body, .o2-guide .o2-meaning-body { max-width: none !important; width: 100%; }
+</style>
+
+<div class="o2-guide">
+  <!-- LESSONS HEADER -->
+  <div class="o2-lessons-header">
+    <span class="o2-kicker">The lessons</span>
+    <h2>Five areas where getting it right makes the difference</h2>
+    <p>Each lesson draws on real operational experience. Tips are grounded in specific grantee stories, with case studies, practical implications, and direct quotes from the field.</p>
+  </div>
+
+  <div class="o2-lessons-wrap">
+
+    <!-- ══════════════════════════════ LESSON 1 ══════════════════════════════ -->
+    <div class="o2-lesson-block">
+      <div class="o2-lesson-header-bar">
+        <div class="o2-lesson-tag">Lesson 1</div>
+        <h3>A mix of equipment across your facility portfolio is needed to maximise revenue while responding to diverse needs</h3>
+        <p class="o2-lesson-intro">One of the earliest assumptions you may make is that you can standardise your equipment offer and scale it up or down depending on facility size. In practice, this rarely works. Apart from size, facilities differ in demand volatility, power reliability, ward configuration, funding flows, and growth trajectory. A single "standard package" will either overspecify some facilities (wasting capital) or underserve others (limiting revenue and reliability). A flexible equipment mix allows you to optimise production per asset, respond to changing demand, and build a model that works at both facility and aggregate level.</p>
+      </div>
+
+      <button class="o2-tips-toggle" onclick="o2ToggleSection(this)">
+        <div class="o2-tips-toggle-icon">💡</div>
+        <div class="o2-tips-toggle-text">
+          <span class="o2-tips-toggle-label">Tips from implementation</span>
+          <span class="o2-tips-toggle-meta">5 tips · Click to expand</span>
+        </div>
+        <span class="o2-tips-toggle-arrow">▾</span>
+      </button>
+
+      <div class="o2-tips-collapsible">
+
+        <!-- TIP 1 -->
+        <div class="o2-accordion-tip" id="o2-l1t1">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t1')">
+            <span class="o2-tip-badge">Tip 1</span>
+            <div class="o2-tip-trigger-text">
+              <h4>Prepare to adapt your model as real facility needs surface</h4>
+              <span class="o2-tip-source">HealthPort · Nigeria</span>
+            </div>
+            <span class="o2-tip-arrow">▾</span>
+          </button>
+          <div class="o2-tip-body">
+            <div class="o2-tab-nav">
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t1','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t1','means')">What this means in practice</button>
+            </div>
+            <div class="o2-tab-panel active" data-tab="case">
+              <div class="o2-opening-quote">
+                <p>"Reality pushes back very fast on your ambition."</p>
+                <div class="o2-quote-attr">Dr Aishat Adeniji, Co-Founder, HealthPort</div>
+              </div>
+              <div class="o2-case-study-header">
+                <span class="o2-org-tag o2-org-healthport">HealthPort</span>
+                <span>Nigeria</span>
+              </div>
+              <div class="o2-case-study-body">
+                <p>HealthPort initially positioned O2aaS as a subscription-based system, with fixed cylinder allocations determined by each facility's average monthly patient count. Early design decisions were informed by research and literature, drawing on existing evidence about oxygen systems. For instance, the initial plan standardised cylinder sizes across all facilities. While this simplified the model, usage patterns revealed that different sites required different configurations.</p>
+                <p>However, once the team started working directly with healthcare facilities, it became clear that the model needed to adapt. Oxygen use varied significantly across facilities, and day-to-day operations did not always align with the assumptions built into the original design. As operational realities became clearer, piping infrastructure was also incorporated into the system design. Over time, the service evolved toward a responsive, on-demand distribution model shaped by lived realities. These changes improved both clinical fit and commercial sustainability.</p>
+              </div>
+            </div>
+            <div class="o2-tab-panel" data-tab="means">
+              <div class="o2-meaning-body">
+                <p>O2aaS models are built on a deliberate mix of equipment and supply types to balance demand and revenue. Control over your physical assets is therefore fundamental to maintaining commercial flexibility. Loaning cylinders to facilities ties up working capital and limits your ability to redeploy assets if necessary. Once cylinders leave your control, tracking, maintenance, and recovery become difficult, and your ability to rebalance your equipment mix in response to changing demand is constrained. Having strategies in place to track your equipment is crucial.</p>
+                <ul class="o2-action-list">
+                  <li><span class="o2-action-bullet"></span><span>Establish and enforce clear ownership and custody mechanisms for cylinders to retain control of physical assets</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Treat cylinder tracking as a core operational function, not an administrative afterthought</span></li>
+                  <li><span class="o2-action-bullet"></span><span>When exiting a facility, proactively plan for the recovery and redeployment of loaned equipment</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIP 2 -->
+        <div class="o2-accordion-tip" id="o2-l1t2">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t2')">
+            <span class="o2-tip-badge">Tip 2</span>
+            <div class="o2-tip-trigger-text">
+              <h4>Design with local technical capability as a foundation</h4>
+              <span class="o2-tip-source">AFHIA · Uganda</span>
+            </div>
+            <span class="o2-tip-arrow">▾</span>
+          </button>
+          <div class="o2-tip-body">
+            <div class="o2-tab-nav">
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t2','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t2','means')">What this means in practice</button>
+            </div>
+            <div class="o2-tab-panel active" data-tab="case">
+              <div class="o2-opening-quote">
+                <p>"We had to learn how to fix things ourselves."</p>
+                <div class="o2-quote-attr">John Kanyonyozi, Executive Director, AFHIA</div>
+              </div>
+              <div class="o2-case-study-header">
+                <span class="o2-org-tag o2-org-afhia">AFHIA</span>
+                <span>Uganda</span>
+              </div>
+              <div class="o2-case-study-body">
+                <p>AFHIA's oxygen equipment supplier was based overseas, while the plant operated in rural Uganda. Flying in technicians from overseas to address faults was financially unrealistic, and would have threatened to exceed revenue from oxygen sales. AFHIA learned to troubleshoot, repair, and maintain equipment internally, reducing downtime and preventing maintenance costs from overwhelming the business.</p>
+              </div>
+            </div>
+            <div class="o2-tab-panel" data-tab="means">
+              <div class="o2-meaning-body">
+                <p>Plan from the outset how systems will be maintained day to day, and who will realistically do that maintenance. Dependence on distant equipment suppliers can undermine equipment uptime and margins, effectively making otherwise suitable equipment commercially unsustainable. Equipment that cannot be maintained locally constrains both scalability and the ability to optimise your equipment portfolio over time.</p>
+                <ul class="o2-action-list">
+                  <li><span class="o2-action-bullet"></span><span>Design equipment choices and maintenance capability together, ensuring every system selected can be sustained within local operating conditions</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Build local self-reliance by training teams to operate, monitor, and maintain critical equipment as part of daily workflows</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Minimise dependence on international call-outs, treating technical self-sufficiency as essential to uptime and cost control</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIP 3 -->
+        <div class="o2-accordion-tip" id="o2-l1t3">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t3')">
+            <span class="o2-tip-badge">Tip 3</span>
+            <div class="o2-tip-trigger-text">
+              <h4>Treat equipment choice as a commercial risk</h4>
+              <span class="o2-tip-source">AFHIA · Uganda</span>
+            </div>
+            <span class="o2-tip-arrow">▾</span>
+          </button>
+          <div class="o2-tip-body">
+            <div class="o2-tab-nav">
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t3','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t3','means')">What this means in practice</button>
+            </div>
+            <div class="o2-tab-panel active" data-tab="case">
+              <div class="o2-opening-quote">
+                <p>"On paper it looked fine. In reality, it needed constant attention."</p>
+                <div class="o2-quote-attr">John Kanyonyozi, Executive Director, AFHIA</div>
+              </div>
+              <div class="o2-case-study-header">
+                <span class="o2-org-tag o2-org-afhia">AFHIA</span>
+                <span>Uganda</span>
+              </div>
+              <div class="o2-case-study-body">
+                <p>AFHIA installed oxygen equipment that was expected to operate with minimal day-to-day intervention. In practice, the equipment required frequent supervision, generated repeated alarms, and produced lower-than-anticipated output when supporting multiple facilities. Although the equipment was technically functional, the operational burden proved higher than expected, affecting staffing requirements, reliability, scalability, and long-term commercial viability.</p>
+              </div>
+            </div>
+            <div class="o2-tab-panel" data-tab="means">
+              <div class="o2-meaning-body">
+                <p>No single system performs well across all demand profiles, and what looks technically suitable on paper may not generate sustainable margins in real operating environments. Beyond technical specifications, equipment choice must be assessed on total commercial and operational impact.</p>
+                <ul class="o2-action-list">
+                  <li><span class="o2-action-bullet"></span><span>Validate equipment performance under real operating conditions, including production capacity, maintenance burden, alarm frequency, and supervision requirements</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Challenge technical assumptions through field experience before scaling</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Aside from headline specifications, compare options based on total cost of ownership and operational impact</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIP 4 -->
+        <div class="o2-accordion-tip" id="o2-l1t4">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t4')">
+            <span class="o2-tip-badge">Tip 4</span>
+            <div class="o2-tip-trigger-text">
+              <h4>Use modular configurations when full systems are not commercially viable</h4>
+              <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
+            </div>
+            <span class="o2-tip-arrow">▾</span>
+          </button>
+          <div class="o2-tip-body">
+            <div class="o2-tab-nav">
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t4','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t4','means')">What this means in practice</button>
+            </div>
+            <div class="o2-tab-panel active" data-tab="case">
+              <div class="o2-opening-quote">
+                <p>"We had to stop treating it as all or nothing."</p>
+                <div class="o2-quote-attr">Bronwyn du Preez, Strategic Operations Lead, FREO2 Foundation</div>
+              </div>
+              <div class="o2-case-study-header">
+                <span class="o2-org-tag o2-org-freo2">FREO2</span>
+                <span>Uganda + Tanzania</span>
+              </div>
+              <div class="o2-case-study-body">
+                <p>FREO2 moved away from a binary "all-or-nothing" system offer after encountering contexts where full adoption was not feasible. Instead, components such as monitoring or flow management were offered independently. This allowed engagement with a wider range of facilities while maintaining operational credibility and service integrity.</p>
+              </div>
+            </div>
+            <div class="o2-tab-panel" data-tab="means">
+              <div class="o2-meaning-body">
+                <p>When a full closed-loop oxygen system is not commercially or operationally viable, modularising the service allows you to deploy only the components that add value.</p>
+                <ul class="o2-action-list">
+                  <li><span class="o2-action-bullet"></span><span>Treat full-system deployment as one option rather than the default approach</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Identify components that can stand alone and deliver measurable value</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Match configurations to budget, demand, and operational readiness</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Segment facilities by operational fit and demand profile to optimise utilisation and revenue across your portfolio</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIP 5 -->
+        <div class="o2-accordion-tip" id="o2-l1t5">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t5')">
+            <span class="o2-tip-badge">Tip 5</span>
+            <div class="o2-tip-trigger-text">
+              <h4>Replace assumptions with validated field data before committing capital</h4>
+              <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
+            </div>
+            <span class="o2-tip-arrow">▾</span>
+          </button>
+          <div class="o2-tip-body">
+            <div class="o2-tab-nav">
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t5','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t5','means')">What this means in practice</button>
+            </div>
+            <div class="o2-tab-panel active" data-tab="case">
+              <div class="o2-opening-quote">
+                <p>"The data from the ground showed patterns we wouldn't have seen otherwise."</p>
+                <div class="o2-quote-attr">Bronwyn du Preez, Strategic Operations Lead, FREO2 Foundation</div>
+              </div>
+              <div class="o2-case-study-header">
+                <span class="o2-org-tag o2-org-freo2">FREO2</span>
+                <span>Uganda + Tanzania</span>
+              </div>
+              <div class="o2-case-study-body">
+                <p>Perceived reliability, seasonality, and demand patterns in the field often diverged significantly from pre-deployment assumptions. FREO2 found that designing systems around unvalidated assumptions locked them into configurations that underperformed commercially. Collecting facility-level data early — and interpreting it alongside local knowledge — became essential to making sound equipment and configuration decisions.</p>
+              </div>
+            </div>
+            <div class="o2-tab-panel" data-tab="means">
+              <div class="o2-meaning-body">
+                <p>Perceived reliability, seasonality, or demand patterns often differ from reality, and those differences materially affect system performance. Designing around inaccurate assumptions can lock you into an equipment mix that underperforms commercially.</p>
+                <ul class="o2-action-list">
+                  <li><span class="o2-action-bullet"></span><span>Collect validated, facility-level data early to ground equipment and configuration decisions</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Use quantitative data alongside local interpretation to ensure configuration decisions reflect real operating constraints</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Diagnose usability barriers alongside supply gaps to ensure equipment can be used effectively and fits real workflows</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Anticipate resistance to heavy or complex systems that may suppress usage and reduce effective demand</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tips-collapsible -->
+    </div><!-- /lesson 1 -->
+
+  </div><!-- /o2-lessons-wrap -->
+</div><!-- /o2-guide -->
+
+<script>
+  function o2ToggleSection(btn) {
+    var collapsible = btn.nextElementSibling;
+    var isOpen = btn.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    collapsible.classList.toggle('open', !isOpen);
+    var meta = btn.querySelector('.o2-tips-toggle-meta');
+    var parts = meta.textContent.split(' · ');
+    meta.textContent = parts[0] + ' · ' + (isOpen ? 'Click to expand' : 'Click to collapse');
+  }
+  function o2ToggleTip(id) {
+    var el = document.getElementById(id);
+    var isOpen = el.classList.contains('open');
+    var parent = el.closest('.o2-tips-collapsible');
+    parent.querySelectorAll('.o2-accordion-tip').forEach(function(t) {
+      t.classList.remove('open');
+    });
+    if (!isOpen) el.classList.add('open');
+  }
+  function o2SwitchTab(tipId, tabKey) {
+    var tipEl = document.getElementById(tipId);
+    tipEl.querySelectorAll('.o2-tab-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('onclick').indexOf("'" + tabKey + "'") !== -1);
+    });
+    tipEl.querySelectorAll('.o2-tab-panel').forEach(function(panel) {
+      panel.classList.toggle('active', panel.getAttribute('data-tab') === tabKey);
+    });
+  }
+</script>
