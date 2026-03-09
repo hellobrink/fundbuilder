@@ -269,7 +269,7 @@
   .o2-guide .o2-case-study-header { display: none !important; }
   /* ── CASE STUDY: 2-column — quote left, body right, thin inset divider ── */
   .o2-guide .o2-tab-panel[data-tab="case"] { padding: 0; }
-  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: stretch; background: #ffffff; }
+  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; align-items: flex-start; background: #ffffff; }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote {
     flex: 0 0 42%;
     margin-bottom: 0;
@@ -279,13 +279,13 @@
     background: transparent !important;
     position: relative;
   }
-  /* Thin divider that doesn't span full height */
+  /* Divider spans only the height of the quote text */
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote::after {
     content: '';
     position: absolute;
     right: 0;
-    top: 15%;
-    bottom: 15%;
+    top: 0;
+    bottom: 0;
     width: 1px;
     background: #73c7f0;
   }
@@ -301,8 +301,9 @@
     color: #4A5568 !important;
     border: none !important;
     background: transparent !important;
+    opacity: 1 !important;
   }
-  .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; }
+  .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; opacity: 1 !important; }
   .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
   /* ── "WHAT THIS MEANS" TAB: #154734 identity ── */
   .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { color: #154734 !important; }
