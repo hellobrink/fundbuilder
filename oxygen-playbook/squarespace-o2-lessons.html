@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
 <style>
   /* ── SCOPE: all styles prefixed with .o2-guide to avoid Squarespace conflicts ── */
   .o2-guide {
@@ -1447,7 +1448,11 @@
   (function() {
     var orgColors     = { 'HealthPort': '#154734', 'FREO2': '#00f399', 'AFHIA': '#e584ec' };
     var orgTextColors = { 'HealthPort': '#ffffff',  'FREO2': '#000000', 'AFHIA': '#000000' };
-    var countryFlags  = { 'Nigeria': '🇳🇬', 'Uganda': '🇺🇬', 'Tanzania': '🇹🇿' };
+    var countryFlags  = {
+      'Nigeria':  '<span class="fi fi-ng" style="font-size:0.9em;vertical-align:middle;"></span>',
+      'Uganda':   '<span class="fi fi-ug" style="font-size:0.9em;vertical-align:middle;"></span>',
+      'Tanzania': '<span class="fi fi-tz" style="font-size:0.9em;vertical-align:middle;"></span>'
+    };
 
     function processText(text) {
       // Replace org names with brand-coloured badges
