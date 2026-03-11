@@ -43,7 +43,7 @@
     border-radius: 4px 4px 0 0;
     padding: 28px 32px 22px;
   }
-  .o2-guide .o2-lesson-tag { padding-bottom: 10px; padding-left: 32px; padding-right: 32px; margin-bottom: 12px; margin-left: -32px; margin-right: -32px; border-bottom: 2px solid white; color: inherit; text-transform: uppercase; letter-spacing: normal; }
+  .o2-guide .o2-lesson-tag { padding-bottom: 10px; padding-left: 32px; padding-right: 32px; margin-bottom: 12px; margin-left: -32px; margin-right: -32px; border-bottom: 2px solid var(--o2-white); color: inherit; text-transform: uppercase; letter-spacing: normal; }
   .o2-guide .o2-lesson-header-bar h2 { font-family: Georgia, 'Times New Roman', serif !important; font-size: 2.2rem !important; font-weight: 400 !important; line-height: 1.4em !important; margin-bottom: 12px; }
   .o2-guide .o2-lesson-intro { max-width: none; width: 100%; margin: 0; }
 
@@ -74,7 +74,7 @@
   .o2-guide .o2-image-placeholder-icon { margin-bottom: 6px; display: block; }
   .o2-guide .o2-image-placeholder-label { margin-bottom: 4px; }
   .o2-guide .o2-image-placeholder-desc { max-width: 300px; margin: 0; }
-  .o2-guide .o2-image-placeholder.hero { height: 200px; background: #DDE5EE; }
+  .o2-guide .o2-image-placeholder.hero { height: 200px; background: var(--o2-rule); }
   .o2-guide .o2-image-placeholder.inline { height: 160px; background: #E8EDF3; margin: 16px 0 0; }
 
   /* ── TIPS PARENT TOGGLE ── */
@@ -86,12 +86,12 @@
     width: 100%;
     max-width: 100%;
     background: #000000;
-    border-top: 2px solid white;
+    border-top: 2px solid var(--o2-white);
     padding: 14px 24px 14px 32px;
     gap: 12px;
     text-align: left;
     transition: all 0.18s;
-    color: #ffffff;
+    color: var(--o2-white);
     margin: 0;
     box-sizing: border-box;
     min-width: 0;
@@ -100,9 +100,9 @@
   .o2-guide .o2-tips-toggle.open { background: #000000; }
   .o2-guide .o2-tips-toggle-icon { display: none; }
   .o2-guide .o2-tips-toggle-text { flex: 1; }
-  .o2-guide .o2-tips-toggle-label { display: block; margin-bottom: 2px; text-transform: none; letter-spacing: normal; font-size: 1em; font-weight: bold; }
+  .o2-guide .o2-tips-toggle-label { display: block; margin-bottom: 2px; text-transform: none; letter-spacing: normal; font-size: 1em; font-weight: 700; }
   .o2-guide .o2-tips-toggle-meta { display: block; font-size: 0.75em; }
-  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; width: 28px; height: 28px; border-radius: 50%; background: transparent; border: 2px solid white; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .o2-guide .o2-tips-toggle-arrow { transition: transform 0.25s ease; width: 28px; height: 28px; border-radius: 50%; background: transparent; border: 2px solid var(--o2-white); color: var(--o2-white); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .o2-guide .o2-tips-toggle.open .o2-tips-toggle-arrow { transform: rotate(180deg); }
 
   /* ── TIPS COLLAPSIBLE ── */
@@ -111,7 +111,7 @@
 
   /* ── ACCORDION ── */
   .o2-guide .o2-accordion-tip {
-    background: #ffffff !important;
+    background: var(--o2-white) !important;
     border: none;
     border-radius: 4px;
     margin-bottom: 8px;
@@ -139,7 +139,7 @@
   .o2-guide .o2-tip-trigger-text { flex: 1; }
   .o2-guide .o2-tip-trigger-text h4 { margin: 0 0 2px !important; font-size: 1.15rem !important; font-weight: 700 !important; }
   .o2-guide .o2-tip-source { font-size: 0.875rem !important; display: block !important; margin-top: 4px; text-transform: uppercase !important; }
-  .o2-guide .o2-tip-arrow { width: 28px !important; height: 28px !important; border-radius: 50% !important; background: transparent !important; border: 2px solid #73c7f0 !important; color: #73c7f0 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; line-height: 1; transition: transform 0.25s ease; align-self: center !important; }
+  .o2-guide .o2-tip-arrow { width: 28px !important; height: 28px !important; border-radius: 50% !important; background: transparent !important; border: 2px solid var(--o2-oxygen) !important; color: var(--o2-oxygen) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; line-height: 1; transition: transform 0.25s ease; align-self: center !important; }
   .o2-guide .o2-accordion-tip.open .o2-tip-arrow { transform: rotate(180deg); }
   .o2-guide .o2-tip-body { display: none !important; border-top: 1px solid var(--o2-rule); }
   .o2-guide .o2-accordion-tip.open .o2-tip-body { display: block !important; }
@@ -153,20 +153,20 @@
     border-radius: 6px 6px 0 0;
     padding: 10px 20px;
     font-weight: 600;
-    color: #4A5568;
+    color: var(--o2-mid);
     background: transparent;
     opacity: 1;
     transition: all 0.15s;
     min-width: 0;
   }
-  .o2-guide .o2-tab-btn.active { background: #ffffff !important; color: #1C2B3A !important; opacity: 1 !important; }
-  .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: #1C2B3A !important; }
+  .o2-guide .o2-tab-btn.active { background: var(--o2-white) !important; color: var(--o2-charcoal) !important; opacity: 1 !important; }
+  .o2-guide .o2-tab-btn:hover { background: rgba(255,255,255,0.65) !important; color: var(--o2-charcoal) !important; }
   /* ── CASE STUDY TAB: outlined inactive, filled white active ── */
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1) { background: transparent !important; color: #1C2B3A !important; border: 1px solid #ffffff !important; border-bottom: none !important; }
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1).active { background: #ffffff !important; border-color: transparent !important; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1) { background: transparent !important; color: var(--o2-charcoal) !important; border: 1px solid var(--o2-white) !important; border-bottom: none !important; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(1).active { background: var(--o2-white) !important; border-color: transparent !important; }
   /* ── WHAT THIS MEANS TAB: outlined inactive (80% opacity), filled white active ── */
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { background: transparent !important; color: #000000 !important; border: 1px solid #ffffff !important; border-bottom: none !important; opacity: 0.8; }
-  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { background: #ffffff !important; color: #000000 !important; border-color: transparent !important; opacity: 1; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2) { background: transparent !important; color: #000000 !important; border: 1px solid var(--o2-white) !important; border-bottom: none !important; opacity: 0.8; }
+  .o2-guide .o2-tab-nav .o2-tab-btn:nth-child(2).active { background: var(--o2-white) !important; color: #000000 !important; border-color: transparent !important; opacity: 1; }
   .o2-guide .o2-tab-panel { display: none !important; padding: 24px 28px; }
   .o2-guide .o2-tab-panel.active { display: block !important; border-left: 12px solid #bcbcbc !important; border-right: 12px solid #bcbcbc !important; border-bottom: 12px solid #bcbcbc !important; }
 
@@ -182,7 +182,7 @@
   .o2-guide .o2-closing-quote {
     border-left: 3px solid var(--o2-rule);
     padding: 11px 17px;
-    background: #FAFBFD;
+    background: var(--o2-white);
     border-radius: 0 4px 4px 0;
     margin-top: 16px;
   }
@@ -192,7 +192,7 @@
   /* ── CASE STUDY ── */
   .o2-guide .o2-case-study-header { display: none !important; }
   .o2-guide .o2-org-tag { letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
-  .o2-guide .o2-org-healthport { background: #154734 !important; color: #ffffff !important; }
+  .o2-guide .o2-org-healthport { background: #154734 !important; color: var(--o2-white) !important; }
   .o2-guide .o2-org-freo2 { background: #00f399 !important; color: #000000 !important; }
   .o2-guide .o2-org-afhia { background: #e584ec !important; color: #000000 !important; }
   .o2-guide .o2-case-study-body { max-width: none !important; width: 100%; }
@@ -204,17 +204,17 @@
   .o2-guide .o2-meaning-body p { margin-bottom: 12px; }
   .o2-guide .o2-action-list { list-style: none; margin-top: 14px; padding: 0; }
   .o2-guide .o2-action-list li { display: flex; gap: 10px; padding: 3px 0; border-bottom: none !important; }
-  .o2-guide .o2-action-bullet { width: 5px !important; height: 5px !important; background: #73c7f0 !important; border-radius: 50%; flex-shrink: 0; margin-top: 10px !important; }
+  .o2-guide .o2-action-bullet { width: 5px !important; height: 5px !important; background: var(--o2-oxygen) !important; border-radius: 50%; flex-shrink: 0; margin-top: 10px !important; }
 
   /* ── WHAT THIS MEANS PANEL ── */
-  .o2-guide .o2-tab-panel[data-tab="means"].active { background: #ffffff !important; }
+  .o2-guide .o2-tab-panel[data-tab="means"].active { background: var(--o2-white) !important; }
   .o2-guide .o2-tab-panel[data-tab="means"].active .o2-meaning-body p { color: #000000 !important; }
   .o2-guide .o2-tab-panel[data-tab="means"].active .o2-action-list li span { color: #000000 !important; }
-  .o2-guide .o2-tab-panel[data-tab="means"].active .o2-action-bullet { background: #73c7f0 !important; }
+  .o2-guide .o2-tab-panel[data-tab="means"].active .o2-action-bullet { background: var(--o2-oxygen) !important; }
 
   /* ── CASE STUDY PANEL: 2-column layout ── */
   .o2-guide .o2-tab-panel[data-tab="case"] { padding: 0; }
-  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; flex-direction: row-reverse; align-items: flex-start; background: #ffffff; }
+  .o2-guide .o2-tab-panel[data-tab="case"].active { display: flex !important; flex-direction: row-reverse; align-items: flex-start; background: var(--o2-white); }
   .o2-guide .o2-tab-panel[data-tab="case"] .o2-opening-quote {
     flex: 0 0 42%;
     margin-bottom: 0;
@@ -232,7 +232,7 @@
     top: 28px;
     bottom: 28px;
     width: 1px;
-    background: #73c7f0;
+    background: var(--o2-oxygen);
   }
   .o2-guide .o2-case-study-body .o2-closing-quote { background: transparent !important; border: none !important; padding: 8px 0 0 !important; border-radius: 0 !important; }
   .o2-guide .o2-case-study-body .o2-closing-quote p { font-style: italic !important; font-weight: 700 !important; }
@@ -242,7 +242,7 @@
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case { padding: 28px !important; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-case-study-body { padding: 0; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-case-study-body::before { display: none; }
-  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section { margin-bottom: 0; padding-top: 24px; border-top: 1px solid #73c7f0; }
+  .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section { margin-bottom: 0; padding-top: 24px; border-top: 1px solid var(--o2-oxygen); }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-case-section:first-child { border-top: none; padding-top: 0; padding-bottom: 24px; }
   .o2-guide .o2-tab-panel[data-tab="case"].o2-dual-case .o2-dual-company-label { display: none !important; }
 
