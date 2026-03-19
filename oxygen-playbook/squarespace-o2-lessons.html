@@ -272,7 +272,7 @@
         <div class="o2-tips-toggle-icon">💡</div>
         <div class="o2-tips-toggle-text">
           <span class="o2-tips-toggle-label">Tips from implementation</span>
-          <span class="o2-tips-toggle-meta">5 tips · Click to expand</span>
+          <span class="o2-tips-toggle-meta">6 tips · Click to expand</span>
         </div>
         <span class="o2-tips-toggle-arrow">▽</span>
       </button>
@@ -304,8 +304,49 @@
                 <span>Nigeria</span>
               </div>
               <div class="o2-case-study-body">
-                <p>HealthPort initially positioned O2aaS as a subscription-based system, with fixed cylinder allocations determined by each facility's average monthly patient count. Early design decisions were informed by research and literature, drawing on existing evidence about oxygen systems. For instance, the initial plan standardised cylinder sizes across all facilities. While this simplified the model, usage patterns revealed that different sites required different configurations.</p>
-                <p>However, once the team started working directly with healthcare facilities, it became clear that the model needed to adapt. Oxygen use varied significantly across facilities, and day-to-day operations did not always align with the assumptions built into the original design. As operational realities became clearer, piping infrastructure was also incorporated into the system design. Over time, the service evolved toward a responsive, on-demand distribution model shaped by lived realities. These changes improved both clinical fit and commercial sustainability.</p>
+                <p>HealthPort initially positioned O2aaS as a subscription-based system, with fixed cylinder allocations determined by each facility's average monthly patient count. Early design decisions were informed by research and literature, drawing on existing evidence about oxygen systems. However, once the team started working directly with healthcare facilities, it became clear that the model needed to adapt. Oxygen use varied significantly across facilities, and day-to-day operations did not always align with the assumptions built into the original design.</p>
+                <p>For instance, the initial plan standardised cylinder sizes across all facilities. While this simplified the model, usage patterns revealed that different sites required different configurations. As operational realities became clearer, piping infrastructure was also incorporated into the system design. Over time, the service evolved toward a responsive, on-demand distribution model shaped by lived realities. These changes improved both clinical fit and commercial sustainability.</p>
+              </div>
+            </div>
+            <div class="o2-tab-panel" data-tab="means">
+              <div class="o2-meaning-body">
+                <p>O2aaS cannot be deployed as a fixed, standard package. While core services and boundaries must be clear from the start, implementation needs to adapt continuously as real facility constraints and usage patterns become visible.</p>
+                <ul class="o2-action-list">
+                  <li><span class="o2-action-bullet"></span><span>Be explicit about what the service covers (and what it doesn't), while keeping core services consistent across deployments</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Adapt equipment mix and configurations to real facility constraints and workflows without changing the fundamental offering</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Revisit assumptions after deployment and treat iteration as normal progress</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIP 2 -->
+        <div class="o2-accordion-tip" id="o2-l1t2">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t2')">
+            <span class="o2-tip-badge">Tip 2</span>
+            <div class="o2-tip-trigger-text">
+              <h4>Manage cylinder inventory closely</h4>
+              <span class="o2-tip-source">AFHIA · Uganda</span>
+            </div>
+            <span class="o2-tip-arrow">▽</span>
+          </button>
+          <div class="o2-tip-body">
+            <div class="o2-tab-nav">
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t2','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t2','means')">What this means in practice</button>
+            </div>
+            <div class="o2-tab-panel active" data-tab="case">
+              <div class="o2-opening-quote">
+                <p>"Loaning cylinders locked us into a model we couldn't easily exit."</p>
+                <div class="o2-quote-attr">John Kanyonyozi, Executive Director, AFHIA</div>
+              </div>
+              <div class="o2-case-study-header">
+                <span class="o2-org-tag o2-org-afhia">AFHIA</span>
+                <span>Uganda</span>
+              </div>
+              <div class="o2-case-study-body">
+                <p>AFHIA found they were in a situation where it was difficult to track and account for their cylinders meaning they became difficult to retrieve, whilst being prone to damage or loss. Over time, this practice limited and made it costly for AFHIA to adapt its delivery model. With assets dispersed across customers, unwinding the arrangement risked losing those customers entirely. As a result, AFHIA implemented a tighter cylinder inventory management system tracking all cylinders to manage this issue.</p>
               </div>
             </div>
             <div class="o2-tab-panel" data-tab="means">
@@ -321,10 +362,10 @@
           </div>
         </div>
 
-        <!-- TIP 2 -->
-        <div class="o2-accordion-tip" id="o2-l1t2">
-          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t2')">
-            <span class="o2-tip-badge">Tip 2</span>
+        <!-- TIP 3 -->
+        <div class="o2-accordion-tip" id="o2-l1t3">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t3')">
+            <span class="o2-tip-badge">Tip 3</span>
             <div class="o2-tip-trigger-text">
               <h4>Design with local technical capability as a foundation</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
@@ -333,8 +374,8 @@
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
-              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t2','case')">Case Study</button>
-              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t2','means')">What this means in practice</button>
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t3','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t3','means')">What this means in practice</button>
             </div>
             <div class="o2-tab-panel active" data-tab="case">
               <div class="o2-opening-quote">
@@ -362,10 +403,10 @@
           </div>
         </div>
 
-        <!-- TIP 3 -->
-        <div class="o2-accordion-tip" id="o2-l1t3">
-          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t3')">
-            <span class="o2-tip-badge">Tip 3</span>
+        <!-- TIP 4 -->
+        <div class="o2-accordion-tip" id="o2-l1t4">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t4')">
+            <span class="o2-tip-badge">Tip 4</span>
             <div class="o2-tip-trigger-text">
               <h4>Treat equipment choice as a commercial risk</h4>
               <span class="o2-tip-source">AFHIA · Uganda</span>
@@ -374,8 +415,8 @@
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
-              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t3','case')">Case Study</button>
-              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t3','means')">What this means in practice</button>
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t4','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t4','means')">What this means in practice</button>
             </div>
             <div class="o2-tab-panel active" data-tab="case">
               <div class="o2-opening-quote">
@@ -403,10 +444,10 @@
           </div>
         </div>
 
-        <!-- TIP 4 -->
-        <div class="o2-accordion-tip" id="o2-l1t4">
-          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t4')">
-            <span class="o2-tip-badge">Tip 4</span>
+        <!-- TIP 5 -->
+        <div class="o2-accordion-tip" id="o2-l1t5">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t5')">
+            <span class="o2-tip-badge">Tip 5</span>
             <div class="o2-tip-trigger-text">
               <h4>Use modular configurations when full systems are not commercially viable</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
@@ -415,8 +456,8 @@
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
-              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t4','case')">Case Study</button>
-              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t4','means')">What this means in practice</button>
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t5','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t5','means')">What this means in practice</button>
             </div>
             <div class="o2-tab-panel active" data-tab="case">
               <div class="o2-opening-quote">
@@ -436,7 +477,7 @@
                 <p>When a full closed-loop oxygen system is not commercially or operationally viable, modularising the service allows you to deploy only the components that add value.</p>
                 <ul class="o2-action-list">
                   <li><span class="o2-action-bullet"></span><span>Treat full-system deployment as one option rather than the default approach</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Identify components that can stand alone and deliver measurable value</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Identifying components that can stand alone and deliver measurable value</span></li>
                   <li><span class="o2-action-bullet"></span><span>Match configurations to budget, demand, and operational readiness</span></li>
                   <li><span class="o2-action-bullet"></span><span>Segment facilities by operational fit and demand profile to optimise utilisation and revenue across your portfolio</span></li>
                 </ul>
@@ -445,10 +486,10 @@
           </div>
         </div>
 
-        <!-- TIP 5 -->
-        <div class="o2-accordion-tip" id="o2-l1t5">
-          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t5')">
-            <span class="o2-tip-badge">Tip 5</span>
+        <!-- TIP 6 -->
+        <div class="o2-accordion-tip" id="o2-l1t6">
+          <button class="o2-tip-trigger" onclick="o2ToggleTip('o2-l1t6')">
+            <span class="o2-tip-badge">Tip 6</span>
             <div class="o2-tip-trigger-text">
               <h4>Replace assumptions with validated field data before committing capital</h4>
               <span class="o2-tip-source">FREO2 · Uganda + Tanzania</span>
@@ -457,8 +498,8 @@
           </button>
           <div class="o2-tip-body">
             <div class="o2-tab-nav">
-              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t5','case')">Case Study</button>
-              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t5','means')">What this means in practice</button>
+              <button class="o2-tab-btn active" onclick="o2SwitchTab('o2-l1t6','case')">Case Study</button>
+              <button class="o2-tab-btn" onclick="o2SwitchTab('o2-l1t6','means')">What this means in practice</button>
             </div>
             <div class="o2-tab-panel active" data-tab="case">
               <div class="o2-opening-quote">
@@ -668,8 +709,8 @@
                 <p>Data quality improves when facilities understand how information will be used and see it shaping real service decisions. Without trust, reported utilisation may understate real need, keeping latent demand invisible.</p>
                 <ul class="o2-action-list">
                   <li><span class="o2-action-bullet"></span><span>Make it safe to surface operational issues and utilisation data early by removing blame and being clear about how information will be used</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Treat failures and reported data as system inputs for continuous refinement, accountability, and prevention</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Act visibly on reported issues so transparency becomes normal and sustained</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Treat failures and reported data as system inputs for continuous refinement, accountability, and prevention.</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Act visibly on reported issues so transparency becomes normal and sustained.</span></li>
                 </ul>
               </div>
             </div>
@@ -933,9 +974,9 @@
               <div class="o2-meaning-body">
                 <p>Delivery partnerships fail when commitment exists at leadership level but does not translate into action by implementing teams. Alignment must exist across both levels and be anchored in shared outcomes that support timely, cost-effective delivery.</p>
                 <ul class="o2-action-list">
-                  <li><span class="o2-action-bullet"></span><span>Do not rely only on senior leaders saying yes — check that the teams who will deliver the work are ready, have the time, and know they are responsible</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Bring operational staff into the conversation early so expectations match day-to-day reality</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Agree upfront on what success looks like, and revisit that agreement as roles shift and you expand</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Do not rely only on senior leaders saying yes. Check that the teams who will deliver the work are ready, have the time, and know they are responsible.</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Bring operational staff into the conversation early so expectations match day to day reality.</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Agree upfront on what success looks like, and revisit that agreement as roles shift and you expand.</span></li>
                 </ul>
               </div>
             </div>
@@ -1220,8 +1261,8 @@
                 <p>In budget-limited public markets, medical oxygen revenue may be insufficient or too volatile to sustain O2aaS operations on its own. When structured intentionally, a mixed customer base becomes a revenue-stability mechanism that protects medical supply rather than distorting it.</p>
                 <ul class="o2-action-list">
                   <li><span class="o2-action-bullet"></span><span>Identify customers with fewer procurement constraints</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Use more profitable customers to help cover the costs of supplying core medical oxygen</span></li>
-                  <li><span class="o2-action-bullet"></span><span>See serving different types of customers as a deliberate way to strengthen your finances</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Use more profitable customers to help cover the costs of supplying core medical oxygen.</span></li>
+                  <li><span class="o2-action-bullet"></span><span>See serving different types of customers as a deliberate way to strengthen your finances.</span></li>
                 </ul>
               </div>
             </div>
@@ -1270,8 +1311,8 @@
                 <p>O2aaS models become unstable when facilities order reactively. If the system allows oxygen levels to reach zero, or makes emergency delivery easy and inexpensive, reactive behaviour quickly becomes the default, transferring risk and disruption to the oxygen service provider.</p>
                 <ul class="o2-action-list">
                   <li><span class="o2-action-bullet"></span><span>Move away from last-minute ordering by setting clear restocking rules and minimum stock levels that trigger early action</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Make regular scheduled deliveries the norm so emergency orders do not become routine</span></li>
-                  <li><span class="o2-action-bullet"></span><span>Make sure the real cost of emergency disruption is reflected in pricing and internal policies, so teams are encouraged to prevent problems</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Make regular scheduled deliveries the norm so emergency orders do not become routine.</span></li>
+                  <li><span class="o2-action-bullet"></span><span>Make sure the real cost of emergency disruption is reflected in pricing and internal policies, so teams are encouraged to prevent problems.</span></li>
                 </ul>
               </div>
             </div>
