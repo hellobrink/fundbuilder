@@ -1530,9 +1530,18 @@ h2 {
 /* Tighten the gap above the Let's go button */
 #p2-screen-howto .canvas-explanation {
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 #p2-screen-howto .screen-nav {
     margin-top: 12px;
+}
+
+/* Tighten the gap above Get Started on the intro page */
+#screen-about .next-steps-section {
+    padding-bottom: 8px;
+}
+#screen-about .screen-nav {
+    margin-top: 8px;
 }
 
 /* ─── Worksheet download block (What Comes Next) ─────────────────────────── */
