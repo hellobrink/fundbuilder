@@ -584,14 +584,17 @@ function downloadWorksheetsPDF() {
         doc.text(n + ' / 5', W - M, H - 10, { align: 'right' });
     }
 
+    // Returns the bottom Y of the header bar so callers know where to start content.
     function headerBar(bg, title, subtitle, titleColor) {
-        fill(bg); doc.rect(0, 0, W, 30, 'F');
+        const barH = subtitle ? 40 : 30;
+        fill(bg); doc.rect(0, 0, W, barH, 'F');
         font('bold', 22); textC(titleColor || C.white);
-        doc.text(title, M, 20);
+        doc.text(title, M, subtitle ? 17 : 20);
         if (subtitle) {
             font('normal', 9.5); textC(titleColor || C.white);
-            doc.text(subtitle, M + doc.getTextWidth(title) + 5, 20);
+            doc.text(subtitle, M, 30);
         }
+        return barH;
     }
 
     // Draws a labelled question followed by ruled writing lines.
@@ -643,9 +646,7 @@ function downloadWorksheetsPDF() {
     // ── PAGE 2: WHY ──────────────────────────────────────────────────────────
     doc.addPage();
     fill(C.light); doc.rect(0, 0, W, H, 'F');
-    headerBar(C.coral, 'Why', 'What\'s the fundamental purpose of your fund?');
-
-    let y = 42;
+    let y = headerBar(C.coral, 'Why', 'What\'s the fundamental purpose of your fund?') + 10;
     y = Q('Why this problem? — What specific problem does your fund address? Why is it critical to solve now?', y, 5);
     y = Q('Why now? — What makes this the right moment for this intervention? What has changed?', y, 5);
     y = Q('Why you? — What unique position, expertise, or capability do you bring to this challenge?', y, 5);
@@ -655,9 +656,7 @@ function downloadWorksheetsPDF() {
     // ── PAGE 3: WHO ──────────────────────────────────────────────────────────
     doc.addPage();
     fill(C.light); doc.rect(0, 0, W, H, 'F');
-    headerBar(C.blue, 'Who', 'Who are your key stakeholders and target portfolio?');
-
-    y = 42;
+    y = headerBar(C.blue, 'Who', 'Who are your key stakeholders and target portfolio?') + 10;
     y = Q('Who are you raising money from? — Which foundations, governments, or individuals will fund this work?', y, 4);
     y = Q('Who is it going to? — What types of organisations or individuals will receive grants?', y, 4);
     y = Q('Where are they? — Geographic focus, sectors, or communities you\'re targeting', y, 4);
@@ -669,9 +668,7 @@ function downloadWorksheetsPDF() {
     // ── PAGE 4: FEEL ─────────────────────────────────────────────────────────
     doc.addPage();
     fill(C.light); doc.rect(0, 0, W, H, 'F');
-    headerBar(C.pink, 'Feel', 'Understand the emotional and practical drivers', C.teal);
-
-    y = 42;
+    y = headerBar(C.pink, 'Feel', 'Understand the emotional and practical drivers', C.teal) + 10;
     y = Q('What pain points in grantees\' world are you solving? — What specific challenges, frustrations, or barriers do they face?', y, 5);
     y = Q('What do they struggle with currently? — Current obstacles, resource gaps, or systemic issues they encounter', y, 5);
     y = Q('What gap is your fund filling? — What\'s missing in the current landscape that you uniquely provide?', y, 5);
@@ -681,13 +678,13 @@ function downloadWorksheetsPDF() {
     // ── PAGE 5: TAKE A STEP BACK ─────────────────────────────────────────────
     doc.addPage();
     fill(C.light); doc.rect(0, 0, W, H, 'F');
-    headerBar(C.teal, 'Take a Step Back');
+    const p5top = headerBar(C.teal, 'Take a Step Back') + 8;
 
     font('italic', 9.5); textC(C.teal);
     const reflectIntro = 'Before moving forward, reflect on what you\'ve built. Sometimes stepping back reveals important gaps or new insights.';
-    doc.text(doc.splitTextToSize(reflectIntro, CW), M, 40);
+    doc.text(doc.splitTextToSize(reflectIntro, CW), M, p5top);
 
-    y = 55;
+    y = p5top + 14;
     y = Q('Does this feel complete? — Looking at your answers, are there any obvious gaps or areas that feel underdeveloped?', y, 6);
     y = Q('Is this really who you\'re designing for? — Are there gatekeepers between your grantees and their users? What does that tell you about the kind of fund you need to design?', y, 6);
     y = Q('What would make this more impactful? — If you could add one more element to make this fund more effective, what would it be?', y, 6);
