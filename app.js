@@ -549,3 +549,150 @@ function exportAdvice() {
 function exportText() {
     exportAdvice();
 }
+
+// ─── Worksheet PDF download ───────────────────────────────────────────────────
+// Generates a fixed 5-page printable worksheet (not personalised to session).
+function downloadWorksheetsPDF() {
+    if (!window.jspdf) {
+        showSiteModal('PDF unavailable', 'PDF library not loaded. Please refresh the page and try again.');
+        return;
+    }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const W = 210, H = 297, M = 20, CW = W - M * 2;
+
+    const C = {
+        teal:     [6,   51,  61],
+        tealDark: [15,  60,  70],
+        coral:    [255, 64,  95],
+        cream:    [240, 241, 239],
+        blue:     [68,  114, 236],
+        pink:     [233, 156, 209],
+        mid:      [120, 144, 150],
+        light:    [245, 246, 244],
+        white:    [255, 255, 255],
+    };
+
+    function fill(c)         { doc.setFillColor(...c); }
+    function stroke(c, w)    { doc.setDrawColor(...c); doc.setLineWidth(w || 0.25); }
+    function textC(c)        { doc.setTextColor(...c); }
+    function font(style, sz) { doc.setFont('helvetica', style); doc.setFontSize(sz); }
+
+    function footer(n) {
+        font('normal', 7.5); textC(C.mid);
+        doc.text('Open Innovation Fund Builder — brinkco.com', M, H - 10);
+        doc.text(n + ' / 5', W - M, H - 10, { align: 'right' });
+    }
+
+    function headerBar(bg, title, subtitle, titleColor) {
+        fill(bg); doc.rect(0, 0, W, 30, 'F');
+        font('bold', 22); textC(titleColor || C.white);
+        doc.text(title, M, 20);
+        if (subtitle) {
+            font('normal', 9.5); textC(titleColor || C.white);
+            doc.text(subtitle, M + doc.getTextWidth(title) + 5, 20);
+        }
+    }
+
+    // Draws a labelled question followed by ruled writing lines.
+    // Returns the Y position after the block.
+    function Q(label, y, lines) {
+        if (y > H - 25) return y;
+        font('bold', 8.5); textC(C.teal);
+        const wrapped = doc.splitTextToSize(label, CW);
+        doc.text(wrapped, M, y);
+        y += wrapped.length * 4.5 + 2;
+        stroke([210, 210, 210], 0.2);
+        for (let i = 0; i < lines; i++) {
+            if (y > H - 18) break;
+            doc.line(M, y, W - M, y);
+            y += 8;
+        }
+        return y + 5;
+    }
+
+    // ── PAGE 1: COVER ────────────────────────────────────────────────────────
+    fill(C.teal); doc.rect(0, 0, W, H, 'F');
+
+    font('bold', 30); textC(C.cream);
+    doc.text('Build Your', M, 48);
+    doc.text('Strategic Foundation', M, 62);
+    stroke(C.coral, 2.5); doc.line(M, 68, M + 106, 68);
+
+    font('normal', 10.5); textC(C.cream);
+    const coverIntro = 'These worksheets guide you through the strategic fundamentals of your fund. Work through each section with your team, print, and fill in by hand. You\'ll find space to explore three key lenses — Why, Who, and Feel — followed by a step back to reflect on what you\'ve built.';
+    doc.text(doc.splitTextToSize(coverIntro, CW), M, 80);
+
+    const sections = [
+        { n: '01', title: 'Why',              desc: 'Purpose, urgency, and your unique position' },
+        { n: '02', title: 'Who',              desc: 'Stakeholders, grantees, and key influencers' },
+        { n: '03', title: 'Feel',             desc: 'Pain points, gaps, and emotional drivers' },
+        { n: '04', title: 'Take a Step Back', desc: 'Reflect and identify what needs revisiting' },
+    ];
+    let bY = 118;
+    sections.forEach(function(s) {
+        fill(C.tealDark); doc.roundedRect(M, bY, CW, 28, 2, 2, 'F');
+        stroke(C.coral, 2); doc.line(M, bY, M, bY + 28);
+        font('bold', 8);   textC(C.coral);  doc.text(s.n,     M + 5,  bY + 10);
+        font('bold', 12);  textC(C.cream);  doc.text(s.title, M + 16, bY + 10);
+        font('normal', 9); textC(C.cream);  doc.text(s.desc,  M + 16, bY + 21);
+        bY += 34;
+    });
+    footer(1);
+
+    // ── PAGE 2: WHY ──────────────────────────────────────────────────────────
+    doc.addPage();
+    fill(C.light); doc.rect(0, 0, W, H, 'F');
+    headerBar(C.coral, 'Why', 'What\'s the fundamental purpose of your fund?');
+
+    let y = 42;
+    y = Q('Why this problem? — What specific problem does your fund address? Why is it critical to solve now?', y, 5);
+    y = Q('Why now? — What makes this the right moment for this intervention? What has changed?', y, 5);
+    y = Q('Why you? — What unique position, expertise, or capability do you bring to this challenge?', y, 5);
+    y = Q('Why does it matter? — What impact will solving this problem have? Who benefits and how?', y, 5);
+    footer(2);
+
+    // ── PAGE 3: WHO ──────────────────────────────────────────────────────────
+    doc.addPage();
+    fill(C.light); doc.rect(0, 0, W, H, 'F');
+    headerBar(C.blue, 'Who', 'Who are your key stakeholders and target portfolio?');
+
+    y = 42;
+    y = Q('Who are you raising money from? — Which foundations, governments, or individuals will fund this work?', y, 4);
+    y = Q('Who is it going to? — What types of organisations or individuals will receive grants?', y, 4);
+    y = Q('Where are they? — Geographic focus, sectors, or communities you\'re targeting', y, 4);
+    y = Q('What\'s your target portfolio? — Describe the mix of organisations, stages, or approaches you want to support', y, 4);
+    y = Q('Who do you need to influence? — Key decision-makers, policy makers, or thought leaders who need to back this work', y, 3);
+    y = Q('Who needs to be at the table? — Essential voices, perspectives, or expertise needed for success', y, 3);
+    footer(3);
+
+    // ── PAGE 4: FEEL ─────────────────────────────────────────────────────────
+    doc.addPage();
+    fill(C.light); doc.rect(0, 0, W, H, 'F');
+    headerBar(C.pink, 'Feel', 'Understand the emotional and practical drivers', C.teal);
+
+    y = 42;
+    y = Q('What pain points in grantees\' world are you solving? — What specific challenges, frustrations, or barriers do they face?', y, 5);
+    y = Q('What do they struggle with currently? — Current obstacles, resource gaps, or systemic issues they encounter', y, 5);
+    y = Q('What gap is your fund filling? — What\'s missing in the current landscape that you uniquely provide?', y, 5);
+    y = Q('What are the emotional drivers for your stakeholders? — What motivates them? What outcomes do they deeply value?', y, 5);
+    footer(4);
+
+    // ── PAGE 5: TAKE A STEP BACK ─────────────────────────────────────────────
+    doc.addPage();
+    fill(C.light); doc.rect(0, 0, W, H, 'F');
+    headerBar(C.teal, 'Take a Step Back');
+
+    font('italic', 9.5); textC(C.teal);
+    const reflectIntro = 'Before moving forward, reflect on what you\'ve built. Sometimes stepping back reveals important gaps or new insights.';
+    doc.text(doc.splitTextToSize(reflectIntro, CW), M, 40);
+
+    y = 55;
+    y = Q('Does this feel complete? — Looking at your answers, are there any obvious gaps or areas that feel underdeveloped?', y, 6);
+    y = Q('Is this really who you\'re designing for? — Are there gatekeepers between your grantees and their users? What does that tell you about the kind of fund you need to design?', y, 6);
+    y = Q('What would make this more impactful? — If you could add one more element to make this fund more effective, what would it be?', y, 6);
+    y = Q('What needs revisiting? — Based on everything you\'ve written, which section would benefit from another look?', y, 5);
+    footer(5);
+
+    doc.save('fund-strategic-foundation-worksheets.pdf');
+}

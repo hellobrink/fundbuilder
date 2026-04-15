@@ -1527,6 +1527,73 @@ h2 {
     background: rgba(6, 51, 61, 0.08);
 }
 
+/* Tighten the gap above the Let's go button */
+#p2-screen-howto .canvas-explanation {
+    margin-bottom: 0;
+}
+#p2-screen-howto .screen-nav {
+    margin-top: 12px;
+}
+
+/* ─── Worksheet download block (What Comes Next) ─────────────────────────── */
+
+.worksheet-download {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: #06333d;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 8px 0 36px;
+}
+
+.worksheet-download-text h3 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #f0f1ef;
+    margin-bottom: 10px;
+}
+
+.worksheet-download-text p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(240, 241, 239, 0.8);
+    margin: 0;
+    max-width: none;
+    text-align: left;
+}
+
+.worksheet-download-btn {
+    flex-shrink: 0;
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #06333d;
+    background: #ff405f;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 22px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+}
+
+.worksheet-download-btn:hover {
+    opacity: 0.88;
+}
+
+@media (max-width: 600px) {
+    .worksheet-download {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
 /* Canvas Tool Responsive */
 @media (max-width: 768px) {
     .canvas-grid,
