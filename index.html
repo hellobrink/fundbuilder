@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Building your open innovation fund</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="toolbar">
@@ -30,13 +31,20 @@
             <p>But, if it's done badly, it can distract teams with perverse incentives that prioritise pitching over building product, especially when the power structures of reporting get in the way.</p>
             <p>That's why we've built this tool, to explore what's needed to design behaviourally informed funds, that can create the conditions for truly scalable impact.</p>
             <h2>How it works</h2>
-            <p><b>Design your approach.</b> Move through eight fund-building stages, from thesis development to portfolio management. At each stage, explore different methods, bank the ones that fit your context, and build your strategy as you go. Jump around as needed — there's no fixed order.</p>
-            <p><b>What you'll get.</b> A complete fund strategy you can export and use. Share it with your team, stress-test your assumptions, or use it to make your case to stakeholders. It's grounded in what we've learned from building portfolios across education, health, climate, and innovation.</p>
+            <p><b>Build your strategic foundation.</b> Before you start you can use our downloadable canvas to work through the fundamentals of your fund. Explore the purpose and urgency driving it, dig into who your stakeholders and target portfolio are, as well as the real constraints you're trying to address. Through a series of prompts you'll capture what matters most.</p>
+        </div>
+        <div class="screen-nav" style="margin-bottom: 24px;">
+            <button class="nav-btn" onclick="downloadWorksheetsPDF()">Download your canvas here</button>
+        </div>
+        <div class="next-steps-section" style="padding-top: 0;">
+            <p><b>Design your approach.</b> Using our method cards, move through eight fund-building stages, from thesis development to portfolio management. At each stage, explore different methods, bank the ones that fit your context, and build your strategy as you go. Jump around as needed — there's no fixed order.</p>
+            <p>At the end of the exercise you'll have a complete fund strategy you can export and use. Share it with your team, stress-test your assumptions, or use it to make your case to stakeholders. It's grounded in what we've learned from building portfolios across education, health, climate, and innovation.</p>
         </div>
         <div class="screen-nav">
             <button class="nav-btn primary" onclick="window.location.href='method-cards.html'">Get Started</button>
         </div>
     </div>
 
+    <script src="./app.js"></script>
 </body>
 </html>
