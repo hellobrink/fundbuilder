@@ -1,50 +1,2600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building your open innovation fund</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Training Finder — Education Ministry Officials</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-dark: #0f2640;
+    --sky: #0ea5e9;
+    --sky-light: #e0f2fe;
+    --emerald: #059669;
+    --emerald-light: #d1fae5;
+    --amber: #d97706;
+    --amber-light: #fef3c7;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-700: #334155;
+    --slate-900: #0f172a;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    --shadow: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,.1), 0 4px 10px rgba(0,0,0,.06);
+    /* EdTech Hub brand */
+    --eth-orange: #F04E23;
+    --eth-orange-light: #fef0e8;
+    --aiobs-blue: #1755D4;
+    --aiobs-blue-light: #e8edfb;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--slate-50);
+    color: var(--slate-900);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--slate-200);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: .1rem;
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .brand-edtech { color: var(--slate-900); }
+  .brand-hub { color: var(--eth-orange); }
+  .brand-divider {
+    color: var(--slate-300);
+    margin: 0 .55rem;
+    font-weight: 300;
+    font-size: 1.1rem;
+  }
+  .header-fcdo-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+  }
+  .header-tool-name {
+    font-size: .78rem;
+    font-weight: 500;
+    color: var(--slate-400);
+    border-left: 1px solid var(--slate-200);
+    padding-left: 1rem;
+  }
+  .header-beta {
+    font-size: .62rem;
+    background: var(--aiobs-blue-light);
+    color: var(--aiobs-blue);
+    padding: 3px 9px;
+    border-radius: 99px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .header-feedback {
+    font-size: .75rem;
+    font-weight: 500;
+    color: var(--slate-500);
+    text-decoration: none;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 99px;
+    padding: 4px 12px;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .header-feedback:hover {
+    border-color: var(--aiobs-blue);
+    color: var(--aiobs-blue);
+    background: var(--aiobs-blue-light);
+  }
+
+  /* ── STEP INDICATOR ── */
+  .step-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--slate-200);
+    padding: .75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .78rem;
+    color: var(--slate-400);
+    font-weight: 500;
+  }
+  .step-item.active { color: var(--navy); }
+  .step-item.done { color: var(--emerald); }
+  .step-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--slate-200);
+    color: var(--slate-500);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-item.active .step-num { background: var(--aiobs-blue); color: var(--white); }
+  .step-item.done .step-num { background: var(--emerald); color: var(--white); }
+  .step-connector {
+    width: 40px; height: 1px;
+    background: var(--slate-200);
+    margin: 0 .3rem;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── INTRO CARD ── */
+  .intro-wrap {
+    max-width: 640px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  .intro-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .intro-card-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #1e5276 100%);
+    padding: 2rem 2rem 1.5rem;
+    color: var(--white);
+  }
+  .intro-card-header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: .5rem;
+  }
+  .intro-card-header p {
+    font-size: .85rem;
+    opacity: .8;
+    line-height: 1.6;
+  }
+  .intro-card-body {
+    padding: 1.75rem 2rem 2rem;
+  }
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .form-group select, .form-group input {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 8px;
+    font-size: .9rem;
+    font-family: inherit;
+    color: var(--slate-900);
+    background: var(--white);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .85rem center;
+    padding-right: 2.5rem;
+    transition: border-color .15s;
+  }
+  .form-group select:focus, .form-group input:focus {
+    outline: none;
+    border-color: var(--sky);
+    box-shadow: 0 0 0 3px rgba(14,165,233,.12);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .7rem 1.4rem;
+    border-radius: 8px;
+    font-size: .875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all .15s;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--aiobs-blue);
+    color: var(--white);
+    width: 100%;
+    justify-content: center;
+    padding: .85rem;
+    font-size: .95rem;
+    margin-top: .5rem;
+  }
+  .btn-primary:hover { background: #1245b0; transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn-secondary {
+    background: var(--slate-100);
+    color: var(--slate-700);
+  }
+  .btn-secondary:hover { background: var(--slate-200); }
+  .btn-outline {
+    background: transparent;
+    color: var(--aiobs-blue);
+    border: 1.5px solid var(--aiobs-blue);
+  }
+  .btn-outline:hover { background: var(--aiobs-blue-light); }
+  .btn-sm { padding: .45rem .9rem; font-size: .8rem; }
+
+  /* ── GOALS SCREEN ── */
+  .goals-wrap {
+    max-width: 640px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+  }
+  .goals-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .goals-card-header {
+    background: linear-gradient(135deg, #0f3db8 0%, var(--aiobs-blue) 60%, #2a6be0 100%);
+    padding: 1.5rem 2rem;
+    color: var(--white);
+  }
+  .goals-card-header .context-tag {
+    font-size: .75rem;
+    background: rgba(255,255,255,.18);
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-bottom: .6rem;
+    display: inline-block;
+    font-weight: 500;
+  }
+  .goals-card-header h2 { font-size: 1.2rem; font-weight: 700; }
+  .goals-card-header p { font-size: .82rem; opacity: .8; margin-top: .3rem; }
+  .goals-card-body { padding: 1.5rem 2rem 2rem; }
+
+  .goals-intro {
+    font-size: .85rem;
+    color: var(--slate-500);
+    margin-bottom: 1rem;
+    padding: .75rem 1rem;
+    background: var(--aiobs-blue-light);
+    border-radius: 8px;
+    border-left: 3px solid var(--aiobs-blue);
+  }
+
+  .goal-option {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .9rem 1rem;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 10px;
+    margin-bottom: .6rem;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .goal-option:hover { border-color: var(--aiobs-blue); background: var(--aiobs-blue-light); }
+  .goal-option.selected { border-color: var(--aiobs-blue); background: var(--aiobs-blue-light); }
+  .goal-option input[type="checkbox"] { display: none; }
+  .goal-checkbox {
+    width: 18px; height: 18px;
+    border: 2px solid var(--slate-300);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .goal-option.selected .goal-checkbox {
+    background: var(--aiobs-blue);
+    border-color: var(--aiobs-blue);
+  }
+  .goal-checkbox::after {
+    content: '';
+    display: none;
+    width: 5px; height: 9px;
+    border: 2px solid white;
+    border-top: none; border-left: none;
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+  .goal-option.selected .goal-checkbox::after { display: block; }
+  .goal-label { font-size: .88rem; font-weight: 500; color: var(--slate-900); line-height: 1.4; }
+  .goal-desc { font-size: .78rem; color: var(--slate-500); margin-top: .2rem; line-height: 1.4; }
+  .goal-layer {
+    display: inline-block;
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: .3rem;
+  }
+  .layer-1 { background: #ede9fe; color: #6d28d9; }
+  .layer-2 { background: #dbeafe; color: #1d4ed8; }
+  .layer-3 { background: #d1fae5; color: #065f46; }
+
+  .goals-nav { display: flex; gap: .75rem; margin-top: 1rem; }
+  .goals-nav .btn { flex: 1; justify-content: center; }
+
+  /* ── RESULTS SCREEN ── */
+  .results-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    padding: 1.25rem;
+    position: sticky;
+    top: 68px;
+  }
+  .sidebar h3 {
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--slate-500);
+    margin-bottom: 1rem;
+  }
+  .filter-section { margin-bottom: 1.25rem; }
+  .filter-section:last-child { margin-bottom: 0; }
+  .filter-label {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    margin-bottom: .4rem;
+    display: block;
+  }
+  .filter-section select {
+    width: 100%;
+    padding: .5rem .7rem;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 7px;
+    font-size: .8rem;
+    font-family: inherit;
+    color: var(--slate-900);
+    background: var(--white);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .7rem center;
+    padding-right: 2rem;
+    cursor: pointer;
+  }
+  .filter-section select:focus { outline: none; border-color: var(--aiobs-blue); }
+
+  .sidebar-divider { height: 1px; background: var(--slate-200); margin: 1rem 0; }
+
+  .profile-summary {
+    padding: .75rem;
+    background: var(--slate-50);
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+  }
+  .profile-summary .ps-label {
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-weight: 700;
+    color: var(--slate-400);
+    margin-bottom: .3rem;
+  }
+  .profile-summary .ps-value {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--slate-700);
+    line-height: 1.4;
+  }
+  .btn-revise {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: .75rem;
+    color: var(--aiobs-blue);
+    cursor: pointer;
+    margin-top: .4rem;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+  }
+  .btn-revise:hover { color: var(--navy); }
+
+  .shortlist-summary {
+    padding: .6rem .75rem;
+    background: var(--amber-light);
+    border-radius: 7px;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--amber);
+    margin-bottom: .5rem;
+    display: none;
+  }
+  .shortlist-summary.visible { display: block; }
+
+  /* Results main */
+  .results-main {}
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .results-count {
+    font-size: .88rem;
+    color: var(--slate-500);
+  }
+  .results-count strong { color: var(--slate-900); }
+  .results-actions { display: flex; gap: .5rem; }
+
+  /* Programme card */
+  .programme-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: .9rem;
+    border: 1.5px solid rgba(23,85,212,.18);
+    transition: all .15s;
+    overflow: hidden;
+  }
+  .programme-card:hover { box-shadow: 0 4px 16px rgba(23,85,212,.12); border-color: var(--aiobs-blue); transform: translateY(-1px); }
+  .programme-card.shortlisted { border-color: var(--eth-orange); box-shadow: 0 4px 16px rgba(240,78,35,.1); }
+
+  .card-top {
+    padding: 1rem 1.25rem .75rem;
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+  }
+  .card-checkbox-wrap {
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .card-checkbox {
+    width: 18px; height: 18px;
+    border: 2px solid var(--slate-300);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+    flex-shrink: 0;
+  }
+  .card-checkbox.checked { background: var(--amber); border-color: var(--amber); }
+  .card-checkbox::after {
+    content: '';
+    display: none;
+    width: 5px; height: 9px;
+    border: 2px solid white;
+    border-top: none; border-left: none;
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+  .card-checkbox.checked::after { display: block; }
+
+  .card-main { flex: 1; min-width: 0; }
+  .card-badges { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .4rem; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .2rem;
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-tier1 { background: #ede9fe; color: #5b21b6; }
+  .badge-tier2 { background: #dbeafe; color: #1e40af; }
+  .badge-tier3 { background: #d1fae5; color: #065f46; }
+  .badge-match { background: #fef3c7; color: #92400e; }
+  .badge-match.best { background: #fef3c7; color: #78350f; }
+  .badge-free { background: var(--emerald-light); color: #065f46; }
+  .badge-paid { background: var(--red-light); color: #991b1b; }
+  .badge-freemium { background: #fef9c3; color: #713f12; }
+  .badge-scalability-vs { background: #d1fae5; color: #065f46; }
+  .badge-scalability-s { background: #dcfce7; color: #166534; }
+  .badge-scalability-m { background: #fef9c3; color: #713f12; }
+  .badge-scalability-l { background: var(--red-light); color: #991b1b; }
+
+  .card-title {
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    line-height: 1.3;
+    margin-bottom: .15rem;
+  }
+  .card-provider {
+    font-size: .78rem;
+    color: var(--slate-500);
+    margin-bottom: .5rem;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem .9rem;
+    font-size: .78rem;
+    color: var(--slate-600);
+    margin-bottom: .5rem;
+  }
+  .card-meta-item { display: flex; align-items: center; gap: .3rem; }
+  .card-meta-item svg { flex-shrink: 0; }
+
+  .card-needs {
+    display: flex;
+    gap: .4rem;
+    flex-wrap: wrap;
+    margin-bottom: .2rem;
+  }
+  .need-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .7rem;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 500;
+  }
+  .need-pill .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .need-high { background: #d1fae5; color: #065f46; }
+  .need-high .dot { background: #059669; }
+  .need-medium { background: #fef9c3; color: #713f12; }
+  .need-medium .dot { background: #d97706; }
+  .need-low { background: var(--slate-100); color: var(--slate-500); }
+  .need-low .dot { background: var(--slate-400); }
+
+  .card-expand-btn {
+    background: none;
+    border: none;
+    font-size: .78rem;
+    color: var(--aiobs-blue);
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: .2rem;
+    margin-top: .3rem;
+  }
+  .card-expand-btn:hover { color: var(--navy); text-decoration: underline; }
+
+  .card-details {
+    display: none;
+    padding: .75rem 1.25rem 1rem;
+    border-top: 1px solid var(--slate-100);
+    background: var(--slate-50);
+  }
+  .card-details.open { display: block; }
+  .card-details p {
+    font-size: .82rem;
+    color: var(--slate-600);
+    line-height: 1.6;
+    margin-bottom: .5rem;
+  }
+  .card-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .4rem .75rem;
+    margin-top: .5rem;
+  }
+  .detail-item { font-size: .78rem; }
+  .detail-item .di-label { color: var(--slate-400); font-weight: 600; text-transform: uppercase; font-size: .65rem; letter-spacing: .05em; margin-bottom: .1rem; }
+  .detail-item .di-value { color: var(--slate-700); }
+
+  .card-footer {
+    padding: .6rem 1.25rem;
+    border-top: 1px solid var(--slate-100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+  .card-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .78rem;
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .card-footer a:hover { color: var(--navy); text-decoration: underline; }
+  .card-footer .no-url {
+    font-size: .75rem;
+    color: var(--slate-400);
+    font-style: italic;
+  }
+
+  /* Relevance score */
+  .relevance-bar-wrap { display: flex; align-items: center; gap: .4rem; }
+  .relevance-bar {
+    width: 60px; height: 5px;
+    background: var(--slate-200);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .relevance-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--aiobs-blue);
+    transition: width .3s;
+  }
+  .relevance-fill.high { background: var(--aiobs-blue); }
+  .relevance-fill.medium { background: rgba(23,85,212,.55); }
+  .relevance-fill.low { background: var(--slate-300); }
+  .relevance-label { font-size: .7rem; color: var(--slate-500); font-weight: 500; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .empty-state h3 { font-size: 1.1rem; margin-bottom: .4rem; }
+  .empty-state p { font-size: .85rem; color: var(--slate-500); }
+
+  /* Results top bar */
+  .results-topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--slate-200);
+    padding: .75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .results-topbar .profile-pill {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .8rem;
+    color: var(--slate-600);
+  }
+  .results-topbar .profile-pill strong { color: var(--slate-900); }
+  .results-topbar .pipe { color: var(--slate-300); }
+
+  /* Modal for email share */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+  }
+  .modal-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-header h3 { font-size: 1rem; font-weight: 700; }
+  .modal-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.7);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .modal-body p { font-size: .85rem; color: var(--slate-600); margin-bottom: 1rem; line-height: 1.6; }
+  .modal-body .form-group { margin-bottom: 1rem; }
+  .modal-body .form-group label { color: var(--slate-700); text-transform: none; letter-spacing: 0; font-size: .82rem; }
+  .modal-body input {
+    width: 100%;
+    padding: .6rem .85rem;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 8px;
+    font-size: .88rem;
+    font-family: inherit;
+  }
+  .modal-body input:focus { outline: none; border-color: var(--sky); }
+  .modal-actions { display: flex; gap: .5rem; margin-top: 1rem; }
+  .modal-actions .btn { flex: 1; justify-content: center; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--slate-900);
+    color: var(--white);
+    padding: .75rem 1.25rem;
+    border-radius: 8px;
+    font-size: .85rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(100px);
+    transition: transform .25s;
+    z-index: 2000;
+  }
+  .toast.show { transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .results-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .card-details-grid { grid-template-columns: 1fr; }
+    .intro-card-body { padding: 1.25rem; }
+    .intro-card-header { padding: 1.5rem 1.25rem 1.25rem; }
+  }
+
+  /* Utility */
+  .hidden { display: none !important; }
+  .mt-1 { margin-top: .5rem; }
+  .text-muted { color: var(--slate-500); font-size: .82rem; }
+
+  /* ── SCREEN 1 REDESIGN ── */
+  .s1-outer {
+    max-width: 680px;
+    margin: 2rem auto 3rem;
+    padding: 0 1rem;
+  }
+  .s1-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .s1-hero h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: .4rem;
+    line-height: 1.3;
+  }
+  .s1-hero p {
+    font-size: .88rem;
+    color: var(--slate-500);
+    line-height: 1.6;
+  }
+  .s1-section {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1.5px solid var(--slate-200);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .s1-section-label {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--slate-500);
+    margin-bottom: 1rem;
+  }
+  .s1-num {
+    width: 22px; height: 22px;
+    background: var(--aiobs-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Tier cards */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .6rem;
+    margin-bottom: .1rem;
+  }
+  .tier-card {
+    border: 2px solid var(--slate-200);
+    border-radius: 10px;
+    padding: 1rem .85rem;
+    cursor: pointer;
+    transition: all .18s;
+    text-align: center;
+    position: relative;
+    background: var(--white);
+  }
+  .tier-card:hover {
+    border-color: var(--aiobs-blue);
+    background: var(--aiobs-blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(23,85,212,.14);
+  }
+  .tier-card.selected {
+    border-color: var(--aiobs-blue);
+    background: var(--aiobs-blue-light);
+    box-shadow: 0 0 0 3px rgba(23,85,212,.12);
+  }
+  .tier-card-check {
+    position: absolute;
+    top: .5rem; right: .6rem;
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--aiobs-blue);
+    opacity: 0;
+    transition: opacity .15s;
+  }
+  .tier-card.selected .tier-card-check { opacity: 1; }
+  .tier-card-icon { font-size: 1.6rem; margin-bottom: .35rem; }
+  .tier-card-tier {
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--aiobs-blue);
+    margin-bottom: .2rem;
+  }
+  .tier-card.selected .tier-card-tier { color: var(--aiobs-blue); }
+  .tier-card-name {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    margin-bottom: .25rem;
+    line-height: 1.3;
+  }
+  .tier-card-desc {
+    font-size: .7rem;
+    color: var(--slate-400);
+    line-height: 1.4;
+  }
+
+  /* Role / country chip reveal */
+  .role-reveal {
+    display: none;
+    margin-top: .9rem;
+    padding-top: .9rem;
+    border-top: 1px solid var(--slate-100);
+    animation: fadeSlideDown .2s ease;
+  }
+  .role-reveal.visible { display: block; }
+  .role-reveal-label {
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--slate-500);
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .s1-chip {
+    padding: .42rem .9rem;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 99px;
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--slate-600);
+    cursor: pointer;
+    transition: all .13s;
+    background: var(--white);
+    font-family: inherit;
+  }
+  .s1-chip:hover { border-color: var(--aiobs-blue); color: var(--aiobs-blue); background: var(--aiobs-blue-light); }
+  .s1-chip.selected {
+    background: var(--aiobs-blue);
+    color: var(--white);
+    border-color: var(--aiobs-blue);
+  }
+
+  /* Region grid */
+  .region-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+  }
+  .region-card {
+    border: 2px solid var(--slate-200);
+    border-radius: 10px;
+    padding: .85rem .6rem;
+    cursor: pointer;
+    transition: all .18s;
+    text-align: center;
+    position: relative;
+    background: var(--white);
+  }
+  .region-card:hover {
+    border-color: var(--aiobs-blue);
+    background: var(--aiobs-blue-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(23,85,212,.14);
+  }
+  .region-card.selected {
+    border-color: var(--aiobs-blue);
+    background: var(--aiobs-blue-light);
+    box-shadow: 0 0 0 3px rgba(23,85,212,.12);
+  }
+  .region-card.selected .tier-card-check { opacity: 1; }
+  .region-icon { font-size: 1.3rem; display: block; margin-bottom: .3rem; }
+  .region-name { font-size: .75rem; font-weight: 700; color: var(--slate-900); line-height: 1.3; margin-bottom: .1rem; }
+  .region-sub { font-size: .67rem; color: var(--slate-400); }
+
+  /* Continue button */
+  .s1-continue-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--aiobs-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: .95rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all .18s;
+    margin-top: .5rem;
+    letter-spacing: .01em;
+  }
+  .s1-continue-btn:not(:disabled):hover {
+    background: #1245b0;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+  .s1-continue-btn:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CARD TITLE LINK ── */
+  .card-title-link {
+    color: var(--aiobs-blue);
+    text-decoration: none;
+    font-size: .97rem;
+    font-weight: 700;
+    line-height: 1.3;
+    display: inline;
+  }
+  .card-title-link:hover { text-decoration: underline; color: var(--navy); }
+  .card-title-plain {
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    line-height: 1.3;
+  }
+
+  /* ── SHORTLIST BUTTON ── */
+  .shortlist-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .35rem .85rem;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 99px;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--slate-500);
+    background: var(--white);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .shortlist-btn:hover { border-color: var(--eth-orange); color: var(--eth-orange); background: var(--eth-orange-light); }
+  .shortlist-btn.active { background: var(--eth-orange-light); border-color: var(--eth-orange); color: var(--eth-orange); }
+
+  /* ── VISIT LINK IN FOOTER ── */
+  .card-visit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .78rem;
+    color: var(--aiobs-blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .card-visit-link:hover { color: var(--navy); text-decoration: underline; }
+
+  /* Remove old card-top checkbox (now using footer shortlist button) */
+  .card-checkbox-wrap { display: none; }
+</style>
 </head>
 <body>
-    <div class="toolbar">
-        <div class="toolbar-left"></div>
-        <div class="toolbar-center">
-            <span class="toolbar-title">Building your open innovation fund</span>
-        </div>
-        <div class="toolbar-badge">
-            <div class="beta-badge"><span>Beta</span></div>
-        </div>
-        <div class="toolbar-right">
-            <button class="toolbar-btn" onclick="window.location.reload()" title="Refresh">
-                Refresh
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            </button>
-        </div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-left">
+    <div class="header-brand">
+      <span class="brand-edtech">EdTech</span><span class="brand-hub">Hub</span>
+      <span class="brand-divider">|</span>
+      <img src="s960_FCDO_logo_960x640.png" alt="FCDO" class="header-fcdo-logo">
+    </div>
+    <div class="header-tool-name">AI Training Finder</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <span class="header-beta">Beta</span>
+    <a href="mailto:coffee@hellobrink.co?subject=AI%20training%20tool%20feedback" class="header-feedback">Send us your feedback</a>
+  </div>
+</header>
+
+<!-- STEP BAR -->
+<div class="step-bar" id="stepBar">
+  <div class="step-item active" id="step1indicator">
+    <div class="step-num">1</div>
+    <span>Your Profile</span>
+  </div>
+  <div class="step-connector"></div>
+  <div class="step-item" id="step2indicator">
+    <div class="step-num">2</div>
+    <span>Learning Goals</span>
+  </div>
+  <div class="step-connector"></div>
+  <div class="step-item" id="step3indicator">
+    <div class="step-num">3</div>
+    <span>Matched Programmes</span>
+  </div>
+</div>
+
+<!-- ══ SCREEN 1: PROFILE ══ -->
+<div class="screen active" id="screen1">
+  <div class="s1-outer">
+
+    <div class="s1-hero">
+      <h1>Find AI training that fits your role</h1>
+      <p>26 programmes mapped for education ministry officials in low- and middle-income countries. Two questions — personalised results.</p>
     </div>
 
-    <div id="screen-about">
-        <div class="next-steps-section">
-            <h2>About this tool</h2>
-            <p>Building a fit-for-purpose fund takes a lot of thought and intentionality. Designed well, the right combination of financial and technical support can propel ventures to their next stage of impact (or help them close down quicker and move on to the next impactful idea).</p>
-            <p>But, if it's done badly, it can distract teams with perverse incentives that prioritise pitching over building product, especially when the power structures of reporting get in the way.</p>
-            <p>That's why we've built this tool, to explore what's needed to design behaviourally informed funds, that can create the conditions for truly scalable impact.</p>
-            <h2>How it works</h2>
-            <p><b>Build your strategic foundation.</b> Before you start you can use our downloadable canvas to work through the fundamentals of your fund. Explore the purpose and urgency driving it, dig into who your stakeholders and target portfolio are, as well as the real constraints you're trying to address. Through a series of prompts you'll capture what matters most.</p>
+    <!-- ROLE SECTION -->
+    <div class="s1-section">
+      <div class="s1-section-label">
+        <span class="s1-num">1</span>
+        What best describes your role?
+      </div>
+
+      <div class="tier-grid">
+        <div class="tier-card" id="tcard-1" onclick="selectTier(1)">
+          <div class="tier-card-icon">🏛️</div>
+          <div class="tier-card-tier">Tier 1</div>
+          <div class="tier-card-name">Strategic Governance</div>
+          <div class="tier-card-desc">Ministers, Permanent Secretaries and Senior Advisors</div>
+          <div class="tier-card-check">✓</div>
         </div>
-        <div class="screen-nav" style="margin-bottom: 24px;">
-            <button class="nav-btn" onclick="downloadWorksheetsPDF()">Download your canvas here</button>
+        <div class="tier-card" id="tcard-2" onclick="selectTier(2)">
+          <div class="tier-card-icon">📊</div>
+          <div class="tier-card-tier">Tier 2</div>
+          <div class="tier-card-name">Operational &amp; Planning</div>
+          <div class="tier-card-desc">Directors, EMIS Heads, Procurement Officers, Analysts</div>
+          <div class="tier-card-check">✓</div>
         </div>
-        <div class="next-steps-section" style="padding-top: 0;">
-            <p><b>Design your approach.</b> Using our method cards, move through eight fund-building stages, from thesis development to portfolio management. At each stage, explore different methods, bank the ones that fit your context, and build your strategy as you go. Jump around as needed — there's no fixed order.</p>
-            <p>At the end of the exercise you'll have a complete fund strategy you can export and use. Share it with your team, stress-test your assumptions, or use it to make your case to stakeholders. It's grounded in what we've learned from building portfolios across education, health, climate, and innovation.</p>
+        <div class="tier-card" id="tcard-3" onclick="selectTier(3)">
+          <div class="tier-card-icon">🎓</div>
+          <div class="tier-card-tier">Tier 3</div>
+          <div class="tier-card-name">Digital Pedagogy</div>
+          <div class="tier-card-desc">Curriculum Developers, Teacher Training Leads, School Leaders</div>
+          <div class="tier-card-check">✓</div>
         </div>
-        <div class="screen-nav">
-            <button class="nav-btn primary" onclick="window.location.href='method-cards.html'">Get Started</button>
-        </div>
+      </div>
+
+      <div class="role-reveal" id="roleReveal">
+        <div class="role-reveal-label">Select your specific role</div>
+        <div class="chip-row" id="roleChips"></div>
+      </div>
     </div>
 
-    <script src="./app.js"></script>
+    <!-- LOCATION SECTION -->
+    <div class="s1-section" id="locationSection" style="opacity:.35;pointer-events:none;transition:opacity .3s;">
+      <div class="s1-section-label">
+        <span class="s1-num">2</span>
+        Where are you based?
+      </div>
+
+      <div class="region-grid">
+        <div class="region-card" id="rcard-ssa_en" onclick="selectRegion('ssa_en')">
+          <span class="region-icon">🌍</span>
+          <div class="region-name">Sub-Saharan Africa</div>
+          <div class="region-sub">English-speaking</div>
+          <div class="tier-card-check">✓</div>
+        </div>
+        <div class="region-card" id="rcard-ssa_fr" onclick="selectRegion('ssa_fr')">
+          <span class="region-icon">🌍</span>
+          <div class="region-name">Sub-Saharan Africa</div>
+          <div class="region-sub">Francophone</div>
+          <div class="tier-card-check">✓</div>
+        </div>
+        <div class="region-card" id="rcard-sa" onclick="selectRegion('sa')">
+          <span class="region-icon">🌏</span>
+          <div class="region-name">South &amp; Southeast Asia</div>
+          <div class="region-sub">&nbsp;</div>
+          <div class="tier-card-check">✓</div>
+        </div>
+        <div class="region-card" id="rcard-lac" onclick="selectRegion('lac')">
+          <span class="region-icon">🌎</span>
+          <div class="region-name">Latin America &amp; Caribbean</div>
+          <div class="region-sub">&nbsp;</div>
+          <div class="tier-card-check">✓</div>
+        </div>
+        <div class="region-card" id="rcard-mena" onclick="selectRegion('mena')">
+          <span class="region-icon">🌍</span>
+          <div class="region-name">Middle East &amp; North Africa</div>
+          <div class="region-sub">&nbsp;</div>
+          <div class="tier-card-check">✓</div>
+        </div>
+        <div class="region-card" id="rcard-other" onclick="selectRegion('other')">
+          <span class="region-icon">🌐</span>
+          <div class="region-name">Other</div>
+          <div class="region-sub">Not listed above</div>
+          <div class="tier-card-check">✓</div>
+        </div>
+      </div>
+
+      <div class="role-reveal" id="countryReveal">
+        <div class="role-reveal-label">Select your country</div>
+        <div class="chip-row" id="countryChips"></div>
+      </div>
+    </div>
+
+    <!-- CONTINUE -->
+    <button class="s1-continue-btn" id="continueBtn" onclick="goToStep2()" disabled>
+      Continue to Learning Goals →
+    </button>
+    <p style="text-align:center;font-size:.75rem;color:var(--slate-400);margin-top:.75rem;">
+      Based on <em>A Rapid Mapping of AI Training Programmes for Education Ministry Officials in LMICs</em>, EdTech Hub 2026
+    </p>
+
+  </div>
+</div>
+
+<!-- ══ SCREEN 2: GOALS ══ -->
+<div class="screen" id="screen2">
+  <div class="goals-wrap">
+    <div class="goals-card">
+      <div class="goals-card-header">
+        <div class="context-tag" id="tierTag">Tier 1 · Strategic Governance</div>
+        <h2>What do you want to learn?</h2>
+        <p>Select one or more priorities to personalise your results.</p>
+      </div>
+      <div class="goals-card-body">
+        <div class="goals-intro" id="goalsIntro">
+          Based on your role, these training goals are most relevant to you.
+        </div>
+        <div id="goalsList"></div>
+        <div class="goals-nav">
+          <button class="btn btn-secondary" onclick="goToStep1()">← Back</button>
+          <button class="btn btn-primary" onclick="goToStep3()">Show Programmes →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 3: RESULTS ══ -->
+<div class="screen" id="screen3">
+  <!-- Top bar with context -->
+  <div class="results-topbar">
+    <div class="profile-pill">
+      <span>Showing results for:</span>
+      <strong id="topbarRole">—</strong>
+      <span class="pipe">|</span>
+      <strong id="topbarCountry">—</strong>
+    </div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+      <button class="btn btn-sm btn-secondary" onclick="goToStep1()">← Revise profile</button>
+      <button class="btn btn-sm btn-outline" onclick="openShareModal()"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor" style="flex-shrink:0"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg> Share results</button>
+    </div>
+  </div>
+
+  <div class="results-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-summary">
+        <div class="ps-label">Your role</div>
+        <div class="ps-value" id="sidebarRole">—</div>
+        <div class="ps-label" style="margin-top:.4rem;">Country / Region</div>
+        <div class="ps-value" id="sidebarCountry">—</div>
+        <button class="btn-revise" onclick="goToStep1()">Revise →</button>
+      </div>
+
+      <h3>Filters</h3>
+
+      <div class="filter-section">
+        <label class="filter-label">Modality</label>
+        <select id="filterModality" onchange="applyFilters()">
+          <option value="all">All modalities</option>
+          <option value="online">Online / self-paced</option>
+          <option value="blended">Blended</option>
+          <option value="inperson">In-person</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Cost</label>
+        <select id="filterCost" onchange="applyFilters()">
+          <option value="all">Any cost</option>
+          <option value="free">Free only</option>
+          <option value="freemium">Free / Freemium</option>
+          <option value="paid">Paid</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Certification</label>
+        <select id="filterCert" onchange="applyFilters()">
+          <option value="all">Any certification</option>
+          <option value="yes">Certificate available</option>
+          <option value="no">No certification</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Scalability</label>
+        <select id="filterScale" onchange="applyFilters()">
+          <option value="all">Any scalability</option>
+          <option value="Very Strong">Very Strong</option>
+          <option value="Strong">Strong</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Limited">Limited</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-label">Language available</label>
+        <select id="filterLang" onchange="applyFilters()">
+          <option value="all">Any language</option>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="multi">Multilingual (3+)</option>
+        </select>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <div class="shortlist-summary" id="shortlistSummary">
+        <span id="shortlistCount">0</span> shortlisted — include in email share
+      </div>
+
+      <button class="btn btn-sm btn-secondary" style="width:100%;justify-content:center;display:flex;" onclick="clearFilters()">Clear all filters</button>
+    </aside>
+
+    <!-- Results -->
+    <main class="results-main">
+      <div class="results-header">
+        <div class="results-count" id="resultsCount">Loading…</div>
+        <div class="results-actions">
+          <button class="btn btn-sm btn-outline" onclick="openShareModal()"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor" style="flex-shrink:0"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg> Share</button>
+        </div>
+      </div>
+      <div id="programmeList"></div>
+    </main>
+  </div>
+</div>
+
+<!-- ══ SHARE MODAL ══ -->
+<div class="modal-overlay" id="shareModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Share your results by email</h3>
+      <button class="modal-close" onclick="closeShareModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Enter a recipient's email address to open a pre-filled email with your matched programmes. Shortlisted programmes will be highlighted.</p>
+      <div class="form-group">
+        <label>Recipient email address</label>
+        <input type="email" id="emailInput" placeholder="colleague@ministry.gov">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeShareModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="sendEmail()" style="width:auto;flex:2;">Open email client →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════
+
+const TIERS = {
+  minister: 1, perm_sec: 1, senior_advisor: 1, senior_official: 1,
+  director_planning: 2, emis_head: 2, procurement: 2, policy_analyst: 2, m_e: 2,
+  curriculum: 3, teacher_training: 3, school_leader: 3, edtech_lead: 3
+};
+
+const ROLE_LABELS = {
+  minister: "Minister of Education",
+  perm_sec: "Permanent Secretary / Deputy Minister",
+  senior_advisor: "Senior Policy Advisor",
+  senior_official: "Senior Ministry Official",
+  director_planning: "Director of Planning / Strategy",
+  emis_head: "EMIS Head / Data Manager",
+  procurement: "Procurement Officer",
+  policy_analyst: "Policy Analyst / Programme Officer",
+  m_e: "M&E Lead / Evidence Officer",
+  curriculum: "Curriculum Developer",
+  teacher_training: "Teacher Training Lead",
+  school_leader: "School Leader / Principal",
+  edtech_lead: "EdTech / ICT Lead"
+};
+
+const COUNTRY_LABELS = {
+  ke:"Kenya", gh:"Ghana", rw:"Rwanda", ng:"Nigeria", ug:"Uganda", tz:"Tanzania",
+  et:"Ethiopia", sl:"Sierra Leone", za:"South Africa", mw:"Malawi", ls:"Lesotho",
+  zm:"Zambia", zz:"Zanzibar", bd_ssa:"Other SSA (English-speaking)",
+  sn:"Senegal", ci:"Côte d'Ivoire", cm:"Cameroon", gw:"Guinea-Bissau",
+  mg:"Madagascar", bf:"Burkina Faso", bd_ssa_fr:"Other SSA (Francophone)",
+  bd:"Bangladesh", pk:"Pakistan", in:"India", ph:"Philippines", vn:"Vietnam",
+  id:"Indonesia", la:"Lao PDR", bd_sa:"Other South/Southeast Asia",
+  co:"Colombia", br:"Brazil", mx:"Mexico", sv:"El Salvador", bd_lac:"Other LAC",
+  eg:"Egypt", jo:"Jordan", ma:"Morocco", bd_mena:"Other MENA",
+  other:"Other / Not listed"
+};
+
+const COUNTRY_REGIONS = {
+  ke:"ssa_en", gh:"ssa_en", rw:"rw", ng:"ssa_en", ug:"ssa_en", tz:"ssa_en",
+  et:"ssa_en", sl:"ssa_en", za:"ssa_en", mw:"ssa_en", ls:"ssa_en", zm:"ssa_en",
+  zz:"ssa_en", bd_ssa:"ssa_en",
+  sn:"ssa_fr", ci:"ssa_fr", cm:"ssa_fr", gw:"ssa_fr", mg:"ssa_fr", bf:"ssa_fr", bd_ssa_fr:"ssa_fr",
+  bd:"sa", pk:"sa", in:"in", ph:"sea", vn:"sea", id:"sea", la:"sea", bd_sa:"sa",
+  co:"lac", br:"lac", mx:"lac", sv:"lac", bd_lac:"lac",
+  eg:"mena", jo:"mena", ma:"mena", bd_mena:"mena",
+  other:"other"
+};
+
+const GOALS = {
+  1: [
+    { id:"g1_policy", label:"Set national AI policy and governance frameworks", desc:"Understand how to evaluate and establish AI governance, guardrails and national strategy.", layer:1, aiLit:true, aiUse:false, aiEd:false },
+    { id:"g1_ethics", label:"Assess ethical and regulatory implications of AI", desc:"Critically evaluate AI for public administration, human rights, and compliance.", layer:1, aiLit:true, aiUse:false, aiEd:false },
+    { id:"g1_commission", label:"Commission and evaluate AI systems responsibly", desc:"Understand vendor claims, procurement risk and how to evaluate AI systems.", layer:2, aiLit:false, aiUse:true, aiEd:false },
+    { id:"g1_education", label:"Set AI strategy for the education sector", desc:"Understand AI's implications for education policy, curriculum and student data governance.", layer:3, aiLit:false, aiUse:false, aiEd:true }
+  ],
+  2: [
+    { id:"g2_planning", label:"Use AI tools for evidence-based planning", desc:"Apply AI tools to ministry planning, evidence synthesis and decision support.", layer:2, aiLit:false, aiUse:true, aiEd:false },
+    { id:"g2_emis", label:"Manage AI-assisted EMIS and data systems", desc:"Integrate AI into education data management and information systems.", layer:2, aiLit:false, aiUse:true, aiEd:true },
+    { id:"g2_procurement", label:"Navigate AI procurement and vendor evaluation", desc:"Assess EdTech AI products, manage contracts and evaluate vendor claims.", layer:2, aiLit:false, aiUse:true, aiEd:true },
+    { id:"g2_literacy", label:"Build foundational AI literacy", desc:"Understand what AI is, how it works, and its governance implications for your ministry.", layer:1, aiLit:true, aiUse:false, aiEd:false }
+  ],
+  3: [
+    { id:"g3_classroom", label:"Use AI tools in teaching and classroom practice", desc:"Apply AI tools to lesson planning, student support and classroom productivity.", layer:2, aiLit:false, aiUse:true, aiEd:true },
+    { id:"g3_curriculum", label:"Develop AI-aware curriculum and pedagogy", desc:"Integrate AI literacy into curriculum design and teaching frameworks.", layer:3, aiLit:false, aiUse:false, aiEd:true },
+    { id:"g3_leadership", label:"Lead school-level or system-level digital transformation", desc:"Guide institutions toward responsible, pedagogically sound AI adoption.", layer:3, aiLit:false, aiUse:false, aiEd:true },
+    { id:"g3_literacy", label:"Build your own AI literacy", desc:"Understand AI fundamentals and ethics so you can guide your institution confidently.", layer:1, aiLit:true, aiUse:false, aiEd:false }
+  ]
+};
+
+const PROGRAMMES = [
+  {
+    id:1,
+    name:"UNESCO AI for Public Sector Programme",
+    provider:"UNESCO · ITU · EU Global Gateway",
+    tiers:[1],
+    modality:"blended",
+    modalityLabel:"Blended (online + in-person)",
+    duration:"6 weeks",
+    cost:"free",
+    costLabel:"Free",
+    certification:true,
+    certLabel:"Joint UNESCO-ITU certificate",
+    aiLit:"High", aiUse:"High", aiEd:"High",
+    scalability:"Strong",
+    reach:"~50 per cohort · 31 countries (2025 cohort)",
+    evidence:"Provider-reported; no independent evaluation",
+    languages:["en"],
+    regions:["lmic","global"],
+    specificCountries:[],
+    notes:"Covers AI fundamentals, digital governance, public service design and human rights-based AI ethics. Limited education-sector specificity; not tailored to ministry of education functions.",
+    url:null
+  },
+  {
+    id:2,
+    name:"AI and Digital Transformation in Government",
+    provider:"UNESCO · Oxford Saïd Business School · EU Global Gateway",
+    tiers:[1],
+    modality:"online",
+    modalityLabel:"Online MOOC, self-paced",
+    duration:"~12 hours",
+    cost:"free",
+    costLabel:"Free",
+    certification:true,
+    certLabel:"Joint UNESCO / Oxford Saïd certificate",
+    aiLit:"High", aiUse:"High", aiEd:"Medium",
+    scalability:"Very Strong",
+    reach:"Global · launched November 2025",
+    evidence:"No uptake or completion data yet",
+    languages:["en"],
+    regions:["global","lmic"],
+    specificCountries:[],
+    notes:"Covers AI and digital transformation governance, risk and responsible use in public administration. Education-sector case studies from the Global South included; partial AI in education content.",
+    url:null
+  },
+  {
+    id:3,
+    name:"Prep-AI: Preparing Policy-Makers and Educators for AI",
+    provider:"UNESCO · IIEP-UNESCO · EU Global Gateway",
+    tiers:[1,3],
+    modality:"online",
+    modalityLabel:"Online MOOC (IIEP Global Campus), self-paced",
+    duration:"Launching March 2026",
+    cost:"free",
+    costLabel:"Free",
+    certification:true,
+    certLabel:"IIEP certificate",
+    aiLit:"High", aiUse:"Medium", aiEd:"High",
+    scalability:"Very Strong",
+    reach:"Global · no data yet",
+    evidence:"Launching March 2026; no data available",
+    languages:["en"],
+    regions:["global","lmic"],
+    specificCountries:[],
+    notes:"Covers AI policy, AI in curriculum development and responsible AI in education systems. Strong education-sector orientation; addresses governance and pedagogical dimensions jointly. ⚠️ Launching imminently.",
+    url:null
+  },
+  {
+    id:4,
+    name:"UNDP AI for Government",
+    provider:"UNDP Chief Digital Office",
+    tiers:[1],
+    modality:"blended",
+    modalityLabel:"Online and in-person (flexible)",
+    duration:"Variable",
+    cost:"free",
+    costLabel:"Free",
+    certification:false,
+    certLabel:"No formal certification",
+    aiLit:"High", aiUse:"Medium", aiEd:"Low",
+    scalability:"Moderate",
+    reach:"Cohorts of 15–40 · not reported",
+    evidence:"No published evaluation",
+    languages:["en","fr","es"],
+    regions:["global","lmic"],
+    specificCountries:[],
+    notes:"Covers AI awareness and governance concepts for government teams. No education-sector content documented. Available in English, French and Spanish.",
+    url:null
+  },
+  {
+    id:5,
+    name:"ITU Academy: AI Governance in Practice",
+    provider:"ITU Academy · EU Global Gateway",
+    tiers:[1],
+    modality:"blended",
+    modalityLabel:"Blended: online + 5-day in-person (Geneva or Addis Ababa)",
+    duration:"~40 hours",
+    cost:"free",
+    costLabel:"Free (EU-funded)",
+    certification:true,
+    certLabel:"ITU certificate + national AI roadmap deliverable",
+    aiLit:"High", aiUse:"Medium", aiEd:"Medium",
+    scalability:"Moderate",
+    reach:"~30 per cohort · LMICs prioritised",
+    evidence:"No independent evaluation published",
+    languages:["en"],
+    regions:["lmic","global"],
+    specificCountries:[],
+    notes:"Covers AI governance frameworks, national AI policy design. Deliverable: co-created 5-year national AI governance roadmap. Limited education-sector content. High intensity; suitable for senior officials.",
+    url:"https://academy.itu.int"
+  },
+  {
+    id:6,
+    name:"GIZ FAIR Forward: AI Policymaker Peer-Learning Network",
+    provider:"GIZ · BMZ (Germany) · HSRC (South Africa)",
+    tiers:[1],
+    modality:"blended",
+    modalityLabel:"Hybrid peer-exchange + ongoing network",
+    duration:"Ongoing network",
+    cost:"free",
+    costLabel:"Free",
+    certification:false,
+    certLabel:"No certification; open handbook published",
+    aiLit:"High", aiUse:"Low", aiEd:"Medium",
+    scalability:"Strong",
+    reach:"6 African + South Asian countries",
+    evidence:"No independent evaluation; moderate-weak evidence",
+    languages:["en"],
+    regions:["ssa_en"],
+    specificCountries:["gh","ke","rw","ug","za"],
+    notes:"South-South peer learning for national AI policymakers. Open access implementation handbook published. Partial education-sector coverage. Best for senior officials in target countries who want peer exchange.",
+    url:null
+  },
+  {
+    id:7,
+    name:"Apolitical Government AI Campus",
+    provider:"Apolitical (commercial learning platform)",
+    tiers:[1,2],
+    modality:"online",
+    modalityLabel:"Online, self-paced",
+    duration:"3–5 hours per course",
+    cost:"freemium",
+    costLabel:"Freemium (institutional subscription for full access)",
+    certification:true,
+    certLabel:"Certificate available",
+    aiLit:"High", aiUse:"High", aiEd:"Low",
+    scalability:"Moderate",
+    reach:"10,000+ registered · 116 countries",
+    evidence:"No completion data; provider-reported only",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers AI awareness, applied AI tools and governance concepts for general civil servants. Community of practice and convenings available. No education-sector content. Free tier limited; institutional subscription needed for full access.",
+    url:"https://apolitical.co"
+  },
+  {
+    id:8,
+    name:"Africa Centre of Competence for Digital and AI Skilling",
+    provider:"Microsoft · UNDP · Government of Kenya · Kenya School of Government",
+    tiers:[2],
+    modality:"blended",
+    modalityLabel:"Bootcamp + online modules",
+    duration:"Variable",
+    cost:"free",
+    costLabel:"Free for participants (PPP-funded)",
+    certification:false,
+    certLabel:"No formal certification",
+    aiLit:"Medium", aiUse:"Medium", aiEd:"Low",
+    scalability:"Moderate",
+    reach:"~1,500 trained · 6,500 registered",
+    evidence:"Corporate-reported only; no independent verification",
+    languages:["en"],
+    regions:["ssa_en"],
+    specificCountries:["ke","ng","ug"],
+    notes:"Covers digital services, cybersecurity and AI tools as part of broad public sector digital upskilling. Kenya-based; replication interest from Uganda and Nigeria. No education-sector content. Directly relevant as national infrastructure in FCDO priority country.",
+    url:null
+  },
+  {
+    id:9,
+    name:"UNESCO AI Literacy Training for Civil Servants",
+    provider:"UNESCO · Center for AI and Digital Policy (CAIDP)",
+    tiers:[1,2],
+    modality:"blended",
+    modalityLabel:"Flexible (adapted to national context)",
+    duration:"Variable (on request)",
+    cost:"free",
+    costLabel:"Free (UNESCO mandate)",
+    certification:false,
+    certLabel:"Certification arrangements not confirmed",
+    aiLit:"High", aiUse:"Low", aiEd:"Low",
+    scalability:"Moderate",
+    reach:"UNESCO member states on request",
+    evidence:"Launched 2024; no published evaluation",
+    languages:["en"],
+    regions:["global","lmic"],
+    specificCountries:[],
+    notes:"Covers AI ethics, governance frameworks and regulatory considerations for public officials. Train-the-trainer model supports national scaling. No education-sector content documented. Access requires formal request through UNESCO.",
+    url:null
+  },
+  {
+    id:10,
+    name:"EdTech Hub AI Observatory & MoE Engagement",
+    provider:"EdTech Hub · FCDO · Global Partnership for Education",
+    tiers:[2],
+    modality:"blended",
+    modalityLabel:"Scoping reviews, technical advisory, test-and-learn",
+    duration:"Project-based (ongoing)",
+    cost:"free",
+    costLabel:"Free to MoEs · outputs open access",
+    certification:false,
+    certLabel:"No formal certification",
+    aiLit:"Medium", aiUse:"High", aiEd:"High",
+    scalability:"Moderate",
+    reach:"MoE teams in 6 countries",
+    evidence:"Advisory model with published outputs; no formal evaluation",
+    languages:["en"],
+    regions:["ssa_en","sa"],
+    specificCountries:["ng","sl","ke","ph"],
+    notes:"Covers AI in education governance, evidence synthesis, EMIS integration and AI adoption in ministry planning contexts. Strongest education-sector specificity in the landscape; ministry-level engagement confirmed. Best for operational officials in FCDO partner countries.",
+    url:"https://edtechhub.org"
+  },
+  {
+    id:11,
+    name:"What Works Hub: Responsible AI for Education",
+    provider:"FCDO · What Works Hub for Global Education",
+    tiers:[2],
+    modality:"online",
+    modalityLabel:"Online resources, toolkits and webinars",
+    duration:"Flexible (knowledge platform)",
+    cost:"free",
+    costLabel:"Free · open access",
+    certification:false,
+    certLabel:"No certification",
+    aiLit:"Medium", aiUse:"Medium", aiEd:"High",
+    scalability:"Moderate",
+    reach:"What Works Hub partner countries",
+    evidence:"No training evaluation; platform usage not reported",
+    languages:["en"],
+    regions:["global","lmic"],
+    specificCountries:[],
+    notes:"Knowledge platform rather than structured training programme. Covers responsible AI for education evidence synthesis and dissemination for ministry planners. Strong education focus. Best as a supplementary resource alongside structured training.",
+    url:null
+  },
+  {
+    id:12,
+    name:"Wadhwani AI Global Government Programme",
+    provider:"Wadhwani AI · Wadhwani Centre for Government Digital Transformation",
+    tiers:[2],
+    modality:"blended",
+    modalityLabel:"Embedded capacity building (in-person + online LMS)",
+    duration:"Variable by deployment",
+    cost:"free",
+    costLabel:"Free to participating governments",
+    certification:true,
+    certLabel:"LMS-based certification (iGOT in India); variable for Africa",
+    aiLit:"High", aiUse:"High", aiEd:"Medium",
+    scalability:"Moderate",
+    reach:"200,000 Indian civil servants; Africa programme launched 2025",
+    evidence:"No published evaluation for Africa programme; India evidence moderate-weak",
+    languages:["en"],
+    regions:["sa","ssa_en"],
+    specificCountries:["in","ke","rw","et","ng"],
+    notes:"Covers AI deployment in government systems across education, health and agriculture. Practical implementation capacity building with LMIC-specific deployment experience. South-South transfer model applicable to FCDO partner countries. Education use cases include foundational literacy assessment, dropout prediction and teacher support.",
+    url:"https://wadhwaniai.org"
+  },
+  {
+    id:13,
+    name:"UNESCO ARTIE: Digital Talent for Educational Transformation",
+    provider:"UNESCO Santiago · IIEP-UNESCO LAC · Huawei Technologies · CAF · ECLAC",
+    tiers:[1,2],
+    modality:"online",
+    modalityLabel:"10-week structured webinar programme",
+    duration:"10 weeks (5 modules)",
+    cost:"free",
+    costLabel:"Free to MoE participants",
+    certification:false,
+    certLabel:"No formal certificate; participants produce policy projects",
+    aiLit:"High", aiUse:"High", aiEd:"High",
+    scalability:"Moderate",
+    reach:"65 MoE officials + 10 UNESCO specialists · 33 LAC countries",
+    evidence:"First cohort completed February 2026; no independent evaluation",
+    languages:["es"],
+    regions:["lac"],
+    specificCountries:["co","br","mx","sv"],
+    notes:"Only verified programme to engage all 33 LAC Ministries of Education in structured AI training. Covers governance and leadership in digital policies, AI in education systems, sustainability and data management. Strong education-sector specificity. Spanish-language primary — limited accessibility for non-Spanish speakers.",
+    url:null
+  },
+  {
+    id:14,
+    name:"IDIA: Managing Innovation for Impact — AI for Development",
+    provider:"International Development Innovation Alliance (IDIA) · Wadhwani AI",
+    tiers:[2],
+    modality:"inperson",
+    modalityLabel:"Immersive 1-week in-person + virtual platform",
+    duration:"1 week (intensive)",
+    cost:"free",
+    costLabel:"Application required; no cost data published",
+    certification:false,
+    certLabel:"No certification; cohort selection required",
+    aiLit:"Medium", aiUse:"Low", aiEd:"Low",
+    scalability:"Moderate",
+    reach:"Cohort-based; no aggregate data published",
+    evidence:"No published evaluation; June 2025 cohort closed",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers responsible application of AI to sustainable development outcomes. Primarily designed for development practitioners and funders rather than government ministry officials. AI in education content not documented. Partial relevance to ministry officials — worth monitoring for future cohorts.",
+    url:null
+  },
+  {
+    id:15,
+    name:"Team4Tech AI for Global Education",
+    provider:"Team4Tech · Fab Inc · corporate volunteers",
+    tiers:[3],
+    modality:"online",
+    modalityLabel:"Online, modular, self-paced",
+    duration:"Self-paced (per module)",
+    cost:"free",
+    costLabel:"Free · open-licensed content",
+    certification:true,
+    certLabel:"Certificate of completion per module",
+    aiLit:"Medium", aiUse:"High", aiEd:"High",
+    scalability:"Very Strong",
+    reach:"1,000+ NGO partners · 100+ countries",
+    evidence:"Provider-reported; no independent evaluation",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers AI tools for education, responsible AI in NGO and ministry contexts, and AI in education system planning. Strong education-sector orientation; open-licensed content suitable for FCDO adaptation. Particularly relevant for Tier 3 officials and ministry teams supporting classroom AI integration.",
+    url:"https://ai-for-education.org"
+  },
+  {
+    id:16,
+    name:"Day of AI: Educator Professional Development",
+    provider:"MIT RAISE · Day of AI (donor-funded)",
+    tiers:[3],
+    modality:"blended",
+    modalityLabel:"Workshop-based (virtual or in-person) · train-the-trainer",
+    duration:"Modular",
+    cost:"free",
+    costLabel:"Free · open curriculum",
+    certification:false,
+    certLabel:"No external certification",
+    aiLit:"High", aiUse:"High", aiEd:"High",
+    scalability:"Very Strong",
+    reach:"Active LMIC hubs in Rwanda, Indonesia, Colombia, Vietnam",
+    evidence:"No aggregate data published; weak evidence",
+    languages:["en"],
+    regions:["global","ssa_en","sea","lac"],
+    specificCountries:["rw","vn","id","co"],
+    notes:"Covers AI literacy, applied AI tools and AI in classroom practice and curriculum. Designed for teachers and school leaders. Tool-agnostic design supports LMIC adaptation. Train-the-trainer model enables national scaling. Active hubs in FCDO priority regions.",
+    url:"https://dayofai.org"
+  },
+  {
+    id:17,
+    name:"UNICEF Tinkering with Tech and AI",
+    provider:"UNICEF · Government of Finland · Arm / Raspberry Pi Foundation",
+    tiers:[3],
+    modality:"blended",
+    modalityLabel:"Hybrid (in-person + online), experiential",
+    duration:"Continuous / ongoing",
+    cost:"free",
+    costLabel:"Free to MoEs · teacher CPD credits",
+    certification:true,
+    certLabel:"Teacher professional development credits",
+    aiLit:"Medium", aiUse:"High", aiEd:"High",
+    scalability:"Strong",
+    reach:"Expanding to 18 countries",
+    evidence:"No formal evaluation published; moderate-weak evidence",
+    languages:["en"],
+    regions:["global","lmic"],
+    specificCountries:[],
+    notes:"Covers AI and computing in classroom practice through experiential learning with physical computing tools. Designed for teachers and students. Strong education focus with hands-on learning design. Device-agnostic approach supports LMIC contexts.",
+    url:null
+  },
+  {
+    id:18,
+    name:"British Council: AI in Language Teaching Webinar Series",
+    provider:"British Council · UK Government",
+    tiers:[3],
+    modality:"online",
+    modalityLabel:"Virtual webinars (recordings available)",
+    duration:"~1.5 hours per session",
+    cost:"free",
+    costLabel:"Free",
+    certification:true,
+    certLabel:"Certificate of attendance",
+    aiLit:"Low", aiUse:"High", aiEd:"Medium",
+    scalability:"Moderate",
+    reach:"Global · Egypt confirmed at Deputy Minister level",
+    evidence:"No formal evaluation; weak evidence",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:["eg"],
+    notes:"Covers AI tools for teaching and classroom integration. Primarily English language teaching context, though confirmed ministry-level workshop delivery in Egypt. Partial broader education applicability. Most relevant for English-medium education systems.",
+    url:null
+  },
+  {
+    id:19,
+    name:"Digital Promise: Educational Leadership in the Age of AI",
+    provider:"Digital Promise · Siegel Family Endowment · Robin Hood Learning Fund",
+    tiers:[2,3],
+    modality:"online",
+    modalityLabel:"Webinar series · AI Literacy League · recordings freely accessible",
+    duration:"Flexible (recordings on demand)",
+    cost:"free",
+    costLabel:"Free (US context; recordings globally accessible)",
+    certification:false,
+    certLabel:"No formal AI certification",
+    aiLit:"Medium", aiUse:"High", aiEd:"High",
+    scalability:"Moderate",
+    reach:"US-primary; recordings accessible globally",
+    evidence:"No formal evaluation; weak evidence",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers AI literacy and applied AI for education leadership. Strong education focus; primarily US context requiring significant LMIC adaptation. Recordings globally accessible as a free supplementary resource. Best used as a knowledge resource rather than a primary training pathway.",
+    url:null
+  },
+  {
+    id:20,
+    name:"Google AI Essentials & Prompting Essentials",
+    provider:"Google · Coursera · Grow with Google (Sub-Saharan Africa)",
+    tiers:[1],
+    modality:"online",
+    modalityLabel:"Online, self-paced via Coursera",
+    duration:"7–8 hours (AI Essentials) · ~5 hours (Prompting Essentials)",
+    cost:"free",
+    costLabel:"Free",
+    certification:true,
+    certLabel:"Google Career Certificate on completion",
+    aiLit:"High", aiUse:"High", aiEd:"Low",
+    scalability:"Strong",
+    reach:"Global via Coursera · SSA-specific version active",
+    evidence:"No LMIC government-specific data; weak evidence",
+    languages:["en"],
+    regions:["global","ssa_en"],
+    specificCountries:[],
+    notes:"Covers AI literacy and prompting skills for non-technical professionals. SSA-specific version relevant to FCDO partner countries. No education-sector content. Best as a foundational literacy baseline for officials with no prior AI exposure.",
+    url:"https://grow.google"
+  },
+  {
+    id:21,
+    name:"AI for Everyone",
+    provider:"DeepLearning.AI · Andrew Ng · Coursera",
+    tiers:[1],
+    modality:"online",
+    modalityLabel:"Online, self-paced",
+    duration:"~7 hours (4 modules)",
+    cost:"freemium",
+    costLabel:"Free to audit · ~USD 49 for certificate",
+    certification:true,
+    certLabel:"Certificate available (paid, ~USD 49 or Coursera Plus)",
+    aiLit:"High", aiUse:"Medium", aiEd:"Low",
+    scalability:"Very Strong",
+    reach:"2.4 million+ enrolled · Global (33 languages)",
+    evidence:"4.8/5 from 52,000+ reviewers; provider-reported; no independent evaluation",
+    languages:["multi"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers AI awareness and foundational concepts for non-technical leaders. Strongest scalability in the landscape; widest language availability (33 languages). No education-sector content. Best as a standalone AI literacy baseline for senior officials; highly recommended starting point.",
+    url:"https://www.deeplearning.ai/courses/ai-for-everyone/"
+  },
+  {
+    id:22,
+    name:"GPE Technology for Education (Tech4Ed) Initiative",
+    provider:"Global Partnership for Education · UNICEF · EdTech Hub",
+    tiers:[2,3],
+    modality:"blended",
+    modalityLabel:"Technical assistance · in-country workshops · peer exchange",
+    duration:"Ongoing (technical assistance model)",
+    cost:"free",
+    costLabel:"Free to MoEs (GPE-funded)",
+    certification:false,
+    certLabel:"No formal certification",
+    aiLit:"Medium", aiUse:"Medium", aiEd:"High",
+    scalability:"Moderate",
+    reach:"MoE officials in 8 pilot countries (as of 2025)",
+    evidence:"No formal evaluation; moderate-weak evidence",
+    languages:["en"],
+    regions:["ssa_en","sea","lac"],
+    specificCountries:["gh","la","ls","mw","sv","gw"],
+    notes:"Covers digital transformation in education sector plans, AI integration into ministry functions and EdTech maturity assessment. Technical assistance model rather than scalable training. Strong education focus. Most relevant for officials in GPE pilot countries.",
+    url:null
+  },
+  {
+    id:23,
+    name:"HP AI Teacher Academy 2.0",
+    provider:"HP (Hewlett-Packard) · edX · ITU AI for Good",
+    tiers:[3],
+    modality:"online",
+    modalityLabel:"Online, self-paced",
+    duration:"~3 hours (updated 2026)",
+    cost:"free",
+    costLabel:"Free · optional USD 5 certificate",
+    certification:true,
+    certLabel:"Optional certificate of completion (USD 5)",
+    aiLit:"High", aiUse:"High", aiEd:"High",
+    scalability:"Strong",
+    reach:"Part of HP Life (3.1M global participants)",
+    evidence:"Academy-specific uptake not separately reported; weak evidence",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers AI literacy, prompting skills and responsible AI integration in teaching practice. Specifically designed for educators. Strong education focus; open to global access. Short duration makes it an excellent starting point for Tier 3 officials.",
+    url:"https://www.edx.org"
+  },
+  {
+    id:24,
+    name:"Digital Canvas AI Academy",
+    provider:"Digital Canvas Ltd · MIFOTRA (Rwanda Government)",
+    tiers:[1,2],
+    modality:"online",
+    modalityLabel:"Online, self-paced (50+ courses)",
+    duration:"Self-paced",
+    cost:"free",
+    costLabel:"Free to public servants (government-mandated)",
+    certification:true,
+    certLabel:"MIFOTRA-recognised certificate (IPPIS-compliant)",
+    aiLit:"High", aiUse:"High", aiEd:"Medium",
+    scalability:"Strong",
+    reach:"5,000+ certified · Rwanda",
+    evidence:"IPPIS-compliant; no independent evaluation published",
+    languages:["en","fr"],
+    regions:["rw"],
+    specificCountries:["rw"],
+    notes:"Covers AI literacy and applied digital transformation tools for Rwandan public servants. Bilingual (Kinyarwanda and English; also French and Kiswahili). Government-mandated model with strong institutional uptake. Replicable national infrastructure example. Only relevant for Rwanda-based officials unless adapted.",
+    url:null
+  },
+  {
+    id:25,
+    name:"Foundations in AI for Government",
+    provider:"Civil Service College UK (independent commercial provider)",
+    tiers:[1],
+    modality:"inperson",
+    modalityLabel:"1-day in-person (Westminster) or in-house delivery",
+    duration:"1 day",
+    cost:"paid",
+    costLabel:"Paid (commercial; in-house quotation required)",
+    certification:false,
+    certLabel:"No open-access certification",
+    aiLit:"High", aiUse:"Medium", aiEd:"Low",
+    scalability:"Limited",
+    reach:"UK civil servants primarily; international in-house possible",
+    evidence:"No published evaluation",
+    languages:["en"],
+    regions:["global"],
+    specificCountries:[],
+    notes:"Covers AI fundamentals, public sector use cases, risk assessment and AI integration strategy. UK-facing content. International in-house delivery available but costly. Reference model for structured in-person government AI training. Limited scalability and relevance for LMIC contexts.",
+    url:null
+  },
+  {
+    id:26,
+    name:"Anthropic / ALX / Rwanda: Chidi AI Learning Companion",
+    provider:"Anthropic · Government of Rwanda · ALX (African Leadership Accelerator)",
+    tiers:[2,3],
+    modality:"blended",
+    modalityLabel:"Blended training + 1-year sustained access to AI (Claude/Chidi)",
+    duration:"2-week initial training + 1-year Claude Pro access",
+    cost:"free",
+    costLabel:"Free to participants (Anthropic/ALX-funded)",
+    certification:false,
+    certLabel:"No formal certification",
+    aiLit:"High", aiUse:"High", aiEd:"High",
+    scalability:"Moderate",
+    reach:"1,100+ conversations · 4,000+ learning sessions · Rwanda + ALX Africa network",
+    evidence:"Corporate-reported; early-stage data only; weak evidence",
+    languages:["en"],
+    regions:["rw","ssa_en"],
+    specificCountries:["rw"],
+    notes:"Covers AI tools for lesson planning, classroom productivity and day-to-day AI use for teachers and civil servants. Platform-tied to Claude; not portable without Anthropic partnership. Strong education focus. Unique in providing sustained access rather than one-off workshop — promising model. Early-stage evidence.",
+    url:null
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let state = {
+  role: null,
+  country: null,
+  tier: null,
+  selectedGoals: new Set(),
+  shortlisted: new Set(),
+  filters: { modality:"all", cost:"all", cert:"all", scale:"all", lang:"all" }
+};
+
+// ═══════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════
+function showScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen'+n).classList.add('active');
+  ['1','2','3'].forEach(i => {
+    const el = document.getElementById('step'+i+'indicator');
+    el.classList.remove('active','done');
+    if (parseInt(i) < n) el.classList.add('done');
+    if (parseInt(i) === n) el.classList.add('active');
+  });
+  window.scrollTo(0,0);
+}
+
+function goToStep1() {
+  showScreen(1);
+}
+
+// ── SCREEN 1 INTERACTION ──
+const TIER_ROLES = {
+  1: [
+    { value:"minister",         label:"Minister of Education" },
+    { value:"perm_sec",         label:"Permanent Secretary / Deputy Minister" },
+    { value:"senior_advisor",   label:"Senior Policy Advisor" },
+    { value:"senior_official",  label:"Other Senior Official" }
+  ],
+  2: [
+    { value:"director_planning", label:"Director of Planning / Strategy" },
+    { value:"emis_head",         label:"EMIS Head / Data Manager" },
+    { value:"procurement",       label:"Procurement Officer" },
+    { value:"policy_analyst",    label:"Policy Analyst / Programme Officer" },
+    { value:"m_e",               label:"M&E Lead / Evidence Officer" }
+  ],
+  3: [
+    { value:"curriculum",        label:"Curriculum Developer" },
+    { value:"teacher_training",  label:"Teacher Training Lead" },
+    { value:"school_leader",     label:"School Leader / Principal" },
+    { value:"edtech_lead",       label:"EdTech / ICT Lead" }
+  ]
+};
+
+const REGION_COUNTRIES = {
+  ssa_en: [
+    {value:"ke",label:"Kenya"},{value:"gh",label:"Ghana"},{value:"rw",label:"Rwanda"},
+    {value:"ng",label:"Nigeria"},{value:"ug",label:"Uganda"},{value:"tz",label:"Tanzania"},
+    {value:"et",label:"Ethiopia"},{value:"sl",label:"Sierra Leone"},{value:"za",label:"South Africa"},
+    {value:"mw",label:"Malawi"},{value:"ls",label:"Lesotho"},{value:"zm",label:"Zambia"},
+    {value:"zz",label:"Zanzibar"},{value:"bd_ssa",label:"Other"}
+  ],
+  ssa_fr: [
+    {value:"sn",label:"Senegal"},{value:"ci",label:"Côte d'Ivoire"},{value:"cm",label:"Cameroon"},
+    {value:"gw",label:"Guinea-Bissau"},{value:"mg",label:"Madagascar"},{value:"bf",label:"Burkina Faso"},
+    {value:"bd_ssa_fr",label:"Other"}
+  ],
+  sa: [
+    {value:"bd",label:"Bangladesh"},{value:"pk",label:"Pakistan"},{value:"in",label:"India"},
+    {value:"ph",label:"Philippines"},{value:"vn",label:"Vietnam"},{value:"id",label:"Indonesia"},
+    {value:"la",label:"Lao PDR"},{value:"bd_sa",label:"Other"}
+  ],
+  lac: [
+    {value:"co",label:"Colombia"},{value:"br",label:"Brazil"},{value:"mx",label:"Mexico"},
+    {value:"sv",label:"El Salvador"},{value:"bd_lac",label:"Other"}
+  ],
+  mena: [
+    {value:"eg",label:"Egypt"},{value:"jo",label:"Jordan"},{value:"ma",label:"Morocco"},
+    {value:"bd_mena",label:"Other"}
+  ],
+  other: [{value:"other",label:"Not listed"}]
+};
+
+let s1 = { tier: null, role: null, region: null, country: null };
+
+function selectTier(tier) {
+  s1.tier = tier;
+  s1.role = null;
+  [1,2,3].forEach(t => document.getElementById('tcard-'+t).classList.toggle('selected', t === tier));
+
+  // Unlock location section
+  const loc = document.getElementById('locationSection');
+  loc.style.opacity = '1';
+  loc.style.pointerEvents = 'auto';
+
+  // Render role chips
+  const chips = TIER_ROLES[tier].map(r =>
+    `<button class="s1-chip" id="rchip-${r.value}" onclick="selectRole('${r.value}')">${r.label}</button>`
+  ).join('');
+  document.getElementById('roleChips').innerHTML = chips;
+  document.getElementById('roleReveal').classList.add('visible');
+  checkContinue();
+}
+
+function selectRole(value) {
+  s1.role = value;
+  document.querySelectorAll('#roleChips .s1-chip').forEach(el => el.classList.remove('selected'));
+  document.getElementById('rchip-'+value).classList.add('selected');
+  checkContinue();
+}
+
+function selectRegion(region) {
+  s1.region = region;
+  s1.country = null;
+  document.querySelectorAll('.region-card').forEach(el => el.classList.remove('selected'));
+  document.getElementById('rcard-'+region).classList.add('selected');
+
+  if (region === 'other') {
+    s1.country = 'other';
+    document.getElementById('countryReveal').classList.remove('visible');
+    checkContinue();
+    return;
+  }
+
+  const chips = REGION_COUNTRIES[region].map(c =>
+    `<button class="s1-chip" id="cchip-${c.value}" onclick="selectCountry('${c.value}')">${c.label}</button>`
+  ).join('');
+  document.getElementById('countryChips').innerHTML = chips;
+  document.getElementById('countryReveal').classList.add('visible');
+  checkContinue();
+}
+
+function selectCountry(value) {
+  s1.country = value;
+  document.querySelectorAll('#countryChips .s1-chip').forEach(el => el.classList.remove('selected'));
+  document.getElementById('cchip-'+value).classList.add('selected');
+  checkContinue();
+}
+
+function checkContinue() {
+  document.getElementById('continueBtn').disabled = !(s1.role && s1.country);
+}
+
+function goToStep2() {
+  if (!s1.role || !s1.country) return;
+  state.role = s1.role;
+  state.country = s1.country;
+  state.tier = TIERS[s1.role];
+  state.selectedGoals = new Set();
+  renderGoals();
+  showScreen(2);
+}
+
+function goToStep3() {
+  if (state.selectedGoals.size === 0) {
+    showToast('Please select at least one learning goal.');
+    return;
+  }
+  updateResultsContext();
+  renderResults();
+  showScreen(3);
+}
+
+// ═══════════════════════════════════════════════════════
+// GOALS SCREEN
+// ═══════════════════════════════════════════════════════
+const TIER_LABELS = {
+  1: "Tier 1 · Strategic Governance",
+  2: "Tier 2 · Operational & Planning",
+  3: "Tier 3 · Digital Pedagogy"
+};
+const TIER_INTROS = {
+  1: "As a senior official, your priorities focus on AI governance, policy setting and responsible commissioning of AI systems.",
+  2: "As an operational official, your priorities centre on applying AI to planning, evidence and ministry functions.",
+  3: "As a curriculum or teacher training lead, your priorities focus on responsible AI integration in education and classroom practice."
+};
+
+function renderGoals() {
+  document.getElementById('tierTag').textContent = TIER_LABELS[state.tier];
+  document.getElementById('goalsIntro').textContent = TIER_INTROS[state.tier];
+  const goals = GOALS[state.tier];
+  const LAYER_LABELS = { 1:"Layer 1 · AI Literacy", 2:"Layer 2 · AI Use", 3:"Layer 3 · AI in Education" };
+  const html = goals.map(g => `
+    <div class="goal-option" id="goal_${g.id}" onclick="toggleGoal('${g.id}')">
+      <div class="goal-checkbox" id="gchk_${g.id}"></div>
+      <div>
+        <div class="goal-layer layer-${g.layer}">${LAYER_LABELS[g.layer]}</div>
+        <div class="goal-label">${g.label}</div>
+        <div class="goal-desc">${g.desc}</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('goalsList').innerHTML = html;
+}
+
+function toggleGoal(id) {
+  if (state.selectedGoals.has(id)) {
+    state.selectedGoals.delete(id);
+    document.getElementById('goal_'+id).classList.remove('selected');
+    document.getElementById('gchk_'+id).classList.remove('checked');
+  } else {
+    state.selectedGoals.add(id);
+    document.getElementById('goal_'+id).classList.add('selected');
+    document.getElementById('gchk_'+id).classList.add('checked');
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// SCORING
+// ═══════════════════════════════════════════════════════
+function getGoalPrefs() {
+  const prefs = { aiLit: false, aiUse: false, aiEd: false };
+  const allGoals = [...GOALS[1], ...GOALS[2], ...GOALS[3]];
+  state.selectedGoals.forEach(id => {
+    const g = allGoals.find(x => x.id === id);
+    if (g) { if(g.aiLit) prefs.aiLit=true; if(g.aiUse) prefs.aiUse=true; if(g.aiEd) prefs.aiEd=true; }
+  });
+  return prefs;
+}
+
+function scoreValue(v) {
+  return v === "High" ? 3 : v === "Medium" ? 2 : 1;
+}
+
+function scoreProgamme(p) {
+  let score = 0;
+  const prefs = getGoalPrefs();
+  const region = COUNTRY_REGIONS[state.country];
+
+  // Tier match (40 pts max)
+  if (p.tiers.includes(state.tier)) score += 40;
+  else if (p.tiers.some(t => Math.abs(t - state.tier) === 1)) score += 15;
+
+  // Training need match (30 pts max)
+  if (prefs.aiLit) score += scoreValue(p.aiLit) * 4;
+  if (prefs.aiUse) score += scoreValue(p.aiUse) * 4;
+  if (prefs.aiEd) score += scoreValue(p.aiEd) * 4;
+
+  // Region bonus (15 pts)
+  if (p.specificCountries.includes(state.country)) score += 15;
+  else if (p.regions.includes(region)) score += 10;
+  else if (p.regions.includes("lmic") || p.regions.includes("global")) score += 5;
+
+  // Cost (free = bonus)
+  if (p.cost === "free") score += 5;
+
+  // Scalability
+  const sMap = {"Very Strong":5,"Strong":4,"Moderate":2,"Limited":0};
+  score += sMap[p.scalability] || 0;
+
+  return score;
+}
+
+function getMatchLabel(score) {
+  if (score >= 65) return { label:"Best Match", cls:"badge-match best" };
+  if (score >= 45) return { label:"Strong Match", cls:"badge-match" };
+  if (score >= 25) return { label:"Good Match", cls:"badge-match" };
+  return { label:"Worth Considering", cls:"badge-match" };
+}
+
+// ═══════════════════════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════════════════════
+function updateResultsContext() {
+  const roleLabel = ROLE_LABELS[state.role];
+  const countryLabel = COUNTRY_LABELS[state.country];
+  document.getElementById('topbarRole').textContent = roleLabel;
+  document.getElementById('topbarCountry').textContent = countryLabel;
+  document.getElementById('sidebarRole').textContent = roleLabel;
+  document.getElementById('sidebarCountry').textContent = countryLabel;
+}
+
+function getTierBadge(tiers) {
+  return tiers.map(t => {
+    const labels = {1:"Tier 1", 2:"Tier 2", 3:"Tier 3"};
+    const cls = {1:"badge-tier1", 2:"badge-tier2", 3:"badge-tier3"};
+    return `<span class="badge ${cls[t]}">${labels[t]}</span>`;
+  }).join('');
+}
+
+function getScalabilityBadge(s) {
+  const cls = {"Very Strong":"badge-scalability-vs","Strong":"badge-scalability-s","Moderate":"badge-scalability-m","Limited":"badge-scalability-l"};
+  return `<span class="badge ${cls[s] || ''}">${s}</span>`;
+}
+
+function getCostBadge(cost, label) {
+  const cls = {free:"badge-free", freemium:"badge-freemium", paid:"badge-paid"};
+  return `<span class="badge ${cls[cost] || ''}">${label}</span>`;
+}
+
+function getNeedPill(label, value) {
+  const cls = {High:"need-high", Medium:"need-medium", Low:"need-low"};
+  return `<span class="need-pill ${cls[value] || 'need-low'}"><span class="dot"></span>${label}: ${value}</span>`;
+}
+
+function getRelevanceBar(score) {
+  const maxScore = 95;
+  const pct = Math.min(100, Math.round((score / maxScore) * 100));
+  const cls = pct >= 65 ? "high" : pct >= 40 ? "medium" : "low";
+  return `
+    <div class="relevance-bar-wrap">
+      <div class="relevance-bar"><div class="relevance-fill ${cls}" style="width:${pct}%"></div></div>
+      <span class="relevance-label">Relevance ${pct}%</span>
+    </div>`;
+}
+
+// Programme URL overrides (supplements data where url was null)
+const PROGRAMME_URLS = {
+  1:  "https://www.itu.int/en/ITU-D/Digital-Inclusion/Pages/AI-for-Government.aspx",
+  2:  "https://www.sbs.ox.ac.uk/programmes/executive-education/online-programmes/ai-digital-transformation-government",
+  3:  "https://learningportal.iiep.unesco.org/",
+  4:  "https://www.undp.org/digital/ai-government",
+  6:  "https://www.giz.de/en/worldwide/80098.html",
+  8:  "https://ksg.ac.ke/",
+  9:  "https://www.caidp.org/",
+  11: "https://www.globalpartnership.org/what-we-do/education-technology",
+  13: "https://en.unesco.org/fieldoffice/santiago",
+  14: "https://www.idia.net/",
+  17: "https://www.unicef.org/innovation/stories/tinkering-tech-and-ai",
+  18: "https://www.britishcouncil.org/english/teaching/professional-development",
+  19: "https://digitalpromise.org/initiative/ai-in-education/",
+  22: "https://www.globalpartnership.org/what-we-do/education-technology",
+  24: "https://digitalcanvas.rw/",
+  25: "https://www.civilservicecollege.org.uk/",
+  26: "https://www.alxafrica.com/"
+};
+
+const ICON_SHARE = `<svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor" style="flex-shrink:0"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>`;
+
+function renderCard(p, score) {
+  const match = getMatchLabel(score);
+  const isShortlisted = state.shortlisted.has(p.id);
+  const progUrl = p.url || PROGRAMME_URLS[p.id];
+
+  const langMap = {"en":"English","fr":"French","es":"Spanish","multi":"Multilingual (33 langs)"};
+  const langsLabel = p.languages.map(l => langMap[l] || l).join(', ');
+
+  const titleHtml = progUrl
+    ? `<a href="${progUrl}" target="_blank" rel="noopener" class="card-title-link">${p.name} ↗</a>`
+    : `<span class="card-title-plain">${p.name}</span>`;
+
+  return `
+    <div class="programme-card${isShortlisted ? ' shortlisted' : ''}" id="pcard_${p.id}">
+      <div class="card-top">
+        <div class="card-main">
+          <div class="card-badges">
+            ${getTierBadge(p.tiers)}
+            <span class="badge ${match.cls}">${match.label}</span>
+            ${getScalabilityBadge(p.scalability)}
+            ${getCostBadge(p.cost, p.costLabel)}
+          </div>
+          <div style="margin-bottom:.15rem;">${titleHtml}</div>
+          <div class="card-provider">${p.provider}</div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="12" rx="2" stroke="#64748b" stroke-width="1.5"/><path d="M7 3v4M13 3v4M3 9h14" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></svg>
+              ${p.modalityLabel}
+            </div>
+            <div class="card-meta-item">
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#64748b" stroke-width="1.5"/><path d="M10 6v4l2.5 2.5" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></svg>
+              ${p.duration}
+            </div>
+            <div class="card-meta-item">
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h8M3 14h5" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></svg>
+              ${langsLabel}
+            </div>
+          </div>
+          <div class="card-needs">
+            ${getNeedPill("AI Literacy", p.aiLit)}
+            ${getNeedPill("AI Use", p.aiUse)}
+            ${getNeedPill("AI in Education", p.aiEd)}
+          </div>
+          ${getRelevanceBar(score)}
+          <button class="card-expand-btn" id="expand_${p.id}" onclick="toggleDetails(${p.id})">+ More details</button>
+        </div>
+      </div>
+      <div class="card-details" id="details_${p.id}">
+        <p>${p.notes}</p>
+        <div class="card-details-grid">
+          <div class="detail-item">
+            <div class="di-label">Certification</div>
+            <div class="di-value">${p.certLabel}</div>
+          </div>
+          <div class="detail-item">
+            <div class="di-label">Reach</div>
+            <div class="di-value">${p.reach}</div>
+          </div>
+          <div class="detail-item">
+            <div class="di-label">Evidence</div>
+            <div class="di-value">${p.evidence}</div>
+          </div>
+          <div class="detail-item">
+            <div class="di-label">Languages</div>
+            <div class="di-value">${langsLabel}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        ${progUrl
+          ? `<a href="${progUrl}" target="_blank" rel="noopener" class="card-visit-link">Visit programme ↗</a>`
+          : `<span class="no-url">Provider: ${p.provider.split('·')[0].trim()}</span>`}
+        <button class="shortlist-btn${isShortlisted ? ' active' : ''}" id="sl_${p.id}" onclick="toggleShortlist(${p.id})">
+          ${isShortlisted ? '★ Shortlisted' : '☆ Shortlist'}
+        </button>
+      </div>
+    </div>`;
+}
+
+function applyFilters() {
+  state.filters.modality = document.getElementById('filterModality').value;
+  state.filters.cost = document.getElementById('filterCost').value;
+  state.filters.cert = document.getElementById('filterCert').value;
+  state.filters.scale = document.getElementById('filterScale').value;
+  state.filters.lang = document.getElementById('filterLang').value;
+  renderResults();
+}
+
+function clearFilters() {
+  ['filterModality','filterCost','filterCert','filterScale','filterLang'].forEach(id => {
+    document.getElementById(id).value = 'all';
+  });
+  state.filters = { modality:"all", cost:"all", cert:"all", scale:"all", lang:"all" };
+  renderResults();
+}
+
+function filterProgramme(p) {
+  const f = state.filters;
+  if (f.modality !== 'all' && p.modality !== f.modality) return false;
+  if (f.cost === 'free' && p.cost !== 'free') return false;
+  if (f.cost === 'freemium' && p.cost === 'paid') return false;
+  if (f.cost === 'paid' && p.cost !== 'paid') return false;
+  if (f.cert === 'yes' && !p.certification) return false;
+  if (f.cert === 'no' && p.certification) return false;
+  if (f.scale !== 'all' && p.scalability !== f.scale) return false;
+  if (f.lang !== 'all') {
+    if (f.lang === 'multi' && !p.languages.includes('multi')) return false;
+    if (f.lang !== 'multi' && !p.languages.includes(f.lang) && !p.languages.includes('multi')) return false;
+  }
+  return true;
+}
+
+function renderResults() {
+  const scored = PROGRAMMES
+    .map(p => ({ p, score: scoreProgamme(p) }))
+    .filter(x => filterProgramme(x.p))
+    .sort((a, b) => b.score - a.score);
+
+  const count = scored.length;
+  document.getElementById('resultsCount').innerHTML = `<strong>${count}</strong> programme${count !== 1 ? 's' : ''} found`;
+
+  if (count === 0) {
+    document.getElementById('programmeList').innerHTML = `
+      <div class="empty-state">
+        <h3>No programmes match your current filters</h3>
+        <p>Try relaxing some of the filter options, or <button class="btn-revise" onclick="clearFilters()" style="display:inline;font-size:.85rem;">clear all filters</button>.</p>
+      </div>`;
+    return;
+  }
+
+  document.getElementById('programmeList').innerHTML = scored.map(x => renderCard(x.p, x.score)).join('');
+  updateShortlistUI();
+}
+
+function toggleDetails(id) {
+  const el = document.getElementById('details_'+id);
+  const btn = document.getElementById('expand_'+id);
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+    btn.textContent = '+ More details';
+  } else {
+    el.classList.add('open');
+    btn.textContent = '− Less details';
+  }
+}
+
+function toggleShortlist(id) {
+  if (state.shortlisted.has(id)) {
+    state.shortlisted.delete(id);
+  } else {
+    state.shortlisted.add(id);
+  }
+  const isNow = state.shortlisted.has(id);
+  const card = document.getElementById('pcard_'+id);
+  const btn  = document.getElementById('sl_'+id);
+  card.classList.toggle('shortlisted', isNow);
+  if (btn) {
+    btn.classList.toggle('active', isNow);
+    btn.textContent = isNow ? '★ Shortlisted' : '☆ Shortlist';
+  }
+  updateShortlistUI();
+}
+
+function updateShortlistUI() {
+  const n = state.shortlisted.size;
+  const el = document.getElementById('shortlistSummary');
+  if (n > 0) {
+    el.classList.add('visible');
+    document.getElementById('shortlistCount').textContent = n;
+  } else {
+    el.classList.remove('visible');
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// EMAIL SHARE
+// ═══════════════════════════════════════════════════════
+function openShareModal() { document.getElementById('shareModal').classList.add('open'); }
+function closeShareModal() { document.getElementById('shareModal').classList.remove('open'); }
+
+function buildEmailBody() {
+  const role = ROLE_LABELS[state.role];
+  const country = COUNTRY_LABELS[state.country];
+
+  const scored = PROGRAMMES
+    .map(p => ({ p, score: scoreProgamme(p) }))
+    .filter(x => filterProgramme(x.p))
+    .sort((a, b) => b.score - a.score);
+
+  const shortlistedProgs = scored.filter(x => state.shortlisted.has(x.p.id));
+  const otherProgs = scored.filter(x => !state.shortlisted.has(x.p.id));
+
+  let body = `AI Training Programmes — Matched Results\n`;
+  body += `Profile: ${role} · ${country}\n`;
+  body += `Generated via EdTech Hub AI Training Finder\n\n`;
+
+  if (shortlistedProgs.length > 0) {
+    body += `★ SHORTLISTED PROGRAMMES (${shortlistedProgs.length})\n`;
+    body += `${'─'.repeat(45)}\n`;
+    shortlistedProgs.forEach(({p}) => {
+      body += `\n${p.name}\n`;
+      body += `Provider: ${p.provider}\n`;
+      body += `Modality: ${p.modalityLabel} · Duration: ${p.duration}\n`;
+      body += `Cost: ${p.costLabel} · Certification: ${p.certLabel}\n`;
+      body += `Scalability: ${p.scalability}\n`;
+      body += `Training needs — AI Literacy: ${p.aiLit} | AI Use: ${p.aiUse} | AI in Education: ${p.aiEd}\n`;
+      if (p.url) body += `Link: ${p.url}\n`;
+    });
+    body += `\n`;
+  }
+
+  body += `ALL MATCHED PROGRAMMES (${scored.length})\n`;
+  body += `${'─'.repeat(45)}\n`;
+  otherProgs.slice(0, 10).forEach(({p, score}) => {
+    const match = getMatchLabel(score);
+    body += `\n${p.name} [${match.label}]\n`;
+    body += `Provider: ${p.provider}\n`;
+    body += `${p.modalityLabel} · ${p.duration} · ${p.costLabel}\n`;
+    body += `Scalability: ${p.scalability} · AI Literacy: ${p.aiLit} | AI Use: ${p.aiUse} | AI in Education: ${p.aiEd}\n`;
+    if (p.url) body += `Link: ${p.url}\n`;
+  });
+
+  body += `\n─────\nSource: A Rapid Mapping of AI Training Programmes for Education Ministry Officials in LMICs, EdTech Hub 2026`;
+  return body;
+}
+
+function sendEmail() {
+  const to = document.getElementById('emailInput').value.trim();
+  if (!to || !to.includes('@')) {
+    showToast('Please enter a valid email address.');
+    return;
+  }
+  const role = ROLE_LABELS[state.role];
+  const country = COUNTRY_LABELS[state.country];
+  const subject = encodeURIComponent(`AI Training Programmes — ${role}, ${country}`);
+  const body = encodeURIComponent(buildEmailBody());
+  window.open(`mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`);
+  closeShareModal();
+  showToast('Email client opened ✓');
+}
+
+// ═══════════════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Close modal on overlay click
+document.getElementById('shareModal').addEventListener('click', function(e) {
+  if (e.target === this) closeShareModal();
+});
+</script>
 </body>
 </html>
